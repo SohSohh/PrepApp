@@ -48,7 +48,8 @@ android {
         }
     }
 }
-
+val lifecycle_version = "2.8.4"
+val arch_version = "2.2.0"
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -62,6 +63,22 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.2.1")
     implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.3.0-beta05")
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    // Lifecycle utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -1,5 +1,4 @@
 package com.example.compose
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -7,12 +6,12 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import com.example.myapplication.ui.theme.Shapes
+import com.example.myapplication.ui.theme.Typography
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -255,7 +254,7 @@ val unspecified_scheme = ColorFamily(
 )
 
 @Composable
-fun AppTheme(
+fun PreperationAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
@@ -273,7 +272,8 @@ fun AppTheme(
 
   MaterialTheme(
     colorScheme = colorScheme,
-    typography = MaterialTheme.typography,
+      shapes = Shapes,
+    typography = Typography,
     content = content
   )
 }

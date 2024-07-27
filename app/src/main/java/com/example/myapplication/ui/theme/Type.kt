@@ -1,33 +1,40 @@
 package com.example.myapplication.ui.theme
 
-import androidx.compose.material3.Text
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 
 // Set of Material typography styles to start with
 
-val merri_regular = FontFamily(
+val merriRegular = FontFamily(
     Font(R.font.merriweather_regular),
     Font(R.font.merriweather_bold, FontWeight.Bold),
     Font(R.font.merriweather_light, FontWeight.Light),
-    Font(R.font.merriweather_italic, style = FontStyle.Italic),
-    Font(R.font.merriweather_lightitalic, FontWeight.Light, FontStyle.Italic),
-    Font(R.font.merriweather_bolditalic, FontWeight.Bold, FontStyle.Italic)
 )
 val Typography = Typography(
     titleLarge = TextStyle(
-        fontFamily = merri_regular,
+        fontFamily = merriRegular,
         fontWeight = FontWeight.Bold,
         fontSize = 25.sp
     ),
     displayMedium = TextStyle(
-        fontFamily = merri_regular,
+        fontFamily = merriRegular,
+        fontWeight = FontWeight.Normal,
         fontSize = 20.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = merriRegular,
+        fontWeight = FontWeight.Normal,
+        fontSize = 50.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = merriRegular,
+        fontSize = 15.sp
     )
+    // Add other text styles as needed
 )
