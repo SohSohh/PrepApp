@@ -50,6 +50,7 @@ android {
 }
 val lifecycle_version = "2.8.4"
 val arch_version = "2.2.0"
+val nav_version = "2.7.7"
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -76,10 +77,15 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     // Lifecycle utilities for Compose
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
     // Saved state module for ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.compose.PreperationAppTheme
-import com.example.myapplication.TestScreen.TestScreen
+import com.example.myapplication.TestScreen.TestConfigurationScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PreperationAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                   TestScreen(modifier = Modifier.padding(innerPadding))
+                   TestConfigurationScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
