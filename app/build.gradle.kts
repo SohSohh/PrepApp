@@ -66,7 +66,8 @@ dependencies {
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.3.0-beta05")
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-
+    implementation("androidx.navigation:navigation-compose:2.6.0")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.6.0")
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     // ViewModel utilities for Compose

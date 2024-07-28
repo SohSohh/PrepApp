@@ -9,11 +9,12 @@ data class TestScreenUiState(
     val isStarted:Boolean = false,
     val attemptedQuestions:Int = 0,
     val repeatPreviouslyAttemptedQuestions:Boolean = false,
-    var totalQuestions:Int = 200,
     var questions:List<question> = questionsList,
     var answers:List<String> = mutableListOf(),
     var selection:String = "",
-    var currentQuestion:Int = 0
+    var currentQuestion:Int = 0,
+    var incorrectQuestions:List<Int> = mutableListOf()
+
 )
 class TestScreenViewModel:ViewModel() {
     val uiState = MutableStateFlow(TestScreenUiState())
@@ -21,7 +22,9 @@ class TestScreenViewModel:ViewModel() {
     fun toggleTest() {
         uiState.update { currentState ->
             currentState.copy(
-                isStarted = !currentState.isStarted
+                isStarted = !currentState.isStarted,
+                currentQuestion = 0,
+                answers = mutableListOf()
             )
         }
     }
@@ -61,4 +64,17 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+    fun checkAnswer(questionNumber:Int, answered:String) {
+        uiState.update { currentState ->
+            val isCorrect = currentState.questions[questionNumber].answer == answered
+            val updatedIncorrectQuestions = if (isCorrect) {
+                currentState.incorrectQuestions
+            } else {
+                currentState.incorrectQuestions + questionNumber
+            }
+            currentState.copy(
+                incorrectQuestions = updatedIncorrectQuestions
+            )
+        }
+        }
 }
