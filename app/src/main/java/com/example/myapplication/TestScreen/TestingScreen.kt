@@ -17,6 +17,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,6 +28,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.PreperationAppTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,20 +63,25 @@ fun TestingScreen(modifier: Modifier = Modifier,
                     onClick = { testScreenViewModel.previousQuestion() })
             }
             Spacer(modifier = Modifier.weight(1f))
-            if (testScreenUiState.AllowSkipping && (testScreenUiState.currentQuestion + 1) != testScreenUiState.questions.size) {
+            // THIS SAYS: IF ALLOWSKIPPING IS TRUE -OR- RETRYQUESTION IS TRUE AND A CHOICE IS SELECTED, THEN SHOW THE BUTTON. THE LATTER PART IS SIMPLE TO LIMIT THE CARD FROM NAVIGATING TO A QUESTION THAT DOESN'T EXIST OVER THE LIMIT
+            if (((testScreenUiState.AllowSkipping || (testScreenUiState.selection != "" && testScreenUiState.RetryQuestions == true)) && (testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size))) {
                 NavigationButton(
                     modifier = modifier.padding(15.dp),
-                    text = "Skip",
+                    text = "Next",
                     onClick = { testScreenViewModel.nextQuestion() })
             }
         }
     }
 }
 
-
+val correctColor = Color.Green.copy(alpha = 0.5f)
+val incorrectColor = Color.Red.copy(alpha = 0.5f)
+val normalColor = Color.Transparent
 
 @Composable 
-fun QuestionCard(modifier:Modifier = Modifier, question:question, testScreenViewModel: TestScreenViewModel, qNumber: Int) {
+fun QuestionCard(modifier:Modifier = Modifier,
+                 question:question, testScreenViewModel: TestScreenViewModel,
+                 qNumber: Int) {
     Card(modifier = modifier, shape = MaterialTheme.shapes.medium) {
         Column(modifier = Modifier.background(color = Color.White)) {
             Text(text = question.question, modifier = Modifier.padding(20.dp), style = MaterialTheme.typography.titleLarge)
@@ -80,20 +91,43 @@ fun QuestionCard(modifier:Modifier = Modifier, question:question, testScreenView
 }
 
 @Composable
-fun Options(modifier: Modifier = Modifier, choiceList:List<String>, testScreenViewModel: TestScreenViewModel, answer:String, qNumber:Int) {
+fun Options(modifier: Modifier = Modifier,
+            choiceList:List<String>,
+            testScreenViewModel: TestScreenViewModel,
+            answer:String, qNumber:Int,
+            color:Color = normalColor) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     choiceList.forEach { choice ->
+        var color by remember { mutableStateOf(normalColor) }
+        if (testScreenUiState.selection != "" && choice == testScreenUiState.questions[qNumber].answer && testScreenUiState.ShowCorrectAndIncorrect) {
+            color = correctColor
+        } else if(testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) {
+            color = incorrectColor
+        } else {
+            color = normalColor
+        }
         Row(modifier = Modifier
-            .padding(5.dp)
-            .fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            .padding(horizontal = 10.dp, vertical = 5.dp)
+            .fillMaxWidth()
+            .background(color = color),
+            verticalAlignment = Alignment.CenterVertically) {
+            val scope = rememberCoroutineScope()
             Text(text = choice, modifier = Modifier
                 .weight(1f)
-                .padding(horizontal = 20.dp))
-            RadioButton(selected = (choice == testScreenUiState.selection), onClick = {
-                testScreenViewModel.addAnswer(choice)
-                testScreenViewModel.checkAnswer(qNumber, choice)
-                testScreenViewModel.nextQuestion()
-            },modifier = Modifier.padding(horizontal = 20.dp))
+                .padding(start = 5.dp))
+            RadioButton(
+                selected = (choice == testScreenUiState.selection),
+                onClick = {
+                    testScreenViewModel.addAnswer(choice)
+                    testScreenViewModel.checkAnswer(qNumber, choice)
+                    if (testScreenUiState.RetryQuestions == false && testScreenUiState.AllowSkipping == false) {
+                        scope.launch {
+                            delay(300)
+                            testScreenViewModel.nextQuestion()
+                        }
+                    }
+                },
+            )
         }
     }
 }

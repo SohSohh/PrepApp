@@ -15,10 +15,19 @@ data class TestScreenUiState(
     var incorrectQuestions:List<Int> = mutableListOf(),
     var RetryQuestions:Boolean = false,
     var Backtracking:Boolean = false,
-    val AllowSkipping:Boolean = false,
+    var AllowSkipping:Boolean = false,
+    var ShowCorrectAndIncorrect:Boolean = true,
 )
 class TestScreenViewModel:ViewModel() {
     val uiState = MutableStateFlow(TestScreenUiState())
+
+    fun toggleShowCorrectAndIncorrect() {
+        uiState.update { currentState ->
+            currentState.copy(
+                ShowCorrectAndIncorrect = !currentState.ShowCorrectAndIncorrect
+            )
+        }
+    }
 
     fun toggleSkipping() {
         uiState.update { currentState ->
@@ -48,7 +57,8 @@ class TestScreenViewModel:ViewModel() {
     fun nextQuestion() {
         uiState.update { currentState ->
             currentState.copy(
-                currentQuestion = currentState.currentQuestion + 1
+                currentQuestion = currentState.currentQuestion + 1,
+                selection = ""
             )
         }
     }

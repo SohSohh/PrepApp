@@ -62,6 +62,7 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
                        testScreenViewModel: TestScreenViewModel = viewModel()) {
     val testUiState by testScreenViewModel.uiState.collectAsState()
     Column(modifier = modifier) {
+        // This might be needed to be implemented later
        TextWithSwitch(text = "Include attempted questions from previous tests",
            checkedState = testUiState.repeatPreviouslyAttemptedQuestions,
            onCheckChange ={ testScreenViewModel.toggleRepeatPreviouslyAttemptedQuestions() })
@@ -83,6 +84,12 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
         TextWithSwitch(text = "Allow skipping",
             checkedState = testUiState.AllowSkipping,
             onCheckChange = { testScreenViewModel.toggleSkipping() })
+        //-----------
+        HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
+        //----------
+        TextWithSwitch(text = "Show correct answers",
+            checkedState = testUiState.ShowCorrectAndIncorrect,
+            onCheckChange = { testScreenViewModel.toggleShowCorrectAndIncorrect() })
     }
 
 }
