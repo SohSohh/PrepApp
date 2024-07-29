@@ -4,10 +4,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -39,18 +37,7 @@ fun MainApp(modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewMo
                 )
             }
             )
-        },
-        floatingActionButtonPosition = FabPosition.End,
-        floatingActionButton = {
-            Button(onClick = {
-                testScreenViewModel.toggleTest()
-                navController.navigate("TestingScreen")
-            }
-            ) {
-                Text(text = "Start")
-            }
         }
-
     ) { innerPadding ->
         NavHost(
             navController = navController,
@@ -61,13 +48,13 @@ fun MainApp(modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewMo
                 .padding(innerPadding)
         ) {
             composable(route = "TestConfigurationScreen") {
-                TestConfigurationScreen(navController = navController, modifier = Modifier.fillMaxSize())
+                TestConfigurationScreen(modifier = Modifier.fillMaxSize(), onStartButtonClicked = { navController.navigate(route = "TestingScreen") })
             }
             composable(route = "TestingScreen") {
-                TestingScreen(navController = navController, modifier = Modifier.fillMaxSize())
+                TestingScreen(modifier = Modifier.fillMaxSize())
             }
             composable(route = "EndScreen") {
-                EndOfTestScreen(navController = navController, modifier = Modifier.fillMaxSize())
+                EndOfTestScreen(modifier = Modifier.fillMaxSize())
             }
         }
     }

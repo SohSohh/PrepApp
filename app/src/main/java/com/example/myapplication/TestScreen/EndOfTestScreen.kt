@@ -12,17 +12,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.example.compose.PreperationAppTheme
 
 @Composable
 fun EndOfTestScreen(modifier:Modifier = Modifier,
                     testScreenViewModel: TestScreenViewModel = viewModel(),
-                    navController: NavController) {
+                    ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     var totalQuestions = testScreenUiState.currentQuestion + 1
     var correctQuestions = totalQuestions - testScreenUiState.incorrectQuestions.size
-    Column(modifier = modifier.fillMaxSize().background(color = Color.White)) {
+    Column(modifier = modifier
+        .fillMaxSize()
+        .background(color = Color.White)) {
         Text("You have completed the test!", style = MaterialTheme.typography.titleLarge)
         Text("You got ${correctQuestions} out of ${totalQuestions}", style = MaterialTheme.typography.titleLarge)
     }
@@ -32,5 +33,6 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
 @Composable
 fun EndPreview() {
     PreperationAppTheme {
+        EndOfTestScreen()
     }
 }

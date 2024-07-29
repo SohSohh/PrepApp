@@ -4,32 +4,56 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.example.compose.PreperationAppTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TestConfigurationScreen(modifier:Modifier = Modifier,
-                            testScreenViewModel: TestScreenViewModel = viewModel(), navController: NavController) {
+                            testScreenViewModel: TestScreenViewModel = viewModel(),
+                            onStartButtonClicked:() -> Unit = {}) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
-    Box(modifier = modifier
+    Column(modifier = modifier
         .fillMaxSize()
         .background(color = Color.White)) {
-        ConfigurationsList(modifier = Modifier.padding())
+        Box(
+            modifier = modifier
+                .background(color = Color.White)
+        ) {
+            ConfigurationsList(modifier = Modifier.padding(10.dp))
+        }
+        Spacer(modifier = Modifier.weight(1f))
+        Row() {
+            Spacer(modifier = Modifier.weight(1f))
+            NavigationButton(text = "Start", onClick = onStartButtonClicked, modifier = Modifier.padding(15.dp))
+        }
+    }
+}
+
+@Composable
+fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> Unit = {}) {
+    Button(
+        onClick = onClick,
+        modifier = modifier
+    ) {
+        Text(text = text)
     }
 }
 
@@ -37,23 +61,51 @@ fun TestConfigurationScreen(modifier:Modifier = Modifier,
 fun ConfigurationsList(modifier:Modifier = Modifier,
                        testScreenViewModel: TestScreenViewModel = viewModel()) {
     val testUiState by testScreenViewModel.uiState.collectAsState()
-    Column(modifier = modifier.fillMaxSize()) {
-        Row(modifier = Modifier.padding(horizontal = 10.dp)) {
-            Text(text = "Include already attempted questions from previous tests?",
-                modifier = Modifier.weight(3f))
-            Switch(
-                checked = testUiState.repeatPreviouslyAttemptedQuestions,
-                onCheckedChange = {testScreenViewModel.toggleRepeatPreviouslyAttemptedQuestions()},
-                modifier = Modifier.weight(1f)
-            )
-        }
+    Column(modifier = modifier) {
+       TextWithSwitch(text = "Include attempted questions from previous tests",
+           checkedState = testUiState.repeatPreviouslyAttemptedQuestions,
+           onCheckChange ={ testScreenViewModel.toggleRepeatPreviouslyAttemptedQuestions() })
+        //------
+        HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
+        //--------
+       TextWithSwitch(text = "Allow questions to be reattempted",
+           checkedState = testUiState.RetryQuestions,
+           onCheckChange = { testScreenViewModel.toggleRetry() })
+        //---------
+        HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
+        //------
+        TextWithSwitch(text = "Allow backtracking",
+            checkedState = testUiState.Backtracking,
+            onCheckChange = {testScreenViewModel.toggleBacktracking()})
+        //-----
+        HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
+        //-----
+        TextWithSwitch(text = "Allow skipping",
+            checkedState = testUiState.AllowSkipping,
+            onCheckChange = { testScreenViewModel.toggleSkipping() })
     }
+
 }
 
+@Composable
+fun TextWithSwitch(modifier:Modifier = Modifier, text:String, checkedState:Boolean, onCheckChange:(Boolean) -> Unit = {}) {
+    Row(modifier = modifier.padding(horizontal = 5.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = text,
+            modifier = Modifier.weight(5f)
+        )
+        Switch(
+            checked = checkedState,
+            onCheckedChange = onCheckChange,
+            modifier = Modifier.weight(1f)
+        )
+    }
+}
 
 @Preview
 @Composable
 fun PreviewApp() {
     PreperationAppTheme {
+        TestConfigurationScreen()
     }
 }

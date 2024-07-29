@@ -7,17 +7,34 @@ import kotlinx.coroutines.flow.update
 
 data class TestScreenUiState(
     val isStarted:Boolean = false,
-    val attemptedQuestions:Int = 0,
     val repeatPreviouslyAttemptedQuestions:Boolean = false,
     var questions:List<question> = questionsList,
     var answers:List<String> = mutableListOf(),
     var selection:String = "",
-    var currentQuestion:Int = 0,
-    var incorrectQuestions:List<Int> = mutableListOf()
-
+    var currentQuestion:Int = 1,
+    var incorrectQuestions:List<Int> = mutableListOf(),
+    var RetryQuestions:Boolean = false,
+    var Backtracking:Boolean = false,
+    val AllowSkipping:Boolean = false,
 )
 class TestScreenViewModel:ViewModel() {
     val uiState = MutableStateFlow(TestScreenUiState())
+
+    fun toggleSkipping() {
+        uiState.update { currentState ->
+            currentState.copy(
+                AllowSkipping = !currentState.AllowSkipping
+            )
+        }
+    }
+
+    fun toggleBacktracking() {
+        uiState.update { currentState ->
+            currentState.copy(
+                Backtracking = !currentState.Backtracking
+            )
+        }
+    }
 
     fun toggleTest() {
         uiState.update { currentState ->
@@ -54,6 +71,13 @@ class TestScreenViewModel:ViewModel() {
             currentState.copy(
                 answers = currentState.answers + answer,
                 selection = answer
+            )
+        }
+    }
+    fun toggleRetry() {
+        uiState.update { currentState ->
+            currentState.copy(
+                RetryQuestions = !currentState.RetryQuestions
             )
         }
     }
