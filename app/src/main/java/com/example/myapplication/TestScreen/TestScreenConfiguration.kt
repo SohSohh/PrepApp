@@ -31,7 +31,7 @@ fun TestConfigurationScreen(
     testScreenViewModel: TestScreenViewModel = viewModel(),
     onStartButtonClicked: () -> Unit = {},
 ) {
-    val testScreenUiState by testScreenViewModel._uiState.collectAsState()
+    val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     Column(modifier = modifier
         .fillMaxSize()
         .background(color = Color.White)) {

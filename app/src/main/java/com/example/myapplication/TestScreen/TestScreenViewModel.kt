@@ -21,10 +21,10 @@ data class TestScreenUiState(
     var ShowCorrectAndIncorrect:Boolean = false,
 )
 class TestScreenViewModel:ViewModel() {
-    val uiState = MutableStateFlow(TestScreenUiState())
-    val _uiState: StateFlow<TestScreenUiState> = uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(TestScreenUiState())
+    val uiState: StateFlow<TestScreenUiState> = _uiState.asStateFlow()
     fun toggleShowCorrectAndIncorrect() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 ShowCorrectAndIncorrect = !currentState.ShowCorrectAndIncorrect
             )
@@ -32,7 +32,7 @@ class TestScreenViewModel:ViewModel() {
     }
 
     fun toggleSkipping() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 AllowSkipping = !currentState.AllowSkipping
             )
@@ -40,7 +40,7 @@ class TestScreenViewModel:ViewModel() {
     }
 
     fun toggleBacktracking() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 Backtracking = !currentState.Backtracking
             )
@@ -48,7 +48,7 @@ class TestScreenViewModel:ViewModel() {
     }
 
     fun toggleTest() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 isStarted = !currentState.isStarted,
                 currentQuestion = 0,
@@ -57,7 +57,7 @@ class TestScreenViewModel:ViewModel() {
         }
     }
     fun nextQuestion() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             // variables and If condition is to limit the increment from going above the maximum
             var incrememnt:Int = 0
             var selection:String = currentState.selection
@@ -72,21 +72,21 @@ class TestScreenViewModel:ViewModel() {
         }
     }
     fun previousQuestion() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 currentQuestion = currentState.currentQuestion - 1
             )
         }
     }
     fun toggleRepeatPreviouslyAttemptedQuestions() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 repeatPreviouslyAttemptedQuestions = !currentState.repeatPreviouslyAttemptedQuestions
             )
         }
     }
     fun addAnswer(answer:String) {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 answers = currentState.answers + answer,
                 selection = answer
@@ -94,21 +94,21 @@ class TestScreenViewModel:ViewModel() {
         }
     }
     fun toggleRetry() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 RetryQuestions = !currentState.RetryQuestions
             )
         }
     }
     fun resetAnswersList() {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             currentState.copy(
                 answers = mutableListOf()
             )
         }
     }
     fun checkAnswer(questionNumber:Int, answered:String) {
-        uiState.update { currentState ->
+        _uiState.update { currentState ->
             val isCorrect = currentState.questions[questionNumber].answer == answered
             val updatedIncorrectQuestions = if (isCorrect) {
                 currentState.incorrectQuestions

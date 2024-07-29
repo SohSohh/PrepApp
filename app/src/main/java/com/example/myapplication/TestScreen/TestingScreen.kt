@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
 fun TestingScreen(modifier: Modifier = Modifier,
                   testScreenViewModel: TestScreenViewModel = viewModel(),
                   onClickEndTest:() -> Unit = {}, ) {
-    val testScreenUiState by testScreenViewModel._uiState.collectAsState()
+    val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     Column(
         modifier = modifier
             .fillMaxSize()
