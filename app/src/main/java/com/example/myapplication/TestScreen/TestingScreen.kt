@@ -36,8 +36,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun TestingScreen(modifier: Modifier = Modifier,
                   testScreenViewModel: TestScreenViewModel = viewModel(),
-                  onClickEndTest:() -> Unit = {}) {
-    val testScreenUiState by testScreenViewModel.uiState.collectAsState()
+                  onClickEndTest:() -> Unit = {}, ) {
+    val testScreenUiState by testScreenViewModel._uiState.collectAsState()
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -51,7 +51,8 @@ fun TestingScreen(modifier: Modifier = Modifier,
                 modifier = Modifier.fillMaxWidth(),
                 question = testScreenUiState.questions[testScreenUiState.currentQuestion],
                 testScreenViewModel = testScreenViewModel,
-                qNumber = testScreenUiState.currentQuestion
+                qNumber = testScreenUiState.currentQuestion,
+                testScreenUiState = testScreenUiState
             )
         }
         Spacer(modifier = Modifier.weight(1f))
@@ -71,7 +72,12 @@ fun TestingScreen(modifier: Modifier = Modifier,
                     onClick = { testScreenViewModel.nextQuestion() })
             }
         }
+        Text(text = testScreenUiState.RetryQuestions.toString())
+        Text(text = testScreenUiState.Backtracking.toString())
+        Text(text = testScreenUiState.AllowSkipping.toString())
+        Text(text = testScreenUiState.ShowCorrectAndIncorrect.toString())
     }
+    Text(text = testScreenUiState.repeatPreviouslyAttemptedQuestions.toString())
 }
 
 val correctColor = Color.Green.copy(alpha = 0.5f)
@@ -81,11 +87,12 @@ val normalColor = Color.Transparent
 @Composable 
 fun QuestionCard(modifier:Modifier = Modifier,
                  question:question, testScreenViewModel: TestScreenViewModel,
-                 qNumber: Int) {
+                 qNumber: Int,
+                 testScreenUiState: TestScreenUiState) {
     Card(modifier = modifier, shape = MaterialTheme.shapes.medium) {
         Column(modifier = Modifier.background(color = Color.White)) {
             Text(text = question.question, modifier = Modifier.padding(20.dp), style = MaterialTheme.typography.titleLarge)
-            Options(choiceList = question.choices, testScreenViewModel = testScreenViewModel, qNumber = qNumber, answer = question.answer)
+            Options(choiceList = question.choices, testScreenViewModel = testScreenViewModel, qNumber = qNumber, testScreenUiState = testScreenUiState)
         }
     }
 }
@@ -94,9 +101,8 @@ fun QuestionCard(modifier:Modifier = Modifier,
 fun Options(modifier: Modifier = Modifier,
             choiceList:List<String>,
             testScreenViewModel: TestScreenViewModel,
-            answer:String, qNumber:Int,
-            color:Color = normalColor) {
-    val testScreenUiState by testScreenViewModel.uiState.collectAsState()
+            qNumber:Int,
+            testScreenUiState: TestScreenUiState) {
     choiceList.forEach { choice ->
         var color by remember { mutableStateOf(normalColor) }
         if (testScreenUiState.selection != "" && choice == testScreenUiState.questions[qNumber].answer && testScreenUiState.ShowCorrectAndIncorrect) {
@@ -138,5 +144,4 @@ fun TestingScreenPreview() {
     PreperationAppTheme {
         TestingScreen()
     }
-
 }

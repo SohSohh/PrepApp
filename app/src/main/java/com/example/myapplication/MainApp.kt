@@ -48,10 +48,10 @@ fun MainApp(modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewMo
                 .padding(innerPadding)
         ) {
             composable(route = "TestConfigurationScreen") {
-                TestConfigurationScreen(modifier = Modifier.fillMaxSize(), onStartButtonClicked = { navController.navigate(route = "TestingScreen") })
+                TestConfigurationScreen(modifier = Modifier.fillMaxSize(), onStartButtonClicked = { navController.navigate(route = "TestingScreen") }, testScreenViewModel = testScreenViewModel)
             }
             composable(route = "TestingScreen") {
-                TestingScreen(modifier = Modifier.fillMaxSize())
+                TestingScreen(modifier = Modifier.fillMaxSize(), testScreenViewModel = testScreenViewModel)
             }
             composable(route = "EndScreen") {
                 EndOfTestScreen(modifier = Modifier.fillMaxSize())

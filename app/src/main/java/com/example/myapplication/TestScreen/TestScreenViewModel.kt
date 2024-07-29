@@ -2,6 +2,8 @@ package com.example.myapplication.TestScreen
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 
@@ -14,13 +16,13 @@ data class TestScreenUiState(
     var currentQuestion:Int = 1,
     var incorrectQuestions:List<Int> = mutableListOf(),
     var RetryQuestions:Boolean = false,
-    var Backtracking:Boolean = false,
-    var AllowSkipping:Boolean = false,
-    var ShowCorrectAndIncorrect:Boolean = true,
+    var Backtracking:Boolean = true,
+    var AllowSkipping:Boolean = true,
+    var ShowCorrectAndIncorrect:Boolean = false,
 )
 class TestScreenViewModel:ViewModel() {
     val uiState = MutableStateFlow(TestScreenUiState())
-
+    val _uiState: StateFlow<TestScreenUiState> = uiState.asStateFlow()
     fun toggleShowCorrectAndIncorrect() {
         uiState.update { currentState ->
             currentState.copy(
@@ -56,9 +58,16 @@ class TestScreenViewModel:ViewModel() {
     }
     fun nextQuestion() {
         uiState.update { currentState ->
-            currentState.copy(
-                currentQuestion = currentState.currentQuestion + 1,
+            // variables and If condition is to limit the increment from going above the maximum
+            var incrememnt:Int = 0
+            var selection:String = currentState.selection
+            if (currentState.currentQuestion != currentState.questions.size) {
+                incrememnt = 1
                 selection = ""
+            }
+            currentState.copy(
+                currentQuestion = currentState.currentQuestion + incrememnt,
+                selection = selection
             )
         }
     }

@@ -26,10 +26,12 @@ import com.example.compose.PreperationAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TestConfigurationScreen(modifier:Modifier = Modifier,
-                            testScreenViewModel: TestScreenViewModel = viewModel(),
-                            onStartButtonClicked:() -> Unit = {}) {
-    val testScreenUiState by testScreenViewModel.uiState.collectAsState()
+fun TestConfigurationScreen(
+    modifier: Modifier = Modifier,
+    testScreenViewModel: TestScreenViewModel = viewModel(),
+    onStartButtonClicked: () -> Unit = {},
+) {
+    val testScreenUiState by testScreenViewModel._uiState.collectAsState()
     Column(modifier = modifier
         .fillMaxSize()
         .background(color = Color.White)) {
@@ -37,7 +39,7 @@ fun TestConfigurationScreen(modifier:Modifier = Modifier,
             modifier = modifier
                 .background(color = Color.White)
         ) {
-            ConfigurationsList(modifier = Modifier.padding(10.dp))
+            ConfigurationsList(modifier = Modifier.padding(10.dp), testScreenUiState = testScreenUiState, testScreenViewModel = testScreenViewModel)
         }
         Spacer(modifier = Modifier.weight(1f))
         Row() {
@@ -59,40 +61,45 @@ fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> 
 
 @Composable
 fun ConfigurationsList(modifier:Modifier = Modifier,
-                       testScreenViewModel: TestScreenViewModel = viewModel()) {
-    val testUiState by testScreenViewModel.uiState.collectAsState()
+                       testScreenViewModel: TestScreenViewModel = viewModel(),
+                       testScreenUiState: TestScreenUiState, ) {
     Column(modifier = modifier) {
         // This might be needed to be implemented later
-       TextWithSwitch(text = "Include attempted questions from previous tests",
-           checkedState = testUiState.repeatPreviouslyAttemptedQuestions,
-           onCheckChange ={ testScreenViewModel.toggleRepeatPreviouslyAttemptedQuestions() })
+        TextWithSwitch(text = "Include attempted questions from previous tests",
+            checkedState = testScreenUiState.repeatPreviouslyAttemptedQuestions,
+            onCheckChange = { testScreenViewModel.toggleRepeatPreviouslyAttemptedQuestions() })
+        Text(text = testScreenUiState.repeatPreviouslyAttemptedQuestions.toString())
         //------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //--------
-       TextWithSwitch(text = "Allow questions to be reattempted",
-           checkedState = testUiState.RetryQuestions,
-           onCheckChange = { testScreenViewModel.toggleRetry() })
+        TextWithSwitch(text = "Allow questions to be reattempted",
+            checkedState = testScreenUiState.RetryQuestions,
+            onCheckChange = { testScreenViewModel.toggleRetry() })
         //---------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //------
         TextWithSwitch(text = "Allow backtracking",
-            checkedState = testUiState.Backtracking,
-            onCheckChange = {testScreenViewModel.toggleBacktracking()})
+            checkedState = testScreenUiState.Backtracking,
+            onCheckChange = { testScreenViewModel.toggleBacktracking() })
         //-----
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //-----
         TextWithSwitch(text = "Allow skipping",
-            checkedState = testUiState.AllowSkipping,
+            checkedState = testScreenUiState.AllowSkipping,
             onCheckChange = { testScreenViewModel.toggleSkipping() })
         //-----------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //----------
         TextWithSwitch(text = "Show correct answers",
-            checkedState = testUiState.ShowCorrectAndIncorrect,
+            checkedState = testScreenUiState.ShowCorrectAndIncorrect,
             onCheckChange = { testScreenViewModel.toggleShowCorrectAndIncorrect() })
+        Text(text = testScreenUiState.RetryQuestions.toString())
+        Text(text = testScreenUiState.Backtracking.toString())
+        Text(text = testScreenUiState.AllowSkipping.toString())
+        Text(text = testScreenUiState.ShowCorrectAndIncorrect.toString())
     }
-
 }
+
 
 @Composable
 fun TextWithSwitch(modifier:Modifier = Modifier, text:String, checkedState:Boolean, onCheckChange:(Boolean) -> Unit = {}) {
