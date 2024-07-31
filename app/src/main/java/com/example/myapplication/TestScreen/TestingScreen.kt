@@ -36,7 +36,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun TestingScreen(modifier: Modifier = Modifier,
                   testScreenViewModel: TestScreenViewModel = viewModel(),
-                  onClickEndTest:() -> Unit = {}, ) {
+                  onEndOfTest:() -> Unit = {}, ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     Column(
         modifier = modifier
@@ -48,13 +48,20 @@ fun TestingScreen(modifier: Modifier = Modifier,
                 .background(color = Color.White)
         ) {
             QuestionCard(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp),
                 question = testScreenUiState.questions[testScreenUiState.currentQuestion],
                 testScreenViewModel = testScreenViewModel,
-                qNumber = testScreenUiState.currentQuestion,
-                testScreenUiState = testScreenUiState
+                testScreenUiState = testScreenUiState,
+                resultForm = false,
+                resultAnswerIndex = 0,
+                onEndOfTest = onEndOfTest
             )
         }
+        Text(text = "[TESTING] CurrentQuestion = ${testScreenUiState.currentQuestion}")
+        Text(text = "[TESTING] incorrectQuestions = ${testScreenUiState.incorrectQuestions}")
+        Text(text = "[TESTING] answers = ${testScreenUiState.answers}")
+        Text(text = "[TESTING] questions.size = ${testScreenUiState.questions.size}")
+        Text(text = "[TESTING] selection = ${testScreenUiState.selection}")
         Spacer(modifier = Modifier.weight(1f))
         Row(modifier = modifier) {
             if (testScreenUiState.Backtracking && testScreenUiState.currentQuestion != 0) {
@@ -65,19 +72,24 @@ fun TestingScreen(modifier: Modifier = Modifier,
             }
             Spacer(modifier = Modifier.weight(1f))
             // THIS SAYS: IF ALLOWSKIPPING IS TRUE -OR- RETRYQUESTION IS TRUE AND A CHOICE IS SELECTED, THEN SHOW THE BUTTON. THE LATTER PART IS SIMPLE TO LIMIT THE CARD FROM NAVIGATING TO A QUESTION THAT DOESN'T EXIST OVER THE LIMIT
-            if (((testScreenUiState.AllowSkipping || (testScreenUiState.selection != "" && testScreenUiState.RetryQuestions == true)) && (testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size))) {
-                NavigationButton(
-                    modifier = modifier.padding(15.dp),
-                    text = "Next",
-                    onClick = { testScreenViewModel.nextQuestion() })
+            if (((testScreenUiState.AllowSkipping || (testScreenUiState.selection != "" && testScreenUiState.RetryQuestions == true)))) {
+                if ((testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size)) {
+                    NavigationButton(
+                        modifier = modifier.padding(15.dp),
+                        text = "Start",
+                        onClick = {
+                            testScreenViewModel.checkAnswer()
+                            testScreenViewModel.nextQuestion() })
+                } else {
+                    NavigationButton(
+                        modifier = modifier.padding(15.dp),
+                        text = "End",
+                        onClick = {
+                            onEndOfTest() })
+                }
             }
         }
-        Text(text = testScreenUiState.RetryQuestions.toString())
-        Text(text = testScreenUiState.Backtracking.toString())
-        Text(text = testScreenUiState.AllowSkipping.toString())
-        Text(text = testScreenUiState.ShowCorrectAndIncorrect.toString())
     }
-    Text(text = testScreenUiState.repeatPreviouslyAttemptedQuestions.toString())
 }
 
 val correctColor = Color.Green.copy(alpha = 0.5f)
@@ -87,12 +99,24 @@ val normalColor = Color.Transparent
 @Composable 
 fun QuestionCard(modifier:Modifier = Modifier,
                  question:question, testScreenViewModel: TestScreenViewModel,
-                 qNumber: Int,
+                 resultForm:Boolean,
+                 resultAnswerIndex: Int,
+                 onEndOfTest: () -> Unit = {},
                  testScreenUiState: TestScreenUiState) {
     Card(modifier = modifier, shape = MaterialTheme.shapes.medium) {
         Column(modifier = Modifier.background(color = Color.White)) {
-            Text(text = question.question, modifier = Modifier.padding(20.dp), style = MaterialTheme.typography.titleLarge)
-            Options(choiceList = question.choices, testScreenViewModel = testScreenViewModel, qNumber = qNumber, testScreenUiState = testScreenUiState)
+                Text(text = question.subject.toString(),
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    style = MaterialTheme.typography.titleMedium)
+                Text(text = question.question,
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    style = MaterialTheme.typography.titleLarge)
+            Options(choiceList = question.choices,
+                testScreenViewModel = testScreenViewModel,
+                testScreenUiState = testScreenUiState,
+                resultForm = resultForm,
+                resultAnswerIndex = resultAnswerIndex,
+                onEndOfTest = onEndOfTest)
         }
     }
 }
@@ -101,13 +125,15 @@ fun QuestionCard(modifier:Modifier = Modifier,
 fun Options(modifier: Modifier = Modifier,
             choiceList:List<String>,
             testScreenViewModel: TestScreenViewModel,
-            qNumber:Int,
-            testScreenUiState: TestScreenUiState) {
+            testScreenUiState: TestScreenUiState,
+            onEndOfTest: () -> Unit = {},
+            resultForm:Boolean,
+            resultAnswerIndex:Int,) {
     choiceList.forEach { choice ->
         var color by remember { mutableStateOf(normalColor) }
-        if (testScreenUiState.selection != "" && choice == testScreenUiState.questions[qNumber].answer && testScreenUiState.ShowCorrectAndIncorrect) {
+        if (((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm) && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer) {
             color = correctColor
-        } else if(testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) {
+        } else if((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm) {
             color = incorrectColor
         } else {
             color = normalColor
@@ -122,15 +148,22 @@ fun Options(modifier: Modifier = Modifier,
                 .weight(1f)
                 .padding(start = 5.dp))
             RadioButton(
-                selected = (choice == testScreenUiState.selection),
+                enabled = (!resultForm),
+                selected = ((choice == testScreenUiState.selection) || (resultForm == true && choice == testScreenUiState.answers[resultAnswerIndex])),
                 onClick = {
-                    testScreenViewModel.addAnswer(choice)
-                    testScreenViewModel.checkAnswer(qNumber, choice)
-                    if (testScreenUiState.RetryQuestions == false && testScreenUiState.AllowSkipping == false) {
+                    if (choice != testScreenUiState.selection) {
+                        testScreenViewModel.changeSelectionTo(choice)
+                    }
+                    if (!testScreenUiState.RetryQuestions && !testScreenUiState.AllowSkipping) {
                         scope.launch {
                             delay(300)
+                            testScreenViewModel.checkAnswer()
                             testScreenViewModel.nextQuestion()
                         }
+                        if (testScreenUiState.currentQuestion >= testScreenUiState.questions.size) {
+                            onEndOfTest()
+                        }
+
                     }
                 },
             )

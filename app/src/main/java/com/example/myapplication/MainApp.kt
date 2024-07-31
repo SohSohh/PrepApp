@@ -51,10 +51,10 @@ fun MainApp(modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewMo
                 TestConfigurationScreen(modifier = Modifier, onStartButtonClicked = { navController.navigate(route = "TestingScreen") }, testScreenViewModel = testScreenViewModel)
             }
             composable(route = "TestingScreen") {
-                TestingScreen(modifier = Modifier, testScreenViewModel = testScreenViewModel)
+                TestingScreen(modifier = Modifier, testScreenViewModel = testScreenViewModel, onEndOfTest = { navController.navigate(route = "EndScreen")})
             }
             composable(route = "EndScreen") {
-                EndOfTestScreen(modifier = Modifier)
+                EndOfTestScreen(modifier = Modifier, testScreenViewModel = testScreenViewModel)
             }
         }
     }
