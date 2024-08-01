@@ -28,6 +28,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
         .background(color = Color.White)) {
         Text("You have completed the test!", style = MaterialTheme.typography.titleLarge)
       Text("You got ${correctQuestions} out of ${totalQuestions}", style = MaterialTheme.typography.titleLarge)
+        Text(text = "Incorrect answers:", style = MaterialTheme.typography.titleMedium)
         Column(modifier = modifier) {
             testScreenUiState.incorrectQuestions.forEach() {
                 QuestionCard(

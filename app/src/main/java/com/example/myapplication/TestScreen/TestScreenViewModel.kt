@@ -16,7 +16,6 @@ data class TestScreenUiState(
     var currentQuestion:Int = 0,
     var incorrectQuestions:MutableList<Int> = mutableListOf(),
     //--------CONFIGURATION
-    var RetryQuestions:Boolean = false,
     var Backtracking:Boolean = false,
     var AllowSkipping:Boolean = false,
     var ShowCorrectAndIncorrect:Boolean = false,
@@ -98,13 +97,6 @@ class TestScreenViewModel:ViewModel() {
         _uiState.update { currentState ->
             currentState.copy(
                 selection = answer
-            )
-        }
-    }
-    fun toggleRetry() {
-        _uiState.update { currentState ->
-            currentState.copy(
-                RetryQuestions = !currentState.RetryQuestions
             )
         }
     }

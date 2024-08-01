@@ -71,10 +71,6 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
         Text(text = testScreenUiState.repeatPreviouslyAttemptedQuestions.toString())
         //------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
-        //--------
-        TextWithSwitch(text = "Allow questions to be reattempted",
-            checkedState = testScreenUiState.RetryQuestions,
-            onCheckChange = { testScreenViewModel.toggleRetry() })
         //---------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //------
@@ -93,7 +89,6 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
         TextWithSwitch(text = "Show correct answers",
             checkedState = testScreenUiState.ShowCorrectAndIncorrect,
             onCheckChange = { testScreenViewModel.toggleShowCorrectAndIncorrect() })
-        Text(text = testScreenUiState.RetryQuestions.toString())
         Text(text = testScreenUiState.Backtracking.toString())
         Text(text = testScreenUiState.AllowSkipping.toString())
         Text(text = testScreenUiState.ShowCorrectAndIncorrect.toString())

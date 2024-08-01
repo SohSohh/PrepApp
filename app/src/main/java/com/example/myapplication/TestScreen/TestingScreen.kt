@@ -75,7 +75,7 @@ fun TestingScreen(modifier: Modifier = Modifier,
             }
             Spacer(modifier = Modifier.weight(1f))
             // THIS SAYS: IF ALLOWSKIPPING IS TRUE -OR- RETRYQUESTION IS TRUE AND A CHOICE IS SELECTED, THEN SHOW THE BUTTON. THE LATTER PART IS SIMPLE TO LIMIT THE CARD FROM NAVIGATING TO A QUESTION THAT DOESN'T EXIST OVER THE LIMIT
-            if (((testScreenUiState.AllowSkipping || (testScreenUiState.selection != "" && testScreenUiState.RetryQuestions == true)))) {
+            if (testScreenUiState.AllowSkipping) {
                 if ((testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size)) {
                     NavigationButton(
                         modifier = modifier.padding(15.dp),
@@ -173,7 +173,7 @@ fun Options(modifier: Modifier = Modifier,
                     if (choice != testScreenUiState.selection) {
                         testScreenViewModel.changeSelectionTo(choice)
                     }
-                    if (!testScreenUiState.RetryQuestions && !testScreenUiState.AllowSkipping) {
+                    if (!testScreenUiState.AllowSkipping) {
                         if (testScreenUiState.ShowCorrectAndIncorrect) {
                             scope.launch {
                                 testScreenViewModel.checkAnswer()
