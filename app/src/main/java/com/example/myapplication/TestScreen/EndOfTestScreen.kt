@@ -1,5 +1,6 @@
 package com.example.myapplication.TestScreen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,10 +20,14 @@ import com.example.compose.PreperationAppTheme
 @Composable
 fun EndOfTestScreen(modifier:Modifier = Modifier,
                     testScreenViewModel: TestScreenViewModel = viewModel(),
+                    onBackButtonOrGesture:() -> Unit = {}
                     ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val totalQuestions = testScreenUiState.questions.size
     val correctQuestions = totalQuestions - testScreenUiState.incorrectQuestions.size
+    BackHandler {
+        onBackButtonOrGesture()
+    }
     Column(modifier = modifier
         .fillMaxSize()
         .background(color = Color.White)) {
@@ -32,7 +37,9 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
         Column(modifier = modifier) {
             testScreenUiState.incorrectQuestions.forEach() {
                 QuestionCard(
-                    modifier = Modifier.padding(vertical = 20.dp, horizontal = 10.dp).background(color = Color.Gray),
+                    modifier = Modifier
+                        .padding(vertical = 20.dp, horizontal = 10.dp)
+                        .background(color = Color.Gray),
                     question = testScreenUiState.questions[it],
                     testScreenViewModel = testScreenViewModel,
                     testScreenUiState = testScreenUiState,

@@ -14,12 +14,13 @@ data class TestScreenUiState(
     var answers:List<String> = mutableListOf(),
     var selection:String = "",
     var currentQuestion:Int = 0,
-    var incorrectQuestions:MutableList<Int> = mutableListOf(),
+    var incorrectQuestions: List<Int> = mutableListOf(),
     //--------CONFIGURATION
     var Backtracking:Boolean = false,
     var AllowSkipping:Boolean = false,
-    var ShowCorrectAndIncorrect:Boolean = false,
+    var ShowCorrectAndIncorrect:Boolean = true,
     //-----------SUBJECTS
+    //----REMEMBER TU UPDATE RESET FUNCTION WHEN ADDING NEW PROPERTIES
     var physicsQ:Int = 0,
     var mathsQ:Int = 0,
     var englishQ:Int = 0,
@@ -53,6 +54,20 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+    fun addAnswer() {
+        _uiState.update { currentState ->
+            val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
+                currentState.answers.toMutableList().apply {
+                    this[currentState.currentQuestion] = currentState.selection
+                }
+            } else {
+                currentState.answers + currentState.selection
+            }
+            currentState.copy(
+                answers = newAnswer
+            )
+        }
+    }
 
     fun toggleTest() {
         _uiState.update { currentState ->
@@ -74,7 +89,7 @@ class TestScreenViewModel:ViewModel() {
             }
             currentState.copy(
                 currentQuestion = currentState.currentQuestion + 1,
-                answers = newAnswer,
+                answers = newAnswer.toList(),
                 selection = ""
             )
         }
@@ -100,16 +115,33 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
-    fun resetAnswersList() {
+    fun reset() {
         _uiState.update { currentState ->
             currentState.copy(
-                answers = mutableListOf()
+                answers = mutableListOf(),
+                isStarted = false,
+                repeatPreviouslyAttemptedQuestions = false,
+                questions = questionsList,
+                selection = "",
+                currentQuestion = 0,
+                incorrectQuestions = mutableListOf(),
+                //--------CONFIGURATION
+                Backtracking= false,
+                AllowSkipping = false,
+                ShowCorrectAndIncorrect = false,
+                //-----------SUBJECTS
+                physicsQ = 0,
+                mathsQ = 0,
+                englishQ = 0,
+                intelligenceQ = 0,
+                computerQ = 0,
+                chemistryQ = 0,
             )
         }
     }
     fun checkAnswer() {
         _uiState.update { currentState ->
-            val isCorrect = currentState.selection == currentState.questions[currentState.currentQuestion].answer
+            val isCorrect = (currentState.selection == currentState.questions[currentState.currentQuestion].answer)
             val updatedIncorrectQuestions = currentState.incorrectQuestions.toMutableList() // Create a mutable copy
 
             if (isCorrect && updatedIncorrectQuestions.contains(currentState.currentQuestion)) {
@@ -119,7 +151,7 @@ class TestScreenViewModel:ViewModel() {
             }
 
             currentState.copy(
-                incorrectQuestions = updatedIncorrectQuestions
+                incorrectQuestions = updatedIncorrectQuestions.toList()
             )
         }
     }

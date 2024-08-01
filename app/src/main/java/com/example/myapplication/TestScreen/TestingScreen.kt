@@ -1,6 +1,7 @@
 package com.example.myapplication.TestScreen
 
 import android.annotation.SuppressLint
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,9 +37,13 @@ import kotlinx.coroutines.launch
 @Composable
 fun TestingScreen(modifier: Modifier = Modifier,
                   testScreenViewModel: TestScreenViewModel = viewModel(),
-                  onEndOfTest:() -> Unit = {}, ) {
+                  onEndOfTest:() -> Unit = {},
+                  onBackButtonOrGesture: () -> Unit = {},) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
+    BackHandler {
+        onBackButtonOrGesture()
+    }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -65,6 +70,10 @@ fun TestingScreen(modifier: Modifier = Modifier,
         Text(text = "[TESTING] answers = ${testScreenUiState.answers}")
         Text(text = "[TESTING] questions.size = ${testScreenUiState.questions.size}")
         Text(text = "[TESTING] selection = ${testScreenUiState.selection}")
+        Text(text = "[TESTING] AllowSkipping = ${testScreenUiState.AllowSkipping}")
+        Text(text = "[TESTING] Backtracking = ${testScreenUiState.Backtracking}")
+        Text(text = "[TESTING] ShowCorrectAndIncorrect = ${testScreenUiState.ShowCorrectAndIncorrect}")
+
         Spacer(modifier = Modifier.weight(1f))
         Row(modifier = modifier) {
             if (testScreenUiState.Backtracking && testScreenUiState.currentQuestion != 0) {
@@ -95,16 +104,11 @@ fun TestingScreen(modifier: Modifier = Modifier,
                     NavigationButton(
                         modifier = modifier.padding(15.dp),
                         text = "End",
-                        onClick = { if (testScreenUiState.ShowCorrectAndIncorrect) {
-                            scope.launch {
-                                delay(150)
-                                testScreenViewModel.checkAnswer()
-                                onEndOfTest()
-                            }
-                        } else {
+                        onClick = {
                             testScreenViewModel.checkAnswer()
-                            onEndOfTest()
-                        } })
+                            testScreenViewModel.addAnswer() //WE NEED TO PERFORM THINGS THE NEW FUNCTION DID SEPAARTELY
+                            testScreenUiState.selection = ""
+                            onEndOfTest()})
                 }
             }
         }
@@ -167,25 +171,33 @@ fun Options(modifier: Modifier = Modifier,
                 .weight(1f)
                 .padding(start = 5.dp))
             RadioButton(
+                selected = ((!resultForm && choice == testScreenUiState.selection) ||
+                        (resultForm && choice == testScreenUiState.answers[resultAnswerIndex])),//SOMETHING WRONG WITH THIS
                 enabled = (!resultForm),
-                selected = ((choice == testScreenUiState.selection) || (resultForm == true && choice == testScreenUiState.answers[resultAnswerIndex])),
                 onClick = {
                     if (choice != testScreenUiState.selection) {
                         testScreenViewModel.changeSelectionTo(choice)
                     }
                     if (!testScreenUiState.AllowSkipping) {
+                        val proceedToNextQuestion = {
+                            if ((testScreenUiState.currentQuestion + 1) != testScreenUiState.questions.size) {
+                                testScreenViewModel.nextQuestion()
+                            } else {
+                                testScreenViewModel.addAnswer() //WE NEED TO PERFORM THINGS THE NEW FUNCTION DID SEPAARTELY
+                                testScreenUiState.selection = ""
+                                onEndOfTest()
+                            }
+                        }
+
                         if (testScreenUiState.ShowCorrectAndIncorrect) {
                             scope.launch {
                                 testScreenViewModel.checkAnswer()
-                                delay(250)
+                                delay(450)
+                                proceedToNextQuestion()
                             }
                         } else {
                             testScreenViewModel.checkAnswer()
-                        }
-                        if ((testScreenUiState.currentQuestion + 1) != testScreenUiState.questions.size) {
-                            testScreenViewModel.nextQuestion()
-                        } else {
-                            onEndOfTest()
+                            proceedToNextQuestion()
                         }
                     }
                 },

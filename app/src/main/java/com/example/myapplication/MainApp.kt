@@ -48,17 +48,29 @@ fun MainApp(modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewMo
                 .padding(innerPadding)
         ) {
             composable(route = "TestConfigurationScreen") {
-                TestConfigurationScreen(modifier = Modifier, onStartButtonClicked = { navController.navigate(route = "TestingScreen") }, testScreenViewModel = testScreenViewModel)
+                TestConfigurationScreen(modifier = Modifier,
+                    onStartButtonClicked = { navController.navigate(route = "TestingScreen") },
+                    testScreenViewModel = testScreenViewModel)
             }
             composable(route = "TestingScreen") {
-                TestingScreen(modifier = Modifier, testScreenViewModel = testScreenViewModel, onEndOfTest = { navController.navigate(route = "EndScreen")})
+                TestingScreen(modifier = Modifier,
+                    testScreenViewModel = testScreenViewModel,
+                    onEndOfTest = { navController.navigate(route = "EndScreen")},
+                    onBackButtonOrGesture = { cancelTestOrReturnToHome(testScreenViewModel, navController) })
             }
             composable(route = "EndScreen") {
-                EndOfTestScreen(modifier = Modifier, testScreenViewModel = testScreenViewModel)
+                EndOfTestScreen(modifier = Modifier,
+                    testScreenViewModel = testScreenViewModel,
+                    onBackButtonOrGesture = { cancelTestOrReturnToHome(testScreenViewModel, navController) })
             }
         }
     }
 }
+private fun cancelTestOrReturnToHome(viewModel: TestScreenViewModel, navController: NavHostController) {
+    viewModel.reset()
+    navController.popBackStack("TestConfigurationScreen", false)
+}
+
 
 @Preview
 @Composable
