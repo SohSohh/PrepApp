@@ -31,13 +31,14 @@ import com.example.compose.PreperationAppTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@SuppressLint("SuspiciousIndentation")
+@SuppressLint("SuspiciousIndentation", "CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TestingScreen(modifier: Modifier = Modifier,
                   testScreenViewModel: TestScreenViewModel = viewModel(),
                   onEndOfTest:() -> Unit = {}, ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
+    val scope = rememberCoroutineScope()
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -48,7 +49,9 @@ fun TestingScreen(modifier: Modifier = Modifier,
                 .background(color = Color.White)
         ) {
             QuestionCard(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp),
                 question = testScreenUiState.questions[testScreenUiState.currentQuestion],
                 testScreenViewModel = testScreenViewModel,
                 testScreenUiState = testScreenUiState,
@@ -76,16 +79,32 @@ fun TestingScreen(modifier: Modifier = Modifier,
                 if ((testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size)) {
                     NavigationButton(
                         modifier = modifier.padding(15.dp),
-                        text = "Start",
+                        text = "Next",
                         onClick = {
-                            testScreenViewModel.checkAnswer()
-                            testScreenViewModel.nextQuestion() })
+                            if (testScreenUiState.ShowCorrectAndIncorrect) {
+                                scope.launch {
+                                    delay(150)
+                                    testScreenViewModel.checkAnswer()
+                                    testScreenViewModel.nextQuestion()
+                                }
+                            } else {
+                                testScreenViewModel.checkAnswer()
+                                testScreenViewModel.nextQuestion()
+                            } })
                 } else {
                     NavigationButton(
                         modifier = modifier.padding(15.dp),
                         text = "End",
-                        onClick = {
-                            onEndOfTest() })
+                        onClick = { if (testScreenUiState.ShowCorrectAndIncorrect) {
+                            scope.launch {
+                                delay(150)
+                                testScreenViewModel.checkAnswer()
+                                onEndOfTest()
+                            }
+                        } else {
+                            testScreenViewModel.checkAnswer()
+                            onEndOfTest()
+                        } })
                 }
             }
         }
@@ -131,7 +150,7 @@ fun Options(modifier: Modifier = Modifier,
             resultAnswerIndex:Int,) {
     choiceList.forEach { choice ->
         var color by remember { mutableStateOf(normalColor) }
-        if (((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm) && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer) {
+        if ((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer) || (resultForm && choice == testScreenUiState.questions[resultAnswerIndex].answer)) {
             color = correctColor
         } else if((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm) {
             color = incorrectColor
@@ -155,15 +174,19 @@ fun Options(modifier: Modifier = Modifier,
                         testScreenViewModel.changeSelectionTo(choice)
                     }
                     if (!testScreenUiState.RetryQuestions && !testScreenUiState.AllowSkipping) {
-                        scope.launch {
-                            delay(300)
+                        if (testScreenUiState.ShowCorrectAndIncorrect) {
+                            scope.launch {
+                                testScreenViewModel.checkAnswer()
+                                delay(250)
+                            }
+                        } else {
                             testScreenViewModel.checkAnswer()
-                            testScreenViewModel.nextQuestion()
                         }
-                        if (testScreenUiState.currentQuestion >= testScreenUiState.questions.size) {
+                        if ((testScreenUiState.currentQuestion + 1) != testScreenUiState.questions.size) {
+                            testScreenViewModel.nextQuestion()
+                        } else {
                             onEndOfTest()
                         }
-
                     }
                 },
             )
