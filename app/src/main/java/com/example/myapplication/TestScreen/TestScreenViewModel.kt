@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.update
 data class TestScreenUiState(
     val isStarted:Boolean = false,
     val repeatPreviouslyAttemptedQuestions:Boolean = false,
-    var questions:List<question> = questionsList,
+    var questions:List<question> = mutableListOf(),
     var answers:List<String> = mutableListOf(),
     var selection:String = "",
     var currentQuestion:Int = 0,
@@ -18,15 +18,16 @@ data class TestScreenUiState(
     //--------CONFIGURATION
     var Backtracking:Boolean = false,
     var AllowSkipping:Boolean = false,
-    var ShowCorrectAndIncorrect:Boolean = true,
+    var ShowCorrectAndIncorrect:Boolean = false,
     //-----------SUBJECTS
     //----REMEMBER TU UPDATE RESET FUNCTION WHEN ADDING NEW PROPERTIES
-    var physicsQ:Int = 0,
-    var mathsQ:Int = 0,
-    var englishQ:Int = 0,
-    var intelligenceQ:Int = 0,
-    var computerQ:Int = 0,
-    var chemistryQ:Int = 0,
+    var Physics:Int = 0,
+    var Mathematics:Int = 0,
+    var English:Int = 0,
+    var Intelligence:Int = 0,
+    var Computers:Int = 0,
+    var Chemistry:Int = 0,
+    var Biology:Int = 0,
 )
 class TestScreenViewModel:ViewModel() {
     private val _uiState = MutableStateFlow(TestScreenUiState())
@@ -54,6 +55,7 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+
     fun addAnswer() {
         _uiState.update { currentState ->
             val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
@@ -61,7 +63,7 @@ class TestScreenViewModel:ViewModel() {
                     this[currentState.currentQuestion] = currentState.selection
                 }
             } else {
-                currentState.answers + currentState.selection
+                currentState.answers + (currentState.selection)
             }
             currentState.copy(
                 answers = newAnswer
@@ -69,15 +71,7 @@ class TestScreenViewModel:ViewModel() {
         }
     }
 
-    fun toggleTest() {
-        _uiState.update { currentState ->
-            currentState.copy(
-                isStarted = !currentState.isStarted,
-                currentQuestion = 0,
-                answers = mutableListOf()
-            )
-        }
-    }
+
     fun nextQuestion() {
         _uiState.update { currentState ->
             val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
@@ -94,6 +88,7 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+
     fun previousQuestion() {
         _uiState.update { currentState ->
             currentState.copy(
@@ -101,6 +96,7 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+
     fun toggleRepeatPreviouslyAttemptedQuestions() {
         _uiState.update { currentState ->
             currentState.copy(
@@ -108,51 +104,100 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
-    fun changeSelectionTo(answer:String) {
+
+    fun changeSelectionTo(answer: String) {
         _uiState.update { currentState ->
             currentState.copy(
                 selection = answer
             )
         }
     }
-    fun reset() {
-        _uiState.update { currentState ->
-            currentState.copy(
-                answers = mutableListOf(),
-                isStarted = false,
-                repeatPreviouslyAttemptedQuestions = false,
-                questions = questionsList,
-                selection = "",
-                currentQuestion = 0,
-                incorrectQuestions = mutableListOf(),
-                //--------CONFIGURATION
-                Backtracking= false,
-                AllowSkipping = false,
-                ShowCorrectAndIncorrect = false,
-                //-----------SUBJECTS
-                physicsQ = 0,
-                mathsQ = 0,
-                englishQ = 0,
-                intelligenceQ = 0,
-                computerQ = 0,
-                chemistryQ = 0,
-            )
-        }
-    }
-    fun checkAnswer() {
-        _uiState.update { currentState ->
-            val isCorrect = (currentState.selection == currentState.questions[currentState.currentQuestion].answer)
-            val updatedIncorrectQuestions = currentState.incorrectQuestions.toMutableList() // Create a mutable copy
 
-            if (isCorrect && updatedIncorrectQuestions.contains(currentState.currentQuestion)) {
-                updatedIncorrectQuestions.remove(currentState.currentQuestion) // Remove the current question if it was corrected
-            } else if (!isCorrect && !updatedIncorrectQuestions.contains(currentState.currentQuestion)) {
-                updatedIncorrectQuestions.add(currentState.currentQuestion) // Add to the list if incorrect
+    fun initializeQuestions() {
+        _uiState.update { currentState ->
+            val questionList = mutableListOf<question>()
+            val allSubjectQuantity = listOf(
+                currentState.Physics,
+                currentState.Mathematics,
+                currentState.English,
+                currentState.Intelligence,
+                currentState.Computers,
+                currentState.Chemistry,
+                currentState.Biology
+            )
+            val addedQuestions = mutableSetOf<question>()
+            var k = 0
+            for (questionsSet in allQuestionsSet) {
+                val numberOfQuestions = allSubjectQuantity[k]
+                repeat(numberOfQuestions) {
+                    var newQuestion: question?
+                    do {
+                        newQuestion = questionsSet.random()
+                    } while (addedQuestions.contains(newQuestion))
+
+                    if (newQuestion != null) {
+                        questionList.add(newQuestion)
+                        addedQuestions.add(newQuestion)
+                    }
+                }
+                k += 1
             }
 
             currentState.copy(
-                incorrectQuestions = updatedIncorrectQuestions.toList()
+                questions = questionList
             )
         }
     }
-}
+
+        fun assignQuestionsTo(subject: subjects, value: Int) {
+            _uiState.update { currentState ->
+                when (subject) {
+                    subjects.Physics -> currentState.copy(Physics = value)
+                    subjects.Mathematics -> currentState.copy(Mathematics = value)
+                    subjects.Chemistry -> currentState.copy(Chemistry = value)
+                    subjects.Biology -> currentState.copy(Biology = value)
+                    subjects.English -> currentState.copy(English = value)
+                    subjects.Intelligence -> currentState.copy(Intelligence = value)
+                    subjects.Computers -> currentState.copy(Computers = value)
+                }
+            }
+        }
+
+        fun reset() {
+            _uiState.update { currentState ->
+                currentState.copy(
+                    answers = mutableListOf(),
+                    isStarted = false,
+                    repeatPreviouslyAttemptedQuestions = false,
+                    questions = mutableListOf(),
+                    selection = "",
+                    currentQuestion = 0,
+                    incorrectQuestions = mutableListOf(),
+                    //--------CONFIGURATION
+                    Backtracking = false,
+                    AllowSkipping = false,
+                    ShowCorrectAndIncorrect = false,
+                    //-----------SUBJECTS
+                )
+            }
+        }
+
+        fun checkAnswer() {
+            _uiState.update { currentState ->
+                val isCorrect =
+                    (currentState.selection == currentState.questions[currentState.currentQuestion].answer)
+                val updatedIncorrectQuestions =
+                    currentState.incorrectQuestions.toMutableList() // Create a mutable copy
+
+                if (isCorrect && updatedIncorrectQuestions.contains(currentState.currentQuestion)) {
+                    updatedIncorrectQuestions.remove(currentState.currentQuestion) // Remove the current question if it was corrected
+                } else if (!isCorrect && !updatedIncorrectQuestions.contains(currentState.currentQuestion)) {
+                    updatedIncorrectQuestions.add(currentState.currentQuestion) // Add to the list if incorrect
+                }
+
+                currentState.copy(
+                    incorrectQuestions = updatedIncorrectQuestions.toList()
+                )
+            }
+        }
+    }

@@ -11,9 +11,17 @@ data class question(
     var subject: subjects,
 )
 
-var questionsList:List<question> = mutableListOf(
-    question("Test question 1", mutableListOf("A", "B", "C", "D"), "D", subjects.Physics),
-    question("test question 2", mutableListOf("1", "2", "3", "4"), "2", subjects.Biology),
-    question("test question 3", mutableListOf("E", "F", "G", "H"), "G", subjects.English),
-    question("test question 4", mutableListOf("China", "ER", "Faith", "belief"), "belief", subjects.Mathematics)
+var physicsQ:List<question> = mutableListOf(
+    question("physics test q1", listOf("A", "B", "C", "D"), "B", subjects.Physics),
+    question("physics test q2", listOf("E", "F", "G", "H"), "H", subjects.Physics),
+    question("physics test q3", listOf("P", "Q", "R", "S"), "Q", subjects.Physics)
+)
+
+var mathsQ:List<question> = mutableListOf(
+    question("Mathematics test q1", listOf("1", "2", "3", "4"), "2", subjects.Mathematics),
+    question("mathematics test q2", listOf("5", "4", "2", "3"), "4", subjects.Mathematics)
+)
+
+var allQuestionsSet:List<List<question>> = mutableListOf(
+    physicsQ, mathsQ
 )

@@ -49,7 +49,8 @@ fun MainApp(modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewMo
         ) {
             composable(route = "TestConfigurationScreen") {
                 TestConfigurationScreen(modifier = Modifier,
-                    onStartButtonClicked = { navController.navigate(route = "TestingScreen") },
+                    onStartButtonClicked = { navController.navigate(route = "TestingScreen")
+                                           testScreenViewModel.initializeQuestions()},
                     testScreenViewModel = testScreenViewModel)
             }
             composable(route = "TestingScreen") {
@@ -67,8 +68,8 @@ fun MainApp(modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewMo
     }
 }
 private fun cancelTestOrReturnToHome(viewModel: TestScreenViewModel, navController: NavHostController) {
-    viewModel.reset()
     navController.popBackStack("TestConfigurationScreen", false)
+    viewModel.reset()
 }
 
 
