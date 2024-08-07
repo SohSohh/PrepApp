@@ -68,10 +68,11 @@ fun TestConfigurationScreen(
 }
 
 @Composable
-fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> Unit = {}) {
+fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> Unit = {}, enabledCondition:Boolean = true) {
     Button(
         onClick = onClick,
-        modifier = modifier
+        modifier = modifier,
+        enabled = enabledCondition
     ) {
         Text(text = text)
     }
@@ -205,7 +206,7 @@ fun TextWithTextField(modifier:Modifier = Modifier,
         subjects.Intelligence -> testScreenUiState.Intelligence
         subjects.Computers -> testScreenUiState.Computers
     }
-    var inputValue by remember { mutableStateOf("0") }
+    var inputValue by remember { mutableStateOf(subject.toString()) }
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     var limitError by remember { mutableStateOf(false) }

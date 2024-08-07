@@ -3,6 +3,7 @@ package com.example.myapplication.TestScreen
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -41,6 +44,8 @@ fun TestingScreen(modifier: Modifier = Modifier,
                   onBackButtonOrGesture: () -> Unit = {},) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
+    //TEST DUMMY VALUES
+    //-----------------------
     BackHandler {
         onBackButtonOrGesture()
     }
@@ -65,6 +70,8 @@ fun TestingScreen(modifier: Modifier = Modifier,
                 onEndOfTest = onEndOfTest
             )
         }
+
+        //TESTS
         Text(text = "[TESTING] CurrentQuestion = ${testScreenUiState.currentQuestion}")
         Text(text = "[TESTING] incorrectQuestions = ${testScreenUiState.incorrectQuestions}")
         Text(text = "[TESTING] answers = ${testScreenUiState.answers}")
@@ -73,21 +80,35 @@ fun TestingScreen(modifier: Modifier = Modifier,
         Text(text = "[TESTING] AllowSkipping = ${testScreenUiState.AllowSkipping}")
         Text(text = "[TESTING] Backtracking = ${testScreenUiState.Backtracking}")
         Text(text = "[TESTING] ShowCorrectAndIncorrect = ${testScreenUiState.ShowCorrectAndIncorrect}")
+        Text(text = "[TESTING] CurrentSubjectIndex = ${testScreenUiState.currentSubjectIndex}")
+        Text(text = "[TESTING] allSubjectsQuestionsIndices = ${testScreenUiState.allSubjectsQuestionsIndices}")
+        Text(text = "[TESTING] questions = ${testScreenUiState.questions}")
+
+        //----
 
         Spacer(modifier = Modifier.weight(1f))
-        Row(modifier = modifier) {
-            if (testScreenUiState.Backtracking && testScreenUiState.currentQuestion != 0) {
+
+        Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+            //----PREVIOUS BUTTON
                 NavigationButton(
-                    modifier = modifier.padding(15.dp),
+                    modifier = modifier.padding(10.dp),
                     text = "Previous",
-                    onClick = { testScreenViewModel.previousQuestion() })
-            }
-            Spacer(modifier = Modifier.weight(1f))
-            // THIS SAYS: IF ALLOWSKIPPING IS TRUE -OR- RETRYQUESTION IS TRUE AND A CHOICE IS SELECTED, THEN SHOW THE BUTTON. THE LATTER PART IS SIMPLE TO LIMIT THE CARD FROM NAVIGATING TO A QUESTION THAT DOESN'T EXIST OVER THE LIMIT
-            if (testScreenUiState.AllowSkipping) {
+                    onClick = { testScreenViewModel.previousQuestion() },
+                    enabledCondition = (testScreenUiState.Backtracking && testScreenUiState.currentQuestion != 0))
+            //-----------------
+            //---SUBJECT NAVIGATION BUTTON
+            SubjectNavigationButton(currentSubject = testScreenUiState.questions[testScreenUiState.currentQuestion].subject,
+                onForwardButton = {testScreenViewModel.moveToNextSubject()},
+                onPrevButton = {testScreenViewModel.moveToPreviousSubject()},
+                modifier = Modifier.padding(10.dp),
+                conditionForPrevVisible = (testScreenUiState.currentSubjectIndex != 0 && testScreenUiState.Backtracking),
+                conditionForNextVisible = (testScreenUiState.currentSubjectIndex != testScreenUiState.activeSubjectsList.size - 1) && testScreenUiState.AllowSkipping )
+            //--------------------
+            //------ NEXT / END BUTTON
+            // THIS (below) SAYS: IF ALLOWSKIPPING IS TRUE -OR- RETRYQUESTION IS TRUE AND A CHOICE IS SELECTED, THEN SHOW THE BUTTON. THE LATTER PART IS SIMPLE TO LIMIT THE CARD FROM NAVIGATING TO A QUESTION THAT DOESN'T EXIST OVER THE LIMIT
                 if ((testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size)) {
                     NavigationButton(
-                        modifier = modifier.padding(15.dp),
+                        modifier = modifier.padding(10.dp),
                         text = "Next",
                         onClick = {
                             if (testScreenUiState.ShowCorrectAndIncorrect) {
@@ -99,18 +120,21 @@ fun TestingScreen(modifier: Modifier = Modifier,
                             } else {
                                 testScreenViewModel.checkAnswer()
                                 testScreenViewModel.nextQuestion()
-                            } })
+                            } },
+                        enabledCondition = (testScreenUiState.AllowSkipping))
                 } else {
                     NavigationButton(
-                        modifier = modifier.padding(15.dp),
+                        modifier = modifier.padding(10.dp),
                         text = "End",
                         onClick = {
                             testScreenViewModel.checkAnswer()
-                            testScreenViewModel.addAnswer() //WE NEED TO PERFORM THINGS THE NEW FUNCTION DID SEPAARTELY
+                            testScreenViewModel.addAnswer() //WE NEED TO PERFORM THINGS THE NEW FUNCTION DID SEPARTELY
                             testScreenUiState.selection = ""
-                            onEndOfTest()})
+                            onEndOfTest()
+                        },
+                        enabledCondition = (testScreenUiState.AllowSkipping))
                 }
-            }
+            //------------------------
         }
     }
 }
@@ -144,6 +168,42 @@ fun QuestionCard(modifier:Modifier = Modifier,
     }
 }
 
+@Composable
+fun SubjectNavigationButton(modifier:Modifier = Modifier,
+                            currentSubject:subjects,
+                            onPrevButton:() -> Unit = {},
+                            onForwardButton:() -> Unit = {},
+                            conditionForPrevVisible:Boolean = true,
+                            conditionForNextVisible:Boolean = true) {
+    Row(modifier = modifier) {
+            Button(
+                shape = RoundedCornerShape(
+                    topStart = 15.dp,
+                    topEnd = 0.dp,
+                    bottomStart = 15.dp,
+                    bottomEnd = 0.dp
+                ),
+                onClick = onPrevButton,
+                modifier = Modifier.padding(end = 3.dp),
+                enabled = conditionForPrevVisible
+            ) {
+                Text(text = "<<")
+            }
+            Button(
+                shape = RoundedCornerShape(
+                    topStart = 0.dp,
+                    topEnd = 15.dp,
+                    bottomStart = 0.dp,
+                    bottomEnd = 15.dp
+                ),
+                onClick = onForwardButton,
+                modifier = Modifier.padding(start = 3.dp),
+                enabled = conditionForNextVisible
+            ) {
+                Text(text = ">>")
+        }
+    }
+}
 @Composable
 fun Options(modifier: Modifier = Modifier,
             choiceList:List<String>,
@@ -183,7 +243,7 @@ fun Options(modifier: Modifier = Modifier,
                             if ((testScreenUiState.currentQuestion + 1) != testScreenUiState.questions.size) {
                                 testScreenViewModel.nextQuestion()
                             } else {
-                                testScreenViewModel.addAnswer() //WE NEED TO PERFORM THINGS THE NEW FUNCTION DID SEPAARTELY
+                                testScreenViewModel.addAnswer() //WE NEED TO PERFORM THINGS THE NEW FUNCTION DID SEPARTELY
                                 testScreenUiState.selection = ""
                                 onEndOfTest()
                             }

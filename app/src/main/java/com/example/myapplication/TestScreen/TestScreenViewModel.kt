@@ -14,20 +14,25 @@ data class TestScreenUiState(
     var answers:List<String> = mutableListOf(),
     var selection:String = "",
     var currentQuestion:Int = 0,
+    var currentSubjectIndex:Int = 0, // CHECK LINE 59 AND 133, IT'S THE INDEX IN THE ALLSUBJECTS LIST IT ENABLE NAVIGATION BETWEEN SUBJECTS
     var incorrectQuestions: List<Int> = mutableListOf(),
+    var activeSubjectsList:List<Int> = mutableListOf(),
     //--------CONFIGURATION
-    var Backtracking:Boolean = false,
-    var AllowSkipping:Boolean = false,
+    var Backtracking:Boolean = true,
+    var AllowSkipping:Boolean = true,
     var ShowCorrectAndIncorrect:Boolean = false,
     //-----------SUBJECTS
-    //----REMEMBER TU UPDATE RESET FUNCTION WHEN ADDING NEW PROPERTIES
-    var Physics:Int = 0,
-    var Mathematics:Int = 0,
+    //----REMEMBER To UPDATE RESET FUNCTION WHEN ADDING NEW PROPERTIES
+    var Physics:Int = 3,
+    var Mathematics:Int = 2,
     var English:Int = 0,
     var Intelligence:Int = 0,
     var Computers:Int = 0,
     var Chemistry:Int = 0,
     var Biology:Int = 0,
+
+    var allSubjectsQuestionsIndices:List<Int> = mutableListOf()
+    // this is a list containing the index for the beginning of every subject
 )
 class TestScreenViewModel:ViewModel() {
     private val _uiState = MutableStateFlow(TestScreenUiState())
@@ -55,6 +60,32 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+    fun moveToNextSubject() {
+        _uiState.update { currentState ->
+            val newSubjectIndex = if ((currentState.currentSubjectIndex >= 0) && (currentState.currentSubjectIndex <= currentState.allSubjectsQuestionsIndices.size - 1)) {
+                currentState.currentSubjectIndex + 1
+            } else {
+                currentState.currentSubjectIndex
+            }
+                currentState.copy(
+                    currentQuestion = currentState.allSubjectsQuestionsIndices[newSubjectIndex], // MOVE TO THE INDEX THE NEXT SUBJECT IS IN
+                    currentSubjectIndex = newSubjectIndex
+                    )
+        }
+    }
+    fun moveToPreviousSubject() {
+        _uiState.update { currentState ->
+            val newSubjectIndex = if ((currentState.currentSubjectIndex >= 0) && (currentState.currentSubjectIndex <= currentState.activeSubjectsList.size - 1)) {
+                currentState.currentSubjectIndex - 1
+            } else {
+                currentState.currentSubjectIndex
+            }
+            currentState.copy(
+                currentQuestion = currentState.allSubjectsQuestionsIndices[newSubjectIndex], // MOVE TO THE INDEX THE NEXT SUBJECT IS IN
+                currentSubjectIndex = newSubjectIndex
+            )
+        }
+    }
 
     fun addAnswer() {
         _uiState.update { currentState ->
@@ -71,7 +102,7 @@ class TestScreenViewModel:ViewModel() {
         }
     }
 
-
+// THE SUBJECT NAVIGATOR SHOULD CHANGE WHEN YOU SKIP TO THE SUBJECTS MANUALLY, ALSO IT CRASHES IF YOU SKIP A SUBJECT AND THEN PRESS THE NEXT BUTTON TO GET TO THE LAST QUESTION
     fun nextQuestion() {
         _uiState.update { currentState ->
             val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
@@ -81,23 +112,35 @@ class TestScreenViewModel:ViewModel() {
             } else {
                 currentState.answers + currentState.selection
             }
+            val updatedSubjectIndex = if (currentState.currentSubjectIndex != currentState.allSubjectsQuestionsIndices.size - 1 && currentState.currentQuestion + 1 >= currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex + 1]) {
+                currentState.currentSubjectIndex + 1
+            } else {
+                currentState.currentSubjectIndex
+            }
             currentState.copy(
                 currentQuestion = currentState.currentQuestion + 1,
                 answers = newAnswer.toList(),
-                selection = ""
+                selection = "",
+                currentSubjectIndex = updatedSubjectIndex
             )
         }
     }
 
     fun previousQuestion() {
         _uiState.update { currentState ->
+            val updatedSubjectIndex = if (currentState.currentSubjectIndex != 0 && currentState.currentQuestion - 1 < currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex]) {
+                currentState.currentSubjectIndex - 1
+            } else {
+                currentState.currentSubjectIndex
+            }
             currentState.copy(
-                currentQuestion = currentState.currentQuestion - 1
+                currentQuestion = currentState.currentQuestion - 1,
+                currentSubjectIndex = updatedSubjectIndex
             )
         }
     }
 
-    fun toggleRepeatPreviouslyAttemptedQuestions() {
+    fun toggleRepeatPreviouslyAttemptedQuestions() { //REDUNDANT, MIGHT BE IMPLEMENTED LATER
         _uiState.update { currentState ->
             currentState.copy(
                 repeatPreviouslyAttemptedQuestions = !currentState.repeatPreviouslyAttemptedQuestions
@@ -127,6 +170,8 @@ class TestScreenViewModel:ViewModel() {
             )
             val addedQuestions = mutableSetOf<question>()
             var k = 0
+            // BELOW, WE INITIALIZE AN ACTIVE LIST TO REMOVE EVERY INSTANCE OF 0 FROM allSubjectQuantity SINCE THAT WOULD CAUSE REPETITION IN allSubjectQuestionsIndices
+            val activeList:MutableList<Int> = mutableListOf()
             for (questionsSet in allQuestionsSet) {
                 val numberOfQuestions = allSubjectQuantity[k]
                 repeat(numberOfQuestions) {
@@ -140,11 +185,25 @@ class TestScreenViewModel:ViewModel() {
                         addedQuestions.add(newQuestion)
                     }
                 }
+                activeList.add(allSubjectQuantity[k])
                 k += 1
             }
 
+            // THIS VAL BELOW IS A LIST OF THE INDICES AT WHICH EACH SUBJECT BEGINS
+            val allSubjectsQuestionIndices:MutableList<Int> = mutableListOf(0)
+            for (i in 0 until (activeList.size - 1)) {
+                val sum = if (i == 0) {
+                    activeList[i]
+                } else {
+                    activeList.subList(0, i).sum()
+                }
+                allSubjectsQuestionIndices.add(sum)
+            }
+
             currentState.copy(
-                questions = questionList
+                questions = questionList,
+                allSubjectsQuestionsIndices = allSubjectsQuestionIndices,
+                activeSubjectsList = activeList
             )
         }
     }
