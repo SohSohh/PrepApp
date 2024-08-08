@@ -93,12 +93,26 @@ fun TestingScreen(modifier: Modifier = Modifier,
                 NavigationButton(
                     modifier = modifier.padding(10.dp),
                     text = "Previous",
-                    onClick = { testScreenViewModel.previousQuestion() },
+                    onClick = {
+                        if (testScreenUiState.ShowCorrectAndIncorrect) {
+                            scope.launch {
+                                delay(150)
+                                testScreenViewModel.checkAnswer()
+                                testScreenViewModel.previousQuestion()
+                            }
+                        } else {
+                            testScreenViewModel.checkAnswer()
+                            testScreenViewModel.previousQuestion()
+                        }
+                    },
                     enabledCondition = (testScreenUiState.Backtracking && testScreenUiState.currentQuestion != 0))
             //-----------------
             //---SUBJECT NAVIGATION BUTTON
             SubjectNavigationButton(currentSubject = testScreenUiState.questions[testScreenUiState.currentQuestion].subject,
-                onForwardButton = {testScreenViewModel.moveToNextSubject()},
+                onForwardButton = {
+                    scope.launch {
+                        testScreenViewModel.moveToNextSubject()
+                    }},
                 onPrevButton = {testScreenViewModel.moveToPreviousSubject()},
                 modifier = Modifier.padding(10.dp),
                 conditionForPrevVisible = (testScreenUiState.currentSubjectIndex != 0 && testScreenUiState.Backtracking),

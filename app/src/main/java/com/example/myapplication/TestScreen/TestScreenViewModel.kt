@@ -1,10 +1,12 @@
 package com.example.myapplication.TestScreen
 
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 
 data class TestScreenUiState(
@@ -20,12 +22,12 @@ data class TestScreenUiState(
     //--------CONFIGURATION
     var Backtracking:Boolean = true,
     var AllowSkipping:Boolean = true,
-    var ShowCorrectAndIncorrect:Boolean = false,
+    var ShowCorrectAndIncorrect:Boolean = true,
     //-----------SUBJECTS
     //----REMEMBER To UPDATE RESET FUNCTION WHEN ADDING NEW PROPERTIES
     var Physics:Int = 3,
     var Mathematics:Int = 2,
-    var English:Int = 0,
+    var English:Int = 3,
     var Intelligence:Int = 0,
     var Computers:Int = 0,
     var Chemistry:Int = 0,
@@ -60,16 +62,33 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
-    fun moveToNextSubject() {
+    suspend fun moveToNextSubject() {
         _uiState.update { currentState ->
             val newSubjectIndex = if ((currentState.currentSubjectIndex >= 0) && (currentState.currentSubjectIndex <= currentState.allSubjectsQuestionsIndices.size - 1)) {
                 currentState.currentSubjectIndex + 1
             } else {
                 currentState.currentSubjectIndex
             }
-                currentState.copy(
+            val updatedAnswer = currentState.answers.toMutableList()
+            val skippedAnswers = mutableListOf<String>()
+            var selection = currentState.selection
+            coroutineScope {
+                launch {
+                    for (i in currentState.currentQuestion until currentState.allSubjectsQuestionsIndices[newSubjectIndex]) {
+                        skippedAnswers.add(selection)
+                        selection = ""
+                    }
+                    updatedAnswer.addAll(currentState.currentQuestion, skippedAnswers)
+                }
+            }
+
+
+
+            currentState.copy(
                     currentQuestion = currentState.allSubjectsQuestionsIndices[newSubjectIndex], // MOVE TO THE INDEX THE NEXT SUBJECT IS IN
-                    currentSubjectIndex = newSubjectIndex
+                    currentSubjectIndex = newSubjectIndex,
+                    selection = "",
+                    answers = updatedAnswer
                     )
         }
     }
@@ -109,7 +128,7 @@ class TestScreenViewModel:ViewModel() {
                 currentState.answers.toMutableList().apply {
                     this[currentState.currentQuestion] = currentState.selection
                 }
-            } else {
+            } else{
                 currentState.answers + currentState.selection
             }
             val updatedSubjectIndex = if (currentState.currentSubjectIndex != currentState.allSubjectsQuestionsIndices.size - 1 && currentState.currentQuestion + 1 >= currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex + 1]) {
@@ -117,10 +136,15 @@ class TestScreenViewModel:ViewModel() {
             } else {
                 currentState.currentSubjectIndex
             }
+            val selection = if (currentState.currentQuestion + 1 == newAnswer.size) {
+                ""
+            } else {
+                newAnswer[currentState.currentQuestion + 1]
+            }
             currentState.copy(
                 currentQuestion = currentState.currentQuestion + 1,
                 answers = newAnswer.toList(),
-                selection = "",
+                selection = selection,
                 currentSubjectIndex = updatedSubjectIndex
             )
         }
@@ -128,14 +152,24 @@ class TestScreenViewModel:ViewModel() {
 
     fun previousQuestion() {
         _uiState.update { currentState ->
+            val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
+                currentState.answers.toMutableList().apply {
+                    this[currentState.currentQuestion] = currentState.selection
+                }
+            } else {
+                currentState.answers + currentState.selection
+            }
             val updatedSubjectIndex = if (currentState.currentSubjectIndex != 0 && currentState.currentQuestion - 1 < currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex]) {
                 currentState.currentSubjectIndex - 1
             } else {
                 currentState.currentSubjectIndex
             }
+            val selection = currentState.answers[currentState.currentQuestion - 1]
             currentState.copy(
                 currentQuestion = currentState.currentQuestion - 1,
-                currentSubjectIndex = updatedSubjectIndex
+                currentSubjectIndex = updatedSubjectIndex,
+                selection = selection,
+                answers = newAnswer
             )
         }
     }
@@ -195,7 +229,7 @@ class TestScreenViewModel:ViewModel() {
                 val sum = if (i == 0) {
                     activeList[i]
                 } else {
-                    activeList.subList(0, i).sum()
+                    activeList.subList(0, i + 1).sum()
                 }
                 allSubjectsQuestionIndices.add(sum)
             }

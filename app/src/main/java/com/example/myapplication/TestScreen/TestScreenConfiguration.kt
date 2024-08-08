@@ -137,7 +137,8 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
         TextWithTextField(text = "Total English questions",
             testScreenUiState = testScreenUiState,
             type = subjects.English,
-            testScreenViewModel = testScreenViewModel)
+            testScreenViewModel = testScreenViewModel,
+            questionLimit = englishQ.size)
         //-------------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //-----------
@@ -212,11 +213,6 @@ fun TextWithTextField(modifier:Modifier = Modifier,
     var limitError by remember { mutableStateOf(false) }
     Row(modifier = modifier.padding(vertical = 0.0f.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(text = text + " (Limit: ${questionLimit})", modifier = Modifier.weight(5f))
-//        Box(modifier = modifier
-//            .background(color = Color.LightGray, RoundedCornerShape(25.dp))
-//            .weight(1f)
-//            .height(30.dp),
-//        ) {
             TextField(
                 modifier = modifier
                     .weight(1f)
