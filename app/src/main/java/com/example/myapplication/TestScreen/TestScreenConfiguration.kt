@@ -39,6 +39,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.PreperationAppTheme
+import com.example.myapplication.TestScreenUiState
+import com.example.myapplication.TestScreenViewModel
+import com.example.myapplication.dataAndNetwork.englishQ
+import com.example.myapplication.dataAndNetwork.mathsQ
+import com.example.myapplication.dataAndNetwork.physicsQ
+import com.example.myapplication.dataAndNetwork.subjects
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -195,7 +201,7 @@ fun TextWithSwitch(modifier:Modifier = Modifier, text:String, checkedState:Boole
 fun TextWithTextField(modifier:Modifier = Modifier,
                       text:String,
                       testScreenUiState: TestScreenUiState,
-                      type:subjects,
+                      type: subjects,
                       testScreenViewModel: TestScreenViewModel,
                       questionLimit:Int = 0) {
     var subject = when(type) {

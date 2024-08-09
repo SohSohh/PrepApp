@@ -1,6 +1,9 @@
-package com.example.myapplication.TestScreen
+package com.example.myapplication
 
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.dataAndNetwork.allQuestionsSet
+import com.example.myapplication.dataAndNetwork.question
+import com.example.myapplication.dataAndNetwork.subjects
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -70,15 +73,23 @@ class TestScreenViewModel:ViewModel() {
                 currentState.currentSubjectIndex
             }
             val updatedAnswer = currentState.answers.toMutableList()
-            val skippedAnswers = mutableListOf<String>()
+            val updatedIncorrectAnswers = currentState.incorrectQuestions.toMutableList()
             var selection = currentState.selection
             coroutineScope {
                 launch {
                     for (i in currentState.currentQuestion until currentState.allSubjectsQuestionsIndices[newSubjectIndex]) {
-                        skippedAnswers.add(selection)
+                        if (i > updatedAnswer.size - 1) {
+                            updatedAnswer.add(selection)
+                        } else if (selection != "") {
+                            updatedAnswer.apply {
+                                this[i] = selection
+                            }
+                        }
+                        if (i > updatedIncorrectAnswers.size - 1) {
+                            updatedIncorrectAnswers.add(i)
+                        }
                         selection = ""
                     }
-                    updatedAnswer.addAll(currentState.currentQuestion, skippedAnswers)
                 }
             }
 
@@ -88,7 +99,8 @@ class TestScreenViewModel:ViewModel() {
                     currentQuestion = currentState.allSubjectsQuestionsIndices[newSubjectIndex], // MOVE TO THE INDEX THE NEXT SUBJECT IS IN
                     currentSubjectIndex = newSubjectIndex,
                     selection = "",
-                    answers = updatedAnswer
+                    answers = updatedAnswer,
+                    incorrectQuestions = updatedIncorrectAnswers
                     )
         }
     }
@@ -116,7 +128,7 @@ class TestScreenViewModel:ViewModel() {
                 currentState.answers + (currentState.selection)
             }
             currentState.copy(
-                answers = newAnswer
+                answers = newAnswer,
             )
         }
     }
@@ -294,3 +306,4 @@ class TestScreenViewModel:ViewModel() {
             }
         }
     }
+

@@ -1,4 +1,4 @@
-package com.example.myapplication.TestScreen
+package com.example.myapplication.dataAndNetwork
 
 enum class subjects() {
     Physics, Mathematics, Chemistry, Biology, English, Intelligence, Computers

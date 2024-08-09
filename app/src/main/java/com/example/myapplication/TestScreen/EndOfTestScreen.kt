@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.PreperationAppTheme
+import com.example.myapplication.TestScreenViewModel
 
 @Composable
 fun EndOfTestScreen(modifier:Modifier = Modifier,
@@ -45,6 +46,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
                     testScreenUiState = testScreenUiState,
                     resultForm = true,
                     resultAnswerIndex = it,
+                    optionalAnswer = "..."
                 )
             }
         }

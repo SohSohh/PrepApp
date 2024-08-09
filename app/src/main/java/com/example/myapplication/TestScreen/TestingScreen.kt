@@ -32,6 +32,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.PreperationAppTheme
+import com.example.myapplication.TestScreenUiState
+import com.example.myapplication.TestScreenViewModel
+import com.example.myapplication.dataAndNetwork.question
+import com.example.myapplication.dataAndNetwork.subjects
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -45,6 +49,7 @@ fun TestingScreen(modifier: Modifier = Modifier,
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
     //TEST DUMMY VALUES
+  //  testScreenUiState.questions = physicsQ
     //-----------------------
     BackHandler {
         onBackButtonOrGesture()
@@ -66,8 +71,9 @@ fun TestingScreen(modifier: Modifier = Modifier,
                 testScreenViewModel = testScreenViewModel,
                 testScreenUiState = testScreenUiState,
                 resultForm = false,
-                resultAnswerIndex = 0,
-                onEndOfTest = onEndOfTest
+                resultAnswerIndex = null,
+                onEndOfTest = onEndOfTest,
+                optionalAnswer = "..."
             )
         }
 
@@ -159,11 +165,13 @@ val normalColor = Color.Transparent
 
 @Composable 
 fun QuestionCard(modifier:Modifier = Modifier,
-                 question:question, testScreenViewModel: TestScreenViewModel,
+                 question: question, testScreenViewModel: TestScreenViewModel,
                  resultForm:Boolean,
-                 resultAnswerIndex: Int,
+                 resultAnswerIndex: Int?,
                  onEndOfTest: () -> Unit = {},
-                 testScreenUiState: TestScreenUiState) {
+                 optionalAnswer: String,
+                 testScreenUiState: TestScreenUiState
+) {
     Card(modifier = modifier, shape = MaterialTheme.shapes.medium) {
         Column(modifier = Modifier.background(color = Color.White)) {
                 Text(text = question.subject.toString(),
@@ -177,14 +185,15 @@ fun QuestionCard(modifier:Modifier = Modifier,
                 testScreenUiState = testScreenUiState,
                 resultForm = resultForm,
                 resultAnswerIndex = resultAnswerIndex,
-                onEndOfTest = onEndOfTest)
+                onEndOfTest = onEndOfTest,
+                optionalAnswer = optionalAnswer)
         }
     }
 }
 
 @Composable
 fun SubjectNavigationButton(modifier:Modifier = Modifier,
-                            currentSubject:subjects,
+                            currentSubject: subjects,
                             onPrevButton:() -> Unit = {},
                             onForwardButton:() -> Unit = {},
                             conditionForPrevVisible:Boolean = true,
@@ -225,10 +234,12 @@ fun Options(modifier: Modifier = Modifier,
             testScreenUiState: TestScreenUiState,
             onEndOfTest: () -> Unit = {},
             resultForm:Boolean,
-            resultAnswerIndex:Int,) {
+            resultAnswerIndex:Int?,
+            optionalAnswer:String
+            ) {
     choiceList.forEach { choice ->
         var color by remember { mutableStateOf(normalColor) }
-        if ((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer) || (resultForm && choice == testScreenUiState.questions[resultAnswerIndex].answer)) {
+        if ((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer) || (resultForm && (choice == (if (resultAnswerIndex != null) {testScreenUiState.answers[resultAnswerIndex]} else {optionalAnswer})))) {
             color = correctColor
         } else if((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm) {
             color = incorrectColor
@@ -246,7 +257,7 @@ fun Options(modifier: Modifier = Modifier,
                 .padding(start = 5.dp))
             RadioButton(
                 selected = ((!resultForm && choice == testScreenUiState.selection) ||
-                        (resultForm && choice == testScreenUiState.answers[resultAnswerIndex])),//SOMETHING WRONG WITH THIS
+                        (resultForm && (choice == (if (resultAnswerIndex != null) {testScreenUiState.answers[resultAnswerIndex]} else { optionalAnswer})))),//SOMETHING WRONG WITH THIS
                 enabled = (!resultForm),
                 onClick = {
                     if (choice != testScreenUiState.selection) {

@@ -20,7 +20,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreen.EndOfTestScreen
 import com.example.myapplication.TestScreen.TestConfigurationScreen
-import com.example.myapplication.TestScreen.TestScreenViewModel
 import com.example.myapplication.TestScreen.TestingScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
