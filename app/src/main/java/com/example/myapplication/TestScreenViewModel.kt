@@ -36,8 +36,11 @@ data class TestScreenUiState(
     var Chemistry:Int = 0,
     var Biology:Int = 0,
 
-    var allSubjectsQuestionsIndices:List<Int> = mutableListOf()
+    var allSubjectsQuestionsIndices:List<Int> = mutableListOf(),
     // this is a list containing the index for the beginning of every subject
+
+    //SCAFFOLD STATES
+    var showTopBar:Boolean = true
 )
 class TestScreenViewModel:ViewModel() {
     private val _uiState = MutableStateFlow(TestScreenUiState())
@@ -303,7 +306,20 @@ class TestScreenViewModel:ViewModel() {
                 )
             }
         }
-
+        fun enableBars() {
+            _uiState.update { currentState ->
+                currentState.copy(
+                    showTopBar = true
+                )
+            }
+        }
+        fun disableBars() {
+            _uiState.update { currentState ->
+                currentState.copy(
+                    showTopBar = false
+                )
+            }
+        }
         fun checkAnswer() {
             _uiState.update { currentState ->
                 val isCorrect =
