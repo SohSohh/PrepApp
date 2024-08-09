@@ -92,13 +92,18 @@ class TestScreenViewModel:ViewModel() {
                     }
                 }
             }
+            selection = if (currentState.allSubjectsQuestionsIndices[newSubjectIndex] < currentState.answers.size - 1) {
+                currentState.answers[currentState.allSubjectsQuestionsIndices[newSubjectIndex]]
+            } else {
+                ""
+            }
 
 
 
             currentState.copy(
                     currentQuestion = currentState.allSubjectsQuestionsIndices[newSubjectIndex], // MOVE TO THE INDEX THE NEXT SUBJECT IS IN
                     currentSubjectIndex = newSubjectIndex,
-                    selection = "",
+                    selection = selection,
                     answers = updatedAnswer,
                     incorrectQuestions = updatedIncorrectAnswers
                     )
@@ -111,9 +116,21 @@ class TestScreenViewModel:ViewModel() {
             } else {
                 currentState.currentSubjectIndex
             }
+            val updatedAnswer = currentState.answers.toMutableList()
+            if (currentState.currentQuestion > updatedAnswer.size - 1) {
+                updatedAnswer.add(currentState.selection)
+            } else {
+                updatedAnswer.apply {
+                    this[currentState.currentQuestion] = currentState.selection
+                }
+            }
+            val selection =  currentState.answers[currentState.allSubjectsQuestionsIndices[newSubjectIndex]]
+
             currentState.copy(
                 currentQuestion = currentState.allSubjectsQuestionsIndices[newSubjectIndex], // MOVE TO THE INDEX THE NEXT SUBJECT IS IN
-                currentSubjectIndex = newSubjectIndex
+                currentSubjectIndex = newSubjectIndex,
+                selection = selection,
+                answers = updatedAnswer
             )
         }
     }
