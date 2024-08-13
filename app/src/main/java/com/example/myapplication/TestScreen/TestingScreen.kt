@@ -2,6 +2,7 @@ package com.example.myapplication.TestScreen
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -170,23 +171,32 @@ fun QuestionCard(modifier:Modifier = Modifier,
                  resultAnswerIndex: Int?,
                  onEndOfTest: () -> Unit = {},
                  optionalAnswer: String,
+                 resizable:Boolean = false,
                  testScreenUiState: TestScreenUiState
 ) {
-    Card(modifier = modifier, shape = MaterialTheme.shapes.medium) {
+    var optionsVisible by remember { mutableStateOf(true) }
+    if (resizable) {
+        optionsVisible = false
+    }
+    Card(modifier = modifier.animateContentSize(), shape = MaterialTheme.shapes.medium, onClick = { if (resizable) { optionsVisible = !optionsVisible } }) {
         Column(modifier = Modifier.background(color = Color.White)) {
                 Text(text = question.subject.toString(),
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                    modifier = Modifier.padding(horizontal = 20.dp).fillMaxWidth(),
                     style = MaterialTheme.typography.titleMedium)
                 Text(text = question.question,
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                    modifier = Modifier.padding(horizontal = 20.dp).fillMaxWidth(),
                     style = MaterialTheme.typography.titleLarge)
-            Options(choiceList = question.choices,
-                testScreenViewModel = testScreenViewModel,
-                testScreenUiState = testScreenUiState,
-                resultForm = resultForm,
-                resultAnswerIndex = resultAnswerIndex,
-                onEndOfTest = onEndOfTest,
-                optionalAnswer = optionalAnswer)
+            if (optionsVisible) {
+                Options(
+                    choiceList = question.choices,
+                    testScreenViewModel = testScreenViewModel,
+                    testScreenUiState = testScreenUiState,
+                    resultForm = resultForm,
+                    resultAnswerIndex = resultAnswerIndex,
+                    onEndOfTest = onEndOfTest,
+                    optionalAnswer = optionalAnswer
+                )
+            }
         }
     }
 }
@@ -249,7 +259,7 @@ fun Options(modifier: Modifier = Modifier,
         Row(modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 5.dp)
             .fillMaxWidth()
-            .background(color = color),
+            .background(color = color, shape = RoundedCornerShape(10.dp)),
             verticalAlignment = Alignment.CenterVertically) {
             val scope = rememberCoroutineScope()
             Text(text = choice, modifier = Modifier
