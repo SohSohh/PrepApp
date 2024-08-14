@@ -48,9 +48,6 @@ android {
         }
     }
 }
-val lifecycle_version = "2.8.4"
-val arch_version = "2.2.0"
-val nav_version = "2.7.7"
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -67,8 +64,6 @@ dependencies {
     implementation(libs.androidx.material3.adaptive.navigation.suite)
     //Coroutines
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.navigation.compose.v260)
-    androidTestImplementation(libs.androidx.navigation.testing)
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     // ViewModel utilities for Compose

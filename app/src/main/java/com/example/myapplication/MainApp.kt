@@ -1,8 +1,8 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
@@ -44,7 +44,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 
 
-@SuppressLint("SuspiciousIndentation", "RememberReturnType")
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainApp(modifier: Modifier = Modifier,
@@ -98,8 +98,8 @@ fun MainApp(modifier: Modifier = Modifier,
                 NavHost(
                     navController = navController,
                     startDestination = "TestConfigurationScreen",
-                    enterTransition = { EnterTransition.None },
-                    exitTransition = { ExitTransition.None },
+                    enterTransition = { fadeIn() },
+                    exitTransition = { fadeOut() },
                 ) {
                     composable(route = "TestConfigurationScreen") {
                         TestConfigurationScreen(
@@ -131,9 +131,9 @@ fun MainApp(modifier: Modifier = Modifier,
                             modifier = Modifier.fillMaxSize())
                     }
                 }
+                 }
             }
         }
-    }
 private fun cancelTestOrReturnToHome(viewModel: TestScreenViewModel, navController: NavHostController) {
     navController.popBackStack("TestConfigurationScreen", false)
     viewModel.reset()
