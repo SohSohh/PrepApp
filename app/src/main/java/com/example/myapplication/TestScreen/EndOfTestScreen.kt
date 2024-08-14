@@ -28,6 +28,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
     val correctQuestions = totalQuestions - testScreenUiState.incorrectQuestions.size
     BackHandler {
         onBackButtonOrGesture()
+        testScreenViewModel.enableBars()
     }
     Column(modifier = modifier
         .fillMaxSize()

@@ -39,13 +39,16 @@ data class TestScreenUiState(
     var allSubjectsQuestionsIndices:List<Int> = mutableListOf(),
     // this is a list containing the index for the beginning of every subject
 
-    //SCAFFOLD STATES
-    var showTopBar:Boolean = true
+    //STATES
+    var showBars:Boolean = true,
+    var showBottomBar:Boolean = false,
+    var currentScreen:String = "TestConfigurationScreen"
 )
 class TestScreenViewModel:ViewModel() {
     private val _uiState = MutableStateFlow(TestScreenUiState())
     val uiState: StateFlow<TestScreenUiState> = _uiState.asStateFlow()
-    fun toggleShowCorrectAndIncorrect() {
+
+    val toggleShowCorrectAndIncorrect = {
         _uiState.update { currentState ->
             currentState.copy(
                 ShowCorrectAndIncorrect = !currentState.ShowCorrectAndIncorrect
@@ -53,7 +56,7 @@ class TestScreenViewModel:ViewModel() {
         }
     }
 
-    fun toggleSkipping() {
+    val toggleSkipping = {
         _uiState.update { currentState ->
             currentState.copy(
                 AllowSkipping = !currentState.AllowSkipping
@@ -61,7 +64,7 @@ class TestScreenViewModel:ViewModel() {
         }
     }
 
-    fun toggleBacktracking() {
+    val toggleBacktracking = {
         _uiState.update { currentState ->
             currentState.copy(
                 Backtracking = !currentState.Backtracking
@@ -205,6 +208,13 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+    fun setScreen(text:String) {
+        _uiState.update {currentState ->
+            currentState.copy(
+                currentScreen = text
+            )
+        }
+    }
 
     fun toggleRepeatPreviouslyAttemptedQuestions() { //REDUNDANT, MIGHT BE IMPLEMENTED LATER
         _uiState.update { currentState ->
@@ -309,14 +319,15 @@ class TestScreenViewModel:ViewModel() {
         fun enableBars() {
             _uiState.update { currentState ->
                 currentState.copy(
-                    showTopBar = true
+                    showBars = true
+
                 )
             }
         }
         fun disableBars() {
             _uiState.update { currentState ->
                 currentState.copy(
-                    showTopBar = false
+                    showBars = false
                 )
             }
         }

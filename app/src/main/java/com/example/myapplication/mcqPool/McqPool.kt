@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -33,7 +35,8 @@ import com.example.myapplication.TestScreenViewModel
 @Composable
 fun McqPoolScreen(
     testScreenViewModel: TestScreenViewModel = viewModel(),
-    searchViewModel: SearchViewModel = viewModel()
+    searchViewModel: SearchViewModel = viewModel(),
+    modifier:Modifier = Modifier,
 ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val searchText by searchViewModel.searchText.collectAsState()
@@ -41,7 +44,10 @@ fun McqPoolScreen(
 
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val currentFocus = LocalFocusManager.current
-    Column(modifier = Modifier.fillMaxSize().background(color = Color.Cyan)) {
+    Column(modifier = modifier
+        .verticalScroll(rememberScrollState())
+        .fillMaxSize()
+        .background(color = Color.Cyan)) {
         TextField(value = searchText,
             onValueChange = searchViewModel::onQueryEntered,
             textStyle = TextStyle(fontSize = 18.sp),

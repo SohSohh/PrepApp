@@ -1,16 +1,22 @@
 package com.example.myapplication.TestScreen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -52,12 +58,13 @@ import com.example.myapplication.dataAndNetwork.subjects
 fun TestConfigurationScreen(
     modifier: Modifier = Modifier,
     testScreenViewModel: TestScreenViewModel = viewModel(),
-    onStartButtonClicked: () -> Unit = {},
+    onStartButtonClicked: () -> Unit = {}
 ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     Column(modifier = modifier
         .fillMaxSize()
-        .background(color = Color.White)) {
+        .background(color = Color.White)
+        .verticalScroll(rememberScrollState())) {
         Box(
             modifier = modifier
                 .background(color = Color.White)
@@ -65,10 +72,9 @@ fun TestConfigurationScreen(
             ConfigurationsList(modifier = Modifier.padding(10.dp), testScreenUiState = testScreenUiState, testScreenViewModel = testScreenViewModel)
         }
         Spacer(modifier = Modifier.weight(1f))
-        Row() {
-            Spacer(modifier = Modifier.weight(1f))
+        Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
             NavigationButton(text = "Start", onClick = onStartButtonClicked, modifier = Modifier.padding(15.dp))
-        }  // THE PREVIEW MIGHT BE SHOWING THE NAV BUTTON SQUISHED BUT THE MAIN APP ACCOMODATES SCROLL SPACE
+        }  // THE PREVIEW MIGHT BE SHOWING THE NAV BUTTON SQUISHED BUT THE MAIN APP ACCOMMODATES SCROLL SPACE
         // FOR IT SO DON'T WORRY
     }
 }
@@ -84,10 +90,11 @@ fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> 
     }
 }
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun ConfigurationsList(modifier:Modifier = Modifier,
                        testScreenViewModel: TestScreenViewModel = viewModel(),
-                       testScreenUiState: TestScreenUiState, ) {
+                       testScreenUiState: TestScreenUiState) {
     Column(modifier = modifier) {
 //        // This might be needed to be implemented later
 //        TextWithSwitch(text = "Include attempted questions from previous tests",
@@ -101,19 +108,20 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
         //------
         TextWithSwitch(text = "Allow backtracking",
             checkedState = testScreenUiState.Backtracking,
-            onCheckChange = { testScreenViewModel.toggleBacktracking() })
+            onCheckChange = testScreenViewModel.toggleBacktracking
+            )
         //-----
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //-----
         TextWithSwitch(text = "Allow skipping",
             checkedState = testScreenUiState.AllowSkipping,
-            onCheckChange = { testScreenViewModel.toggleSkipping() })
+            onCheckChange = testScreenViewModel.toggleSkipping)
         //-----------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //----------
         TextWithSwitch(text = "Show correct answers",
             checkedState = testScreenUiState.ShowCorrectAndIncorrect,
-            onCheckChange = { testScreenViewModel.toggleShowCorrectAndIncorrect() })
+            onCheckChange = testScreenViewModel.toggleShowCorrectAndIncorrect)
         //-------------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //-----------
@@ -169,29 +177,32 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
 
 
         //---TESTING----//
-        Text(text = testScreenUiState.Backtracking.toString())
-        Text(text = testScreenUiState.AllowSkipping.toString())
-        Text(text = testScreenUiState.ShowCorrectAndIncorrect.toString())
-        Text(text = testScreenUiState.Physics.toString())
-        Text(text = testScreenUiState.Mathematics.toString())
-        Text(text = testScreenUiState.Chemistry.toString())
-        Text(text = testScreenUiState.English.toString())
-        Text(text = testScreenUiState.Biology.toString())
-        Text(text = testScreenUiState.questions.toString())
+//        Text(text = testScreenUiState.Backtracking.toString())
+//        Text(text = testScreenUiState.AllowSkipping.toString())
+//        Text(text = testScreenUiState.ShowCorrectAndIncorrect.toString())
+//        Text(text = testScreenUiState.Physics.toString())
+//        Text(text = testScreenUiState.Mathematics.toString())
+//        Text(text = testScreenUiState.Chemistry.toString())
+//        Text(text = testScreenUiState.English.toString())
+//        Text(text = testScreenUiState.Biology.toString())
+//        Text(text = testScreenUiState.questions.toString())
     }
 }
 
 
 @Composable
-fun TextWithSwitch(modifier:Modifier = Modifier, text:String, checkedState:Boolean, onCheckChange:(Boolean) -> Unit = {}) {
+fun TextWithSwitch(modifier:Modifier = Modifier, text:String, checkedState:Boolean, onCheckChange:() -> Unit) {
     Row(modifier = modifier.padding(horizontal = 5.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(
             text = text,
             modifier = Modifier.weight(5f)
         )
+        val onCheckChangedAdapter:(Boolean) -> Unit = {
+            onCheckChange()
+        }
         Switch(
             checked = checkedState,
-            onCheckedChange = onCheckChange,
+            onCheckedChange = onCheckChangedAdapter,
             modifier = Modifier.weight(1f)
         )
     }
@@ -217,6 +228,25 @@ fun TextWithTextField(modifier:Modifier = Modifier,
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     var limitError by remember { mutableStateOf(false) }
+    val onValChangeAdapter:(String) -> Unit = remember {
+        {
+            if (it.length > questionLimit) {
+                inputValue = it
+            }
+        }
+    }
+    val onDoneAdapter:KeyboardActionScope.() -> Unit = remember {
+        {
+            if (inputValue.toInt() > questionLimit) {
+                limitError = true
+            } else {
+                limitError = false
+                testScreenViewModel.assignQuestionsTo(type, inputValue.toInt())
+            }
+            currentKeyboard?.hide() // Hide the keyboard
+            focusManager.clearFocus() // Exit editing mode
+        }
+    }
     Row(modifier = modifier.padding(vertical = 0.0f.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(text = text + " (Limit: ${questionLimit})", modifier = Modifier.weight(5f))
             TextField(
@@ -225,28 +255,12 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                     .requiredWidth(75.dp)
                     .align(Alignment.CenterVertically), // fix this issue of test not fitting
                 value = inputValue,
-                onValueChange = {
-                    if (it.length > questionLimit) {
-
-                    } else {
-                        inputValue = it
-                    }
-                },
+                onValueChange = onValChangeAdapter,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done
                 ),
-                keyboardActions = KeyboardActions( onDone = {
-                    if (inputValue.toInt() > questionLimit) {
-                        limitError = true
-                    } else {
-                        limitError = false
-                        testScreenViewModel.assignQuestionsTo(type, inputValue.toInt())
-                    }
-                    currentKeyboard?.hide() // Hide the keyboard
-                    focusManager.clearFocus() // Exit editing mode
-                }
-                ),
+                keyboardActions = KeyboardActions(onDone = onDoneAdapter),
                 colors = TextFieldDefaults.colors(
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedIndicatorColor = Color.Transparent,
@@ -258,7 +272,6 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                 shape = RoundedCornerShape(15.dp),
                 textStyle = TextStyle(textAlign = TextAlign.Center, fontSize = 20.sp, lineHeight = 15.sp),
             )
-//        }
     }
 }
 @Preview

@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreenUiState
 import com.example.myapplication.TestScreenViewModel
@@ -46,6 +47,7 @@ import kotlinx.coroutines.launch
 fun TestingScreen(modifier: Modifier = Modifier,
                   testScreenViewModel: TestScreenViewModel = viewModel(),
                   onEndOfTest:() -> Unit = {},
+                  navController: NavController,
                   onBackButtonOrGesture: () -> Unit = {},) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
@@ -53,7 +55,8 @@ fun TestingScreen(modifier: Modifier = Modifier,
   //  testScreenUiState.questions = physicsQ
     //-----------------------
     BackHandler {
-        onBackButtonOrGesture()
+        navController.popBackStack()
+        testScreenViewModel.enableBars()
     }
     Column(
         modifier = modifier
@@ -262,6 +265,7 @@ fun Options(modifier: Modifier = Modifier,
             .background(color = color, shape = RoundedCornerShape(10.dp)),
             verticalAlignment = Alignment.CenterVertically) {
             val scope = rememberCoroutineScope()
+
             Text(text = choice, modifier = Modifier
                 .weight(1f)
                 .padding(start = 5.dp))
@@ -305,6 +309,5 @@ fun Options(modifier: Modifier = Modifier,
 @Composable
 fun TestingScreenPreview() {
     PreperationAppTheme {
-        TestingScreen()
     }
 }
