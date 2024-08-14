@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,7 +34,8 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
     }
     Column(modifier = modifier
         .fillMaxSize()
-        .background(color = Color.White)) {
+        .background(color = Color.White)
+        .verticalScroll(rememberScrollState())) {
         Text("You have completed the test!", style = MaterialTheme.typography.titleLarge)
       Text("You got ${correctQuestions} out of ${totalQuestions}", style = MaterialTheme.typography.titleLarge)
         Text(text = "Incorrect answers:", style = MaterialTheme.typography.titleMedium)

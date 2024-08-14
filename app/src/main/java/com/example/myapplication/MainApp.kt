@@ -1,6 +1,8 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.interaction.Interaction
@@ -52,6 +54,7 @@ fun MainApp(modifier: Modifier = Modifier,
     val testScreenViewModel = remember {TestScreenViewModel()}
     val uiState by testScreenViewModel.uiState.collectAsState()
     val showBar = uiState.showBars
+    val currentS = uiState.currentScreen
 
         Scaffold(
             modifier = modifier,
@@ -71,20 +74,28 @@ fun MainApp(modifier: Modifier = Modifier,
                     BottomAppBar(
                         actions = {
                             BottomNavButton(
+                                route = "TestConfigurationScreen",
                                 text = "Test",
+                                currentS = currentS,
                                 icon = Icons.Filled.Edit,
                                 modifier = Modifier.weight(1f),
-                                onClick = { navController.navigate(route = "TestConfigurationScreen") }
+                                onClick = remember {{ navController.navigate(route = "TestConfigurationScreen") {
+                                    popUpTo(navController.graph.startDestinationId) { inclusive = true }
+                                    launchSingleTop = true }
+                                testScreenViewModel.setScreen("TestConfigurationScreen")}}
                             )
                             BottomNavButton(
+                                route = "Pool",
+                                currentS = currentS,
                                 text = "Question Pool",
                                 icon = Icons.Filled.DateRange,
                                 modifier = Modifier.weight(1f),
-                                onClick = {
-                                        navController.navigate(route = "Pool") //{
-//                                            popUpTo(navController.graph.startDestinationId) { inclusive = true }
-//                                            launchSingleTop = true }
-                                })
+                                onClick = remember {{
+                                        navController.navigate(route = "Pool") {
+                                            popUpTo(navController.graph.startDestinationId) { inclusive = true }
+                                            launchSingleTop = true }
+                                    testScreenViewModel.setScreen("Pool")
+                                }})
                         }
                     )
                 }
@@ -113,13 +124,13 @@ fun MainApp(modifier: Modifier = Modifier,
                         )
                     }
                     composable(route = "TestingScreen") {
-                        TestingScreen(modifier = Modifier.fillMaxSize(),
+                        TestingScreen(
                             testScreenViewModel = testScreenViewModel,
                             onEndOfTest = { navController.navigate(route = "EndScreen") },
                             navController = navController)
                     }
                     composable(route = "EndScreen") {
-                        EndOfTestScreen(modifier = Modifier.fillMaxSize(),
+                        EndOfTestScreen(//modifier = Modifier.fillMaxSize(),
                             testScreenViewModel = testScreenViewModel,
                             onBackButtonOrGesture = {
                                 cancelTestOrReturnToHome(testScreenViewModel, navController)
@@ -140,16 +151,19 @@ private fun cancelTestOrReturnToHome(viewModel: TestScreenViewModel, navControll
 }
 @Composable
 fun BottomNavButton(
+    route:String,
     modifier:Modifier = Modifier,
     text:String,
     icon:ImageVector,
     onClick:() -> Unit,
+    currentS:String,
 ) {
-    Button(onClick = remember { onClick },
+    val animatedColor by animateColorAsState(if (currentS == route) {Color.LightGray} else {Color.Transparent}, animationSpec = tween(350))
+    Button(onClick = onClick ,
         modifier = modifier.padding(horizontal = 5.dp),
         shape = MaterialTheme.shapes.medium,
         interactionSource = NoRippleInteractionSource(),
-        colors = ButtonDefaults.buttonColors(containerColor = Color.LightGray,
+        colors = ButtonDefaults.buttonColors(containerColor = animatedColor,
             contentColor = Color.Black)
     ) {
         Column(modifier = Modifier, horizontalAlignment = Alignment.CenterHorizontally) {

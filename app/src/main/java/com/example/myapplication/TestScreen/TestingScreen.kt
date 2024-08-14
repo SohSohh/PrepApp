@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -33,9 +35,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreenUiState
 import com.example.myapplication.TestScreenViewModel
+import com.example.myapplication.dataAndNetwork.physicsQ
 import com.example.myapplication.dataAndNetwork.question
 import com.example.myapplication.dataAndNetwork.subjects
 import kotlinx.coroutines.delay
@@ -44,15 +48,17 @@ import kotlinx.coroutines.launch
 @SuppressLint("SuspiciousIndentation", "CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TestingScreen(modifier: Modifier = Modifier,
-                  testScreenViewModel: TestScreenViewModel = viewModel(),
-                  onEndOfTest:() -> Unit = {},
-                  navController: NavController,
-                  onBackButtonOrGesture: () -> Unit = {},) {
+fun TestingScreen(
+    modifier: Modifier = Modifier,
+    testScreenViewModel: TestScreenViewModel = viewModel(),
+    onEndOfTest: () -> Unit = {},
+    navController: NavController = rememberNavController(),
+    onBackButtonOrGesture: () -> Unit = {},
+) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
     //TEST DUMMY VALUES
-  //  testScreenUiState.questions = physicsQ
+   // testScreenUiState.questions = physicsQ
     //-----------------------
     BackHandler {
         navController.popBackStack()
@@ -62,6 +68,7 @@ fun TestingScreen(modifier: Modifier = Modifier,
         modifier = modifier
             .fillMaxSize()
             .background(color = Color.White)
+            .verticalScroll(rememberScrollState())
     ) {
         Box(
             modifier = Modifier
@@ -115,7 +122,7 @@ fun TestingScreen(modifier: Modifier = Modifier,
                             testScreenViewModel.previousQuestion()
                         }
                     },
-                    enabledCondition = (testScreenUiState.Backtracking && testScreenUiState.currentQuestion != 0))
+                    enabledCondition = (testScreenUiState.Backtracking && (testScreenUiState.currentQuestion != 0) ))
             //-----------------
             //---SUBJECT NAVIGATION BUTTON
             SubjectNavigationButton(currentSubject = testScreenUiState.questions[testScreenUiState.currentQuestion].subject,
@@ -184,10 +191,14 @@ fun QuestionCard(modifier:Modifier = Modifier,
     Card(modifier = modifier.animateContentSize(), shape = MaterialTheme.shapes.medium, onClick = { if (resizable) { optionsVisible = !optionsVisible } }) {
         Column(modifier = Modifier.background(color = Color.White)) {
                 Text(text = question.subject.toString(),
-                    modifier = Modifier.padding(horizontal = 20.dp).fillMaxWidth(),
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .fillMaxWidth(),
                     style = MaterialTheme.typography.titleMedium)
                 Text(text = question.question,
-                    modifier = Modifier.padding(horizontal = 20.dp).fillMaxWidth(),
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .fillMaxWidth(),
                     style = MaterialTheme.typography.titleLarge)
             if (optionsVisible) {
                 Options(
@@ -252,7 +263,7 @@ fun Options(modifier: Modifier = Modifier,
             ) {
     choiceList.forEach { choice ->
         var color by remember { mutableStateOf(normalColor) }
-        if ((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer) || (resultForm && (choice == (if (resultAnswerIndex != null) {testScreenUiState.answers[resultAnswerIndex]} else {optionalAnswer})))) {
+        if ((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer && !resultForm) || (resultForm && (choice == (if (resultAnswerIndex != null) {testScreenUiState.questions[resultAnswerIndex].answer} else {optionalAnswer})))) {
             color = correctColor
         } else if((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm) {
             color = incorrectColor
@@ -309,5 +320,6 @@ fun Options(modifier: Modifier = Modifier,
 @Composable
 fun TestingScreenPreview() {
     PreperationAppTheme {
+        TestingScreen()
     }
 }
