@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,6 +29,8 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
@@ -41,10 +44,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -99,19 +104,20 @@ fun TestConfigurationScreen(
 
 @Composable
 fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> Unit = {}, enabledCondition:Boolean = true) {
-    val density = LocalDensity.current.density
-    val offsetY = with(LocalDensity.current) { 20.dp.toPx() }
+    val scope = rememberCoroutineScope()
     AnimatedVisibility(visible = enabledCondition,
         enter = fadeIn( animationSpec = tween(500) )+ slideInVertically(
-            initialOffsetY = { -offsetY.toInt() } // Slide in from a little bit above
+            initialOffsetY =  { -it / 4 } // Slide in from a little bit above
         ),
         exit = fadeOut( animationSpec = tween(500)) + slideOutVertically(
-            targetOffsetY = { -offsetY.toInt() } // Slide out to a little bit above
+            targetOffsetY = { -it / 4 } // Slide out to a little bit above
         ),
     )  {
         Button(
             onClick = onClick,
             modifier = modifier,
+            enabled = enabledCondition,
+            colors = ButtonDefaults.buttonColors(disabledContainerColor = ButtonDefaults.buttonColors().containerColor, disabledContentColor = ButtonDefaults.buttonColors().contentColor)
         ) {
             Text(text = text, style = MaterialTheme.typography.displaySmall)
         }
@@ -312,7 +318,7 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                         unfocusedIndicatorColor = Color.Transparent,
                         focusedIndicatorColor = Color.Transparent,
                         errorIndicatorColor = Color.Transparent,
-                        errorContainerColor = MaterialTheme.colorScheme.errorContainer
+                        errorContainerColor = MaterialTheme.colorScheme.errorContainer,
                     ),
                     contentPadding = PaddingValues(5.dp)
                 )

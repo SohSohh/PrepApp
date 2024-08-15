@@ -22,9 +22,9 @@ data class question(
 }
 
 var physicsQ:List<question> = mutableListOf(
-    question("physics test q1", listOf("A", "B", "C", "D"), "B", subjects.Physics),
-    question("physics test q2", listOf("E", "F", "G", "H"), "H", subjects.Physics),
-    question("physics test q3", listOf("P", "Q", "R", "S"), "Q", subjects.Physics)
+    question("Physics test q1", listOf("It shouldn't work, also I forgot to test the multiline feature oops", "Okay, I feel like this might be an issue I overlooked", "C", "D"), "Okay, I feel like this might be an issue I overlooked", subjects.Physics),
+    question("Physics test q2", listOf("E", "F", "G", "H"), "H", subjects.Physics),
+    question("Physics test q3", listOf("P", "Q", "R", "S"), "Q", subjects.Physics)
 )
 
 var dummyTestingQuestions:List<question> = mutableListOf(

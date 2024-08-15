@@ -36,6 +36,12 @@ val Typography = Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 40.sp
     ),
+    titleMedium = TextStyle( // For medium titled
+        fontFamily = quicksand,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
+        fontSize = 35.sp
+    ),
     displayMedium = TextStyle( // For configuration / settings
         fontFamily = quicksand,
         fontWeight = FontWeight.Medium,
@@ -44,7 +50,7 @@ val Typography = Typography(
     displaySmall = TextStyle( // for bottom bar elements and buttons
         fontFamily = quicksand,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 18.sp
+        fontSize = 16.sp
     ),
     bodySmall = TextStyle( // For choices
         fontFamily = quicksand,
@@ -63,6 +69,12 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontSize = 13.sp
+    ),
+    headlineMedium = TextStyle( // Search bars etc
+        fontFamily = quicksand,
+        fontWeight = FontWeight.Normal,
+        fontStyle = FontStyle.Normal,
+        fontSize = 17.sp
     )
     // Add other text styles as needed
 )

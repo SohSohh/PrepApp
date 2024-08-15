@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreen.QuestionCard
 import com.example.myapplication.TestScreenViewModel
 
@@ -52,7 +53,7 @@ fun McqPoolScreen(
             onValueChange = searchViewModel::onQueryEntered,
             textStyle = TextStyle(fontSize = 18.sp),
             maxLines = 3,
-            label = { Text(text = "Search questions, subjects, or choices", modifier = Modifier.alpha(0.5f)) },
+            label = { Text(text = "Search questions, subjects, or choices", modifier = Modifier.alpha(0.5f), style = MaterialTheme.typography.headlineMedium) },
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
                 .fillMaxWidth(),
@@ -89,5 +90,7 @@ fun McqPoolScreen(
 @Preview
 @Composable
 fun MCQPoolPreview() {
-    McqPoolScreen()
+    PreperationAppTheme {
+        McqPoolScreen()
+    }
 }

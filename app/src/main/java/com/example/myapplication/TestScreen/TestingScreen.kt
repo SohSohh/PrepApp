@@ -6,6 +6,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -58,7 +59,8 @@ fun TestingScreen(
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
     //TEST DUMMY VALUES
-   // testScreenUiState.questions = physicsQ
+//    testScreenUiState.questions = physicsQ
+//    testScreenUiState.currentQuestion = 1
     //-----------------------
     BackHandler {
         navController.popBackStack()
@@ -68,7 +70,7 @@ fun TestingScreen(
         modifier = modifier
             .fillMaxSize()
             .background(color = Color.White)
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(rememberScrollState()),
     ) {
         Box(
             modifier = Modifier
@@ -89,55 +91,60 @@ fun TestingScreen(
         }
 
         //TESTS
-        Text(text = "[TESTING] CurrentQuestion = ${testScreenUiState.currentQuestion}")
-        Text(text = "[TESTING] incorrectQuestions = ${testScreenUiState.incorrectQuestions}")
-        Text(text = "[TESTING] answers = ${testScreenUiState.answers}")
-        Text(text = "[TESTING] questions.size = ${testScreenUiState.questions.size}")
-        Text(text = "[TESTING] selection = ${testScreenUiState.selection}")
-        Text(text = "[TESTING] AllowSkipping = ${testScreenUiState.AllowSkipping}")
-        Text(text = "[TESTING] Backtracking = ${testScreenUiState.Backtracking}")
-        Text(text = "[TESTING] ShowCorrectAndIncorrect = ${testScreenUiState.ShowCorrectAndIncorrect}")
-        Text(text = "[TESTING] CurrentSubjectIndex = ${testScreenUiState.currentSubjectIndex}")
-        Text(text = "[TESTING] allSubjectsQuestionsIndices = ${testScreenUiState.allSubjectsQuestionsIndices}")
-        Text(text = "[TESTING] questions = ${testScreenUiState.questions}")
+//        Text(text = "[TESTING] CurrentQuestion = ${testScreenUiState.currentQuestion}")
+//        Text(text = "[TESTING] incorrectQuestions = ${testScreenUiState.incorrectQuestions}")
+//        Text(text = "[TESTING] answers = ${testScreenUiState.answers}")
+//        Text(text = "[TESTING] questions.size = ${testScreenUiState.questions.size}")
+//        Text(text = "[TESTING] selection = ${testScreenUiState.selection}")
+//        Text(text = "[TESTING] AllowSkipping = ${testScreenUiState.AllowSkipping}")
+//        Text(text = "[TESTING] Backtracking = ${testScreenUiState.Backtracking}")
+//        Text(text = "[TESTING] ShowCorrectAndIncorrect = ${testScreenUiState.ShowCorrectAndIncorrect}")
+//        Text(text = "[TESTING] CurrentSubjectIndex = ${testScreenUiState.currentSubjectIndex}")
+//        Text(text = "[TESTING] allSubjectsQuestionsIndices = ${testScreenUiState.allSubjectsQuestionsIndices}")
+//        Text(text = "[TESTING] questions = ${testScreenUiState.questions}")
 
         //----
 
         Spacer(modifier = Modifier.weight(1f))
 
-        Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
             //----PREVIOUS BUTTON
-                NavigationButton(
-                    modifier = modifier.padding(10.dp),
-                    text = "Previous",
-                    onClick = {
-                        if (testScreenUiState.ShowCorrectAndIncorrect) {
-                            scope.launch {
-                                delay(150)
+                    NavigationButton(
+                        modifier = modifier.padding(10.dp),
+                        text = "Previous",
+                        onClick = {
+                            if (testScreenUiState.ShowCorrectAndIncorrect) {
+                                scope.launch {
+                                    delay(150)
+                                    testScreenViewModel.checkAnswer()
+                                    testScreenViewModel.previousQuestion()
+                                }
+                            } else {
                                 testScreenViewModel.checkAnswer()
                                 testScreenViewModel.previousQuestion()
                             }
-                        } else {
-                            testScreenViewModel.checkAnswer()
-                            testScreenViewModel.previousQuestion()
-                        }
-                    },
-                    enabledCondition = (testScreenUiState.Backtracking && (testScreenUiState.currentQuestion != 0) ))
+                        },
+                        enabledCondition = (testScreenUiState.Backtracking && (testScreenUiState.currentQuestion != 0))
+                    )
+
             //-----------------
             //---SUBJECT NAVIGATION BUTTON
-            SubjectNavigationButton(currentSubject = testScreenUiState.questions[testScreenUiState.currentQuestion].subject,
-                onForwardButton = {
-                    scope.launch {
-                        testScreenViewModel.moveToNextSubject()
-                    }},
-                onPrevButton = {testScreenViewModel.moveToPreviousSubject()},
-                modifier = Modifier.padding(10.dp),
-                conditionForPrevVisible = (testScreenUiState.currentSubjectIndex != 0 && testScreenUiState.Backtracking),
-                conditionForNextVisible = (testScreenUiState.currentSubjectIndex != testScreenUiState.activeSubjectsList.size - 1) && testScreenUiState.AllowSkipping )
-            //--------------------
+                SubjectNavigationButton(
+                    currentSubject = testScreenUiState.questions[testScreenUiState.currentQuestion].subject,
+                    onForwardButton = {
+                        scope.launch {
+                            testScreenViewModel.moveToNextSubject()
+                        }
+                    },
+                    onPrevButton = { testScreenViewModel.moveToPreviousSubject() },
+                    modifier = Modifier.padding(10.dp),
+                    conditionForPrevVisible = (testScreenUiState.currentSubjectIndex != 0 && testScreenUiState.Backtracking),
+                    conditionForNextVisible = (testScreenUiState.currentSubjectIndex != testScreenUiState.activeSubjectsList.size - 1) && testScreenUiState.AllowSkipping
+                )
+                //--------------------
             //------ NEXT / END BUTTON
             // THIS (below) SAYS: IF ALLOWSKIPPING IS TRUE -OR- RETRYQUESTION IS TRUE AND A CHOICE IS SELECTED, THEN SHOW THE BUTTON. THE LATTER PART IS SIMPLE TO LIMIT THE CARD FROM NAVIGATING TO A QUESTION THAT DOESN'T EXIST OVER THE LIMIT
-                if ((testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size)) {
+            if ((testScreenUiState.currentQuestion + 1) != (testScreenUiState.questions.size)) {
                     NavigationButton(
                         modifier = modifier.padding(10.dp),
                         text = "Next",
@@ -192,14 +199,14 @@ fun QuestionCard(modifier:Modifier = Modifier,
         Column(modifier = Modifier.background(color = Color.White)) {
                 Text(text = question.subject.toString(),
                     modifier = Modifier
-                        .padding(horizontal = 20.dp)
+                        .padding(start = 15.dp, end = 20.dp)
                         .fillMaxWidth(),
-                    style = MaterialTheme.typography.titleMedium)
+                    style = MaterialTheme.typography.bodySmall)
                 Text(text = question.question,
                     modifier = Modifier
-                        .padding(horizontal = 20.dp)
-                        .fillMaxWidth(),
-                    style = MaterialTheme.typography.titleLarge)
+                        .padding(start = 15.dp, end = 20.dp, bottom = 10.dp)
+                        .fillMaxWidth().animateContentSize(),
+                    style = MaterialTheme.typography.bodyMedium)
             if (optionsVisible) {
                 Options(
                     choiceList = question.choices,
@@ -234,7 +241,7 @@ fun SubjectNavigationButton(modifier:Modifier = Modifier,
                 modifier = Modifier.padding(end = 3.dp),
                 enabled = conditionForPrevVisible
             ) {
-                Text(text = "<<")
+                Text(text = "<", style = MaterialTheme.typography.displaySmall)
             }
             Button(
                 shape = RoundedCornerShape(
@@ -247,7 +254,7 @@ fun SubjectNavigationButton(modifier:Modifier = Modifier,
                 modifier = Modifier.padding(start = 3.dp),
                 enabled = conditionForNextVisible
             ) {
-                Text(text = ">>")
+                Text(text = ">", style = MaterialTheme.typography.displaySmall)
         }
     }
 }

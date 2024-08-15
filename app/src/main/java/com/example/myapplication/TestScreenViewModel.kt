@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 
 data class TestScreenUiState(
@@ -141,20 +142,6 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
-    fun disableEligility() {
-        _uiState.update {currentState ->
-            currentState.copy(
-                eligibleForTest = false
-            )
-        }
-    }
-    fun enableEligility() {
-        _uiState.update {currentState ->
-            currentState.copy(
-                eligibleForTest = true
-            )
-        }
-    }
     fun addAnswer() {
         _uiState.update { currentState ->
             val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
@@ -173,25 +160,38 @@ class TestScreenViewModel:ViewModel() {
 // THE SUBJECT NAVIGATOR SHOULD CHANGE WHEN YOU SKIP TO THE SUBJECTS MANUALLY, ALSO IT CRASHES IF YOU SKIP A SUBJECT AND THEN PRESS THE NEXT BUTTON TO GET TO THE LAST QUESTION
     fun nextQuestion() {
         _uiState.update { currentState ->
-            val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
-                currentState.answers.toMutableList().apply {
-                    this[currentState.currentQuestion] = currentState.selection
+            lateinit var newAnswer:List<String>
+            var updatedSubjectIndex by Delegates.notNull<Int>()
+            lateinit var selection: String
+            var currentQuestion by Delegates.notNull<Int>()
+            if (currentState.currentQuestion != currentState.questions.size - 1) {
+                newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
+                    currentState.answers.toMutableList().apply {
+                        this[currentState.currentQuestion] = currentState.selection
+                    }
+                } else {
+                    currentState.answers + currentState.selection
                 }
-            } else{
-                currentState.answers + currentState.selection
-            }
-            val updatedSubjectIndex = if (currentState.currentSubjectIndex != currentState.allSubjectsQuestionsIndices.size - 1 && currentState.currentQuestion + 1 >= currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex + 1]) {
-                currentState.currentSubjectIndex + 1
+                updatedSubjectIndex =
+                    if (currentState.currentSubjectIndex != currentState.allSubjectsQuestionsIndices.size - 1 && currentState.currentQuestion + 1 >= currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex + 1]) {
+                        currentState.currentSubjectIndex + 1
+                    } else {
+                        currentState.currentSubjectIndex
+                    }
+                selection = if (currentState.currentQuestion + 1 == newAnswer.size) {
+                    ""
+                } else {
+                    newAnswer[currentState.currentQuestion + 1]
+                }
+                currentQuestion = currentState.currentQuestion + 1
             } else {
-                currentState.currentSubjectIndex
-            }
-            val selection = if (currentState.currentQuestion + 1 == newAnswer.size) {
-                ""
-            } else {
-                newAnswer[currentState.currentQuestion + 1]
+                newAnswer = currentState.answers
+                updatedSubjectIndex = currentState.currentSubjectIndex
+                selection = currentState.selection
+                currentQuestion = currentState.currentQuestion
             }
             currentState.copy(
-                currentQuestion = currentState.currentQuestion + 1,
+                currentQuestion = currentQuestion,
                 answers = newAnswer.toList(),
                 selection = selection,
                 currentSubjectIndex = updatedSubjectIndex
@@ -201,21 +201,35 @@ class TestScreenViewModel:ViewModel() {
 
     fun previousQuestion() {
         _uiState.update { currentState ->
-            val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
-                currentState.answers.toMutableList().apply {
-                    this[currentState.currentQuestion] = currentState.selection
+            lateinit var newAnswer:List<String>
+            var updatedSubjectIndex by Delegates.notNull<Int>()
+            lateinit var selection: String
+            var currentQuestion by Delegates.notNull<Int>()
+
+            if (currentState.currentQuestion != 0) {
+                newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
+                    currentState.answers.toMutableList().apply {
+                        this[currentState.currentQuestion] = currentState.selection
+                    }
+                } else {
+                    currentState.answers + currentState.selection
                 }
+                updatedSubjectIndex =
+                    if (currentState.currentSubjectIndex != 0 && currentState.currentQuestion - 1 < currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex]) {
+                        currentState.currentSubjectIndex - 1
+                    } else {
+                        currentState.currentSubjectIndex
+                    }
+                selection = currentState.answers[currentState.currentQuestion - 1]
+                currentQuestion = currentState.currentQuestion - 1
             } else {
-                currentState.answers + currentState.selection
+                newAnswer = currentState.answers
+                updatedSubjectIndex = currentState.currentSubjectIndex
+                selection = currentState.selection
+                currentQuestion = currentState.currentQuestion
             }
-            val updatedSubjectIndex = if (currentState.currentSubjectIndex != 0 && currentState.currentQuestion - 1 < currentState.allSubjectsQuestionsIndices[currentState.currentSubjectIndex]) {
-                currentState.currentSubjectIndex - 1
-            } else {
-                currentState.currentSubjectIndex
-            }
-            val selection = currentState.answers[currentState.currentQuestion - 1]
             currentState.copy(
-                currentQuestion = currentState.currentQuestion - 1,
+                currentQuestion = currentQuestion,
                 currentSubjectIndex = updatedSubjectIndex,
                 selection = selection,
                 answers = newAnswer
@@ -322,10 +336,9 @@ class TestScreenViewModel:ViewModel() {
                     selection = "",
                     currentQuestion = 0,
                     incorrectQuestions = mutableListOf(),
+                    currentSubjectIndex = 0,
+                    activeSubjectsList = mutableListOf()
                     //--------CONFIGURATION
-                    Backtracking = false,
-                    AllowSkipping = false,
-                    ShowCorrectAndIncorrect = false,
                     //-----------SUBJECTS
                 )
             }

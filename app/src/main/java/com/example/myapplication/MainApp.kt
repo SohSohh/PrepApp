@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,8 +43,10 @@ import com.example.myapplication.TestScreen.EndOfTestScreen
 import com.example.myapplication.TestScreen.TestConfigurationScreen
 import com.example.myapplication.TestScreen.TestingScreen
 import com.example.myapplication.mcqPool.McqPoolScreen
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.launch
 
 
 @SuppressLint("SuspiciousIndentation")
@@ -62,7 +65,7 @@ fun MainApp(modifier: Modifier = Modifier,
                 if (showBar) {
                         CenterAlignedTopAppBar(title = {
                             Text(
-                                text = "TopBarTitlePlaceholder",
+                                text = "PREP",
                                 style = MaterialTheme.typography.titleLarge
                             )
                         }
@@ -101,6 +104,7 @@ fun MainApp(modifier: Modifier = Modifier,
                 }
             }
         ) { innerPadding ->
+            val scope = rememberCoroutineScope()
             Row(
                 modifier = Modifier
                     .fillMaxSize()
@@ -116,9 +120,13 @@ fun MainApp(modifier: Modifier = Modifier,
                         TestConfigurationScreen(
                             modifier = Modifier.fillMaxSize(),
                             onStartButtonClicked = {
-                                navController.navigate(route = "TestingScreen")
-                                testScreenViewModel.initializeQuestions()
-                                testScreenViewModel.disableBars()
+                                scope.launch {
+                                    navController.navigate(route = "TestingScreen")
+                                    testScreenViewModel.initializeQuestions()
+                                    testScreenViewModel.disableBars()
+                                    delay(750)
+                                }
+
                             },
                             testScreenViewModel = testScreenViewModel,
                         )
@@ -159,7 +167,7 @@ fun BottomNavButton(
     currentS:String,
 ) {
     val animatedColor by animateColorAsState(if (currentS == route) {Color.LightGray} else {Color.Transparent}, animationSpec = tween(350))
-    Button(onClick = onClick ,
+    Button(onClick = onClick,
         modifier = modifier.padding(horizontal = 5.dp),
         shape = MaterialTheme.shapes.medium,
         interactionSource = NoRippleInteractionSource(),
@@ -168,7 +176,7 @@ fun BottomNavButton(
     ) {
         Column(modifier = Modifier, horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(imageVector = icon, contentDescription = null)
-            Text(text = text)
+            Text(text = text, style = MaterialTheme.typography.displaySmall)
         }
     }
 }
