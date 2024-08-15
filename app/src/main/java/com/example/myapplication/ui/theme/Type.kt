@@ -4,8 +4,8 @@ import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 
@@ -16,25 +16,53 @@ val merriRegular = FontFamily(
     Font(R.font.merriweather_bold, FontWeight.Bold),
     Font(R.font.merriweather_light, FontWeight.Light),
 )
+val quicksand = FontFamily(
+    Font(R.font.quicksand_semibold, FontWeight.SemiBold, FontStyle.Normal),
+    Font(R.font.quicksand_regular, FontWeight.Normal, FontStyle.Normal),
+    Font(R.font.quicksand_light, FontWeight.Light, FontStyle.Normal),
+    Font(R.font.quicksand_medium, FontWeight.Medium, FontStyle.Normal),
+    Font(R.font.quicksand_bold, FontWeight.Bold, FontStyle.Normal),
+
+)
+
+val ztgatha = FontFamily(
+    Font(R.font.ztgatha_semibold, FontWeight.SemiBold, FontStyle.Normal)
+)
+
 val Typography = Typography(
-    titleLarge = TextStyle(
-        fontFamily = merriRegular,
+    titleLarge = TextStyle( // For topbar Heading
+        fontFamily = ztgatha,
         fontWeight = FontWeight.Bold,
-        fontSize = 25.sp
+        fontStyle = FontStyle.Normal,
+        fontSize = 40.sp
     ),
-    displayMedium = TextStyle(
-        fontFamily = merriRegular,
+    displayMedium = TextStyle( // For configuration / settings
+        fontFamily = quicksand,
+        fontWeight = FontWeight.Medium,
+        fontSize = 19.sp
+    ),
+    displaySmall = TextStyle( // for bottom bar elements and buttons
+        fontFamily = quicksand,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 18.sp
+    ),
+    bodySmall = TextStyle( // For choices
+        fontFamily = quicksand,
         fontWeight = FontWeight.Normal,
-        fontSize = 20.sp
+        fontStyle = FontStyle.Normal,
+        fontSize = 23.sp
     ),
-    bodySmall = TextStyle(
-        fontFamily = merriRegular,
+    bodyMedium = TextStyle( // FOR Questions
+        fontFamily = quicksand,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
+        fontSize = 27.sp
+    ),
+    labelMedium = TextStyle( // For labels and such
+        fontFamily = quicksand,
         fontWeight = FontWeight.Normal,
-        fontSize = 50.sp
-    ),
-    titleSmall = TextStyle(
-        fontFamily = merriRegular,
-        fontSize = 15.sp
+        fontStyle = FontStyle.Normal,
+        fontSize = 13.sp
     )
     // Add other text styles as needed
 )

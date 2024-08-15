@@ -42,7 +42,8 @@ data class TestScreenUiState(
     //STATES
     var showBars:Boolean = true,
     var showBottomBar:Boolean = false,
-    var currentScreen:String = "TestConfigurationScreen"
+    var currentScreen:String = "TestConfigurationScreen",
+    var eligibleForTest:Boolean = true,
 )
 class TestScreenViewModel:ViewModel() {
     private val _uiState = MutableStateFlow(TestScreenUiState())
@@ -140,7 +141,20 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
-
+    fun disableEligility() {
+        _uiState.update {currentState ->
+            currentState.copy(
+                eligibleForTest = false
+            )
+        }
+    }
+    fun enableEligility() {
+        _uiState.update {currentState ->
+            currentState.copy(
+                eligibleForTest = true
+            )
+        }
+    }
     fun addAnswer() {
         _uiState.update { currentState ->
             val newAnswer = if (currentState.currentQuestion != currentState.answers.size) {
