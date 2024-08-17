@@ -1,6 +1,7 @@
 package com.example.myapplication.TestScreen
 
 import android.annotation.SuppressLint
+import android.app.TimePickerDialog
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -39,6 +40,8 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TimeInput
+import androidx.compose.material3.TimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -89,14 +92,17 @@ fun TestConfigurationScreen(
             modifier = modifier
                 .background(color = Color.White)
         ) {
-            ConfigurationsList(modifier = Modifier.padding(10.dp), testScreenUiState = testScreenUiState, testScreenViewModel = testScreenViewModel)
+            ConfigurationsList(modifier = Modifier.padding(10.dp),
+                testScreenUiState = testScreenUiState,
+                testScreenViewModel = testScreenViewModel,
+                totalQuestions = totalQuestions)
         }
         Spacer(modifier = Modifier.weight(1f))
         Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
             NavigationButton(text = "Start",
                 onClick = onStartButtonClicked,
                 modifier = Modifier.padding(15.dp),
-                enabledCondition = (totalQuestions <= allQuestionsSet.flatten().size))
+                enabledCondition = (totalQuestions <= allQuestionsSet.flatten().size && testScreenUiState.Totaltime != 0))
         }  // THE PREVIEW MIGHT BE SHOWING THE NAV BUTTON SQUISHED BUT THE MAIN APP ACCOMMODATES SCROLL SPACE
         // FOR IT SO DON'T WORRY
     }
@@ -125,11 +131,13 @@ fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> 
 
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun ConfigurationsList(modifier:Modifier = Modifier,
                        testScreenViewModel: TestScreenViewModel = viewModel(),
-                       testScreenUiState: TestScreenUiState) {
+                       testScreenUiState: TestScreenUiState,
+                       totalQuestions: Int) {
     Column(modifier = modifier) {
 //        // This might be needed to be implemented later
 //        TextWithSwitch(text = "Include attempted questions from previous tests",
@@ -209,6 +217,12 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
             testScreenUiState = testScreenUiState,
             type = subjects.Intelligence,
             testScreenViewModel = testScreenViewModel)
+        //--------
+        HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
+        //------------
+        TimerInput(testScreenUiState = testScreenUiState,
+            totalQuestions = totalQuestions,
+            testScreenViewModel = testScreenViewModel)
 
 
         //---TESTING----//
@@ -241,6 +255,85 @@ fun TextWithSwitch(modifier:Modifier = Modifier, text:String, checkedState:Boole
             onCheckedChange = onCheckChangedAdapter,
             modifier = Modifier.weight(1f)
         )
+    }
+}
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TimerInput(modifier: Modifier = Modifier,
+               testScreenUiState: TestScreenUiState,
+               totalQuestions:Int,
+               testScreenViewModel: TestScreenViewModel) {
+    val time by remember { mutableStateOf(testScreenUiState.Totaltime) }
+    var inputValue by remember { mutableStateOf("${(time/3600).toString().padStart(2, '0')}:${((time%3600)/60).toString().padStart(2, '0')}:${((time%3660)%60).toString().padStart(2, '0')}") }
+    var absoluteTime by remember { mutableStateOf(0) }
+    var limitError by remember { mutableStateOf(false) }
+    fun sanitizeInput(input: String): String {
+        val digits = input.filter { it.isDigit() }
+
+        // Get hours, minutes, and seconds, pad with zeros as necessary
+        val hours = digits.take(2).padEnd(2, '0')
+        val minutes = digits.drop(2).take(2).padEnd(2, '0')
+        val seconds = digits.drop(4).take(2).padEnd(2, '0')
+        absoluteTime = hours.toInt() * 3600 + minutes.toInt() * 60 + seconds.toInt()
+        return "$hours:$minutes:$seconds"
+    }
+    val interactionSource = remember { MutableInteractionSource() }
+    var minutesText = if ((testScreenUiState.Totaltime / 60) / totalQuestions == 1) {
+            "minute"
+    } else {
+            "minutes"
+        }
+
+    Row(modifier = modifier.padding(vertical = 0.0f.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(text = "Total time", modifier = Modifier, style = MaterialTheme.typography.displayMedium)
+        Spacer(modifier = Modifier.weight(1f))
+        BasicTextField(value = inputValue,
+            onValueChange = remember { { newValue ->
+                // Ensure the format is always MM:SS
+                val sanitizedInput = sanitizeInput(newValue)
+                inputValue = sanitizedInput
+            } },
+            modifier = modifier
+                .requiredWidth(120.dp)
+                .align(Alignment.CenterVertically),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            ),
+            keyboardActions = KeyboardActions(onDone = remember { {
+                if (absoluteTime > 0) {
+                    limitError = false
+                } else {
+                    limitError = true
+                }
+                testScreenViewModel.assignTimer(absoluteTime)
+            } }),
+            singleLine = true,
+            interactionSource = interactionSource,
+            textStyle = (TextStyle(textAlign = TextAlign.Center, fontSize = 20.sp, lineHeight = 15.sp) + MaterialTheme.typography.displayMedium)
+        ) { innerTextField ->
+            TextFieldDefaults.DecorationBox(
+                value = inputValue,
+                innerTextField = innerTextField,
+                supportingText = {
+                    Text(text = "${(testScreenUiState.Totaltime / 60) / totalQuestions} ${minutesText} per question", style = MaterialTheme.typography.labelMedium + TextStyle(textAlign = TextAlign.Center), modifier = Modifier
+                    .padding(0.dp)
+                    .fillMaxWidth()) },
+                enabled = true,
+                singleLine = true,
+                isError = limitError,
+                visualTransformation = VisualTransformation.None,
+                interactionSource = interactionSource,
+                shape = RoundedCornerShape(15.dp),
+                colors = TextFieldDefaults.colors(
+                    unfocusedIndicatorColor = Color.Transparent,
+                    focusedIndicatorColor = Color.Transparent,
+                    errorIndicatorColor = Color.Transparent,
+                    errorContainerColor = MaterialTheme.colorScheme.errorContainer,
+                ),
+                contentPadding = PaddingValues(5.dp)
+            )
+        }
     }
 }
 
@@ -286,11 +379,11 @@ fun TextWithTextField(modifier:Modifier = Modifier,
     }
     val interactionSource = remember { MutableInteractionSource() }
     Row(modifier = modifier.padding(vertical = 0.0f.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(text = text, modifier = Modifier.weight(5f), style = MaterialTheme.typography.displayMedium)
+        Text(text = text, modifier = Modifier, style = MaterialTheme.typography.displayMedium)
+            Spacer(modifier = Modifier.weight(1f))
             BasicTextField(value = inputValue,
                 onValueChange = onValChangeAdapter,
                 modifier = modifier
-                    .weight(1f)
                     .requiredWidth(80.dp)
                     .align(Alignment.CenterVertically),
                 keyboardOptions = KeyboardOptions(

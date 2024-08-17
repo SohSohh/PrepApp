@@ -23,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +46,7 @@ import com.example.myapplication.dataAndNetwork.question
 import com.example.myapplication.dataAndNetwork.subjects
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Timer
 
 @SuppressLint("SuspiciousIndentation", "CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,10 +74,17 @@ fun TestingScreen(
             .background(color = Color.White)
             .verticalScroll(rememberScrollState()),
     ) {
-        Box(
+
+        Column(
             modifier = Modifier
-                .background(color = Color.White)
+                .background(color = Color.White),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            TestTimer(testScreenUiState = testScreenUiState,
+                onEndOfTest = onEndOfTest,
+                modifier = Modifier.padding(vertical = 20.dp))
+
             QuestionCard(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -105,7 +114,7 @@ fun TestingScreen(
 
         //----
 
-        Spacer(modifier = Modifier.weight(1f))
+//        Spacer(modifier = Modifier.weight(0.25f))
 
         Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
             //----PREVIOUS BUTTON
@@ -205,7 +214,8 @@ fun QuestionCard(modifier:Modifier = Modifier,
                 Text(text = question.question,
                     modifier = Modifier
                         .padding(start = 15.dp, end = 20.dp, bottom = 10.dp)
-                        .fillMaxWidth().animateContentSize(),
+                        .fillMaxWidth()
+                        .animateContentSize(),
                     style = MaterialTheme.typography.bodyMedium)
             if (optionsVisible) {
                 Options(
@@ -219,6 +229,32 @@ fun QuestionCard(modifier:Modifier = Modifier,
                 )
             }
         }
+    }
+}
+
+@Composable
+fun TestTimer(testScreenUiState: TestScreenUiState, onEndOfTest: () -> Unit, modifier: Modifier = Modifier) {
+    var timeValue by remember { mutableStateOf(testScreenUiState.Totaltime) }
+    var hours = timeValue / 3600
+    var minutes = timeValue % 3600 / 60
+    var seconds = (timeValue % 3600)%60
+    Card(modifier = modifier) {
+        Text(
+            text = "${hours.toString().padStart(2, '0')}:${
+                minutes.toString().padStart(2, '0')
+            }:${seconds.toString().padStart(2, '0')}",
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(10.dp)
+        )
+    }
+    LaunchedEffect(key1 = Unit) {
+        while(timeValue != 0) {
+            delay(1000)
+            timeValue -= 1
+        }
+    }
+    if (timeValue == 0) {
+        onEndOfTest()
     }
 }
 
@@ -321,7 +357,9 @@ fun Options(modifier: Modifier = Modifier,
             )
         }
     }
+
 }
+
 
 @Preview
 @Composable

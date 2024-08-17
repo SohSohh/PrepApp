@@ -23,6 +23,7 @@ data class TestScreenUiState(
     var currentSubjectIndex:Int = 0, // CHECK LINE 59 AND 133, IT'S THE INDEX IN THE ALLSUBJECTS LIST IT ENABLE NAVIGATION BETWEEN SUBJECTS
     var incorrectQuestions: List<Int> = mutableListOf(),
     var activeSubjectsList:List<Int> = mutableListOf(),
+    var Totaltime:Int = 5, //3 hours
     //--------CONFIGURATION
     var Backtracking:Boolean = true,
     var AllowSkipping:Boolean = true,
@@ -153,6 +154,13 @@ class TestScreenViewModel:ViewModel() {
             }
             currentState.copy(
                 answers = newAnswer,
+            )
+        }
+    }
+    fun assignTimer(time:Int) {
+        _uiState.update {currentState ->
+            currentState.copy(
+                Totaltime = time
             )
         }
     }
