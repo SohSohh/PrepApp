@@ -47,9 +47,11 @@ data class TestScreenUiState(
     var currentScreen:String = "TestConfigurationScreen",
     var eligibleForTest:Boolean = true,
 )
-class TestScreenViewModel:ViewModel() {
+class TestScreenViewModel():ViewModel() {
     private val _uiState = MutableStateFlow(TestScreenUiState())
     val uiState: StateFlow<TestScreenUiState> = _uiState.asStateFlow()
+
+
 
     val toggleShowCorrectAndIncorrect = {
         _uiState.update { currentState ->
@@ -58,6 +60,7 @@ class TestScreenViewModel:ViewModel() {
             )
         }
     }
+
 
     val toggleSkipping = {
         _uiState.update { currentState ->

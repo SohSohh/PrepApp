@@ -45,7 +45,8 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val totalQuestions = testScreenUiState.questions.size
     val correctQuestions = totalQuestions - testScreenUiState.incorrectQuestions.size
-    var displayValue by remember { mutableStateOf(3) }
+    var displayValue by remember { mutableStateOf(0) }
+
     BackHandler {
         onBackButtonOrGesture()
         testScreenViewModel.enableBars()
@@ -98,8 +99,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
                     testScreenUiState.incorrectQuestions.forEach() {
                         QuestionCard(
                             modifier = Modifier
-                                .padding(vertical = 20.dp, horizontal = 10.dp)
-                                .background(color = Color.Gray),
+                                .padding(vertical = 20.dp, horizontal = 10.dp),
                             question = testScreenUiState.questions[it],
                             testScreenViewModel = testScreenViewModel,
                             testScreenUiState = testScreenUiState,

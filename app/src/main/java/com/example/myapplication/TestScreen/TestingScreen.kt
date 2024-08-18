@@ -325,7 +325,7 @@ fun Options(modifier: Modifier = Modifier,
 
             Text(text = choice, modifier = Modifier
                 .weight(1f)
-                .padding(start = 5.dp),
+                .padding(10.dp),
                 color = MaterialTheme.colorScheme.onPrimaryContainer)
             RadioButton(
                 selected = ((!resultForm && choice == testScreenUiState.selection) ||
