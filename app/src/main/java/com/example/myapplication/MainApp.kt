@@ -22,7 +22,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -63,44 +66,61 @@ fun MainApp(modifier: Modifier = Modifier,
             modifier = modifier,
             topBar = {
                 if (showBar) {
+                    Surface(shadowElevation = 15.dp) {
                         CenterAlignedTopAppBar(title = {
                             Text(
-                                text = "PREP",
-                                style = MaterialTheme.typography.titleLarge
+                                text = "PROTOTYPE",
+                                style = MaterialTheme.typography.titleLarge,
                             )
-                        }
+                        },
+                            colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
                         )
                     }
+                }
             },
             bottomBar = {
                 if (showBar) {
-                    BottomAppBar(
-                        actions = {
-                            BottomNavButton(
-                                route = "TestConfigurationScreen",
-                                text = "Test",
-                                currentS = currentS,
-                                icon = Icons.Filled.Edit,
-                                modifier = Modifier.weight(1f),
-                                onClick = remember {{ navController.navigate(route = "TestConfigurationScreen") {
-                                    popUpTo(navController.graph.startDestinationId) { inclusive = true }
-                                    launchSingleTop = true }
-                                testScreenViewModel.setScreen("TestConfigurationScreen")}}
-                            )
-                            BottomNavButton(
-                                route = "Pool",
-                                currentS = currentS,
-                                text = "Question Pool",
-                                icon = Icons.Filled.DateRange,
-                                modifier = Modifier.weight(1f),
-                                onClick = remember {{
-                                        navController.navigate(route = "Pool") {
-                                            popUpTo(navController.graph.startDestinationId) { inclusive = true }
-                                            launchSingleTop = true }
-                                    testScreenViewModel.setScreen("Pool")
-                                }})
-                        }
-                    )
+                        BottomAppBar(
+                            tonalElevation = 15.dp,
+                            containerColor = MaterialTheme.colorScheme.surface,
+                            actions = {
+                                BottomNavButton(
+                                    route = "TestConfigurationScreen",
+                                    text = "Test",
+                                    currentS = currentS,
+                                    icon = Icons.Filled.Edit,
+                                    modifier = Modifier.weight(1f),
+                                    onClick = remember {
+                                        {
+                                            navController.navigate(route = "TestConfigurationScreen") {
+                                                popUpTo(navController.graph.startDestinationId) {
+                                                    inclusive = true
+                                                }
+                                                launchSingleTop = true
+                                            }
+                                            testScreenViewModel.setScreen("TestConfigurationScreen")
+                                        }
+                                    }
+                                )
+                                BottomNavButton(
+                                    route = "Pool",
+                                    currentS = currentS,
+                                    text = "Pool ",
+                                    icon = Icons.Filled.DateRange,
+                                    modifier = Modifier.weight(1f),
+                                    onClick = remember {
+                                        {
+                                            navController.navigate(route = "Pool") {
+                                                popUpTo(navController.graph.startDestinationId) {
+                                                    inclusive = true
+                                                }
+                                                launchSingleTop = true
+                                            }
+                                            testScreenViewModel.setScreen("Pool")
+                                        }
+                                    })
+                            }
+                        )
                 }
             }
         ) { innerPadding ->
@@ -166,7 +186,7 @@ fun BottomNavButton(
     onClick:() -> Unit,
     currentS:String,
 ) {
-    val animatedColor by animateColorAsState(if (currentS == route) {Color.LightGray} else {Color.Transparent}, animationSpec = tween(350))
+    val animatedColor by animateColorAsState(if (currentS == route) {MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.75f)} else {Color.Transparent}, animationSpec = tween(350))
     Button(onClick = onClick,
         modifier = modifier.padding(horizontal = 5.dp),
         shape = MaterialTheme.shapes.medium,
@@ -175,8 +195,8 @@ fun BottomNavButton(
             contentColor = Color.Black)
     ) {
         Column(modifier = Modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(imageVector = icon, contentDescription = null)
-            Text(text = text, style = MaterialTheme.typography.displaySmall)
+            Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(text = text, style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }
@@ -189,7 +209,15 @@ class NoRippleInteractionSource() : MutableInteractionSource {
 @Preview
 @Composable
 fun AppPreview() {
-    PreperationAppTheme {
+    PreperationAppTheme(darkTheme = true) {
+        MainApp()
+    }
+}
+
+@Preview
+@Composable
+fun AppDPreview() {
+    PreperationAppTheme(darkTheme = false) {
         MainApp()
     }
 }

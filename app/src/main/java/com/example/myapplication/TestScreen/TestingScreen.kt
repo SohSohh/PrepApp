@@ -2,6 +2,7 @@ package com.example.myapplication.TestScreen
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -61,8 +62,8 @@ fun TestingScreen(
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
     //TEST DUMMY VALUES
-//    testScreenUiState.questions = physicsQ
-//    testScreenUiState.currentQuestion = 1
+    testScreenUiState.questions = physicsQ
+    testScreenUiState.currentQuestion = 1
     //-----------------------
     BackHandler {
         navController.popBackStack()
@@ -71,13 +72,12 @@ fun TestingScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = Color.White)
+            .background(color = MaterialTheme.colorScheme.surface)
             .verticalScroll(rememberScrollState()),
     ) {
 
         Column(
-            modifier = Modifier
-                .background(color = Color.White),
+            modifier = Modifier,
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -204,8 +204,10 @@ fun QuestionCard(modifier:Modifier = Modifier,
     if (resizable) {
         optionsVisible = false
     }
-    Card(modifier = modifier.animateContentSize(), shape = MaterialTheme.shapes.medium, onClick = { if (resizable) { optionsVisible = !optionsVisible } }) {
-        Column(modifier = Modifier.background(color = Color.White)) {
+    Card(modifier = modifier
+        .animateContentSize()
+        .padding(horizontal = 10.dp), shape = MaterialTheme.shapes.medium, onClick = { if (resizable) { optionsVisible = !optionsVisible } }) {
+        Column(modifier = Modifier.background(color = MaterialTheme.colorScheme.primaryContainer).padding(vertical = 10.dp)) {
                 Text(text = question.subject.toString(),
                     modifier = Modifier
                         .padding(start = 15.dp, end = 20.dp)
@@ -238,7 +240,7 @@ fun TestTimer(testScreenUiState: TestScreenUiState, onEndOfTest: () -> Unit, mod
     var hours = timeValue / 3600
     var minutes = timeValue % 3600 / 60
     var seconds = (timeValue % 3600)%60
-    Card(modifier = modifier) {
+    Card(modifier = modifier, shape = RoundedCornerShape(20.dp)) {
         Text(
             text = "${hours.toString().padStart(2, '0')}:${
                 minutes.toString().padStart(2, '0')
@@ -277,7 +279,7 @@ fun SubjectNavigationButton(modifier:Modifier = Modifier,
                 modifier = Modifier.padding(end = 3.dp),
                 enabled = conditionForPrevVisible
             ) {
-                Text(text = "<", style = MaterialTheme.typography.displaySmall)
+                Text(text = "<", style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
             }
             Button(
                 shape = RoundedCornerShape(
@@ -288,7 +290,7 @@ fun SubjectNavigationButton(modifier:Modifier = Modifier,
                 ),
                 onClick = onForwardButton,
                 modifier = Modifier.padding(start = 3.dp),
-                enabled = conditionForNextVisible
+                enabled = conditionForNextVisible,
             ) {
                 Text(text = ">", style = MaterialTheme.typography.displaySmall)
         }
@@ -305,14 +307,15 @@ fun Options(modifier: Modifier = Modifier,
             optionalAnswer:String
             ) {
     choiceList.forEach { choice ->
-        var color by remember { mutableStateOf(normalColor) }
-        if ((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer && !resultForm) || (resultForm && (choice == (if (resultAnswerIndex != null) {testScreenUiState.questions[resultAnswerIndex].answer} else {optionalAnswer})))) {
-            color = correctColor
-        } else if((testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm) {
-            color = incorrectColor
-        } else {
-            color = normalColor
+        val targetColor = when {
+            (testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect && choice == testScreenUiState.questions[testScreenUiState.currentQuestion].answer && !resultForm) ||
+                    (resultForm && (choice == (if (resultAnswerIndex != null) { testScreenUiState.questions[resultAnswerIndex].answer } else { optionalAnswer }))) -> correctColor
+
+            (testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm -> incorrectColor
+
+            else -> normalColor
         }
+        val color by animateColorAsState(targetValue = targetColor)
         Row(modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 5.dp)
             .fillMaxWidth()
@@ -322,7 +325,8 @@ fun Options(modifier: Modifier = Modifier,
 
             Text(text = choice, modifier = Modifier
                 .weight(1f)
-                .padding(start = 5.dp))
+                .padding(start = 5.dp),
+                color = MaterialTheme.colorScheme.onPrimaryContainer)
             RadioButton(
                 selected = ((!resultForm && choice == testScreenUiState.selection) ||
                         (resultForm && (choice == (if (resultAnswerIndex != null) {testScreenUiState.answers[resultAnswerIndex]} else { optionalAnswer})))),//SOMETHING WRONG WITH THIS
@@ -365,6 +369,14 @@ fun Options(modifier: Modifier = Modifier,
 @Composable
 fun TestingScreenPreview() {
     PreperationAppTheme {
+        TestingScreen()
+    }
+}
+
+@Preview
+@Composable
+fun TestingDScreenPreview() {
+    PreperationAppTheme(true) {
         TestingScreen()
     }
 }

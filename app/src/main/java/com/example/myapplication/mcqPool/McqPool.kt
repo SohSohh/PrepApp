@@ -15,6 +15,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,6 +27,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,12 +51,22 @@ fun McqPoolScreen(
     Column(modifier = modifier
         .verticalScroll(rememberScrollState())
         .fillMaxSize()
-        .background(color = Color.Cyan)) {
+        .background(color = MaterialTheme.colorScheme.background)) {
         TextField(value = searchText,
             onValueChange = searchViewModel::onQueryEntered,
-            textStyle = TextStyle(fontSize = 18.sp),
+            textStyle = (TextStyle(
+                color = MaterialTheme.colorScheme.onSecondaryContainer
+            ) + MaterialTheme.typography.displayMedium),
             maxLines = 3,
-            label = { Text(text = "Search questions, subjects, or choices", modifier = Modifier.alpha(0.5f), style = MaterialTheme.typography.headlineMedium) },
+            colors = TextFieldDefaults.colors(
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                errorIndicatorColor = Color.Transparent,
+                errorContainerColor = MaterialTheme.colorScheme.errorContainer,
+                focusedContainerColor = MaterialTheme.colorScheme.inversePrimary,
+                unfocusedContainerColor = MaterialTheme.colorScheme.inversePrimary,
+            ),
+            label = { Text(text = "Search questions, subjects, or choices", modifier = Modifier.alpha(0.65f), style = MaterialTheme.typography.headlineMedium) },
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
                 .fillMaxWidth(),
@@ -72,8 +85,7 @@ fun McqPoolScreen(
         visibleQuestions.forEach() { question ->
                 QuestionCard(
                     modifier = Modifier
-                        .padding(horizontal = 10.dp, vertical = 5.dp)
-                        .background(color = Color.Gray),
+                        .padding(horizontal = 10.dp, vertical = 5.dp),
                     question = question,
                     testScreenViewModel = testScreenViewModel,
                     resultForm = true,
@@ -91,6 +103,14 @@ fun McqPoolScreen(
 @Composable
 fun MCQPoolPreview() {
     PreperationAppTheme {
+        McqPoolScreen()
+    }
+}
+
+@Preview
+@Composable
+fun MCQPoolDPreview() {
+    PreperationAppTheme(true) {
         McqPoolScreen()
     }
 }

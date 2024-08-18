@@ -45,7 +45,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val totalQuestions = testScreenUiState.questions.size
     val correctQuestions = totalQuestions - testScreenUiState.incorrectQuestions.size
-    var displayValue by remember { mutableStateOf(0) }
+    var displayValue by remember { mutableStateOf(3) }
     BackHandler {
         onBackButtonOrGesture()
         testScreenViewModel.enableBars()
@@ -58,7 +58,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
     }
     Column(modifier = modifier
         .fillMaxSize()
-        .background(color = Color.White)
+        .background(color = MaterialTheme.colorScheme.background)
         .verticalScroll(rememberScrollState())) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                 AnimatedVisibility(
@@ -67,6 +67,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
                 ) {
                     Text(
                         text = "Test complete",
+                        color = MaterialTheme.colorScheme.onSurface,
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.padding(top = 15.dp)
                     )
@@ -80,6 +81,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
                 ) {
                     Text(
                         text = "Score: ${correctQuestions}/${totalQuestions}",
+                        color = MaterialTheme.colorScheme.onSurface,
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.padding(top = 5.dp)
                     )
@@ -116,6 +118,13 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
 @Composable
 fun EndPreview() {
     PreperationAppTheme {
+        EndOfTestScreen()
+    }
+}
+@Preview
+@Composable
+fun EndDPreview() {
+    PreperationAppTheme(true) {
         EndOfTestScreen()
     }
 }

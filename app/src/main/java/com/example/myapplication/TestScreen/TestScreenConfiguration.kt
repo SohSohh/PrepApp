@@ -2,6 +2,7 @@ package com.example.myapplication.TestScreen
 
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
+import android.graphics.Color.alpha
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -32,11 +33,16 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchColors
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -86,11 +92,10 @@ fun TestConfigurationScreen(
     val totalQuestions = testScreenUiState.Physics + testScreenUiState.Mathematics + testScreenUiState.Chemistry + testScreenUiState.English + testScreenUiState.Biology + testScreenUiState.Computers + testScreenUiState.Intelligence
     Column(modifier = modifier
         .fillMaxSize()
-        .background(color = Color.White)
+        .background(color = MaterialTheme.colorScheme.background)
         .verticalScroll(rememberScrollState())) {
         Box(
             modifier = modifier
-                .background(color = Color.White)
         ) {
             ConfigurationsList(modifier = Modifier.padding(10.dp),
                 testScreenUiState = testScreenUiState,
@@ -123,9 +128,9 @@ fun NavigationButton(modifier: Modifier = Modifier, text:String, onClick: () -> 
             onClick = onClick,
             modifier = modifier,
             enabled = enabledCondition,
-            colors = ButtonDefaults.buttonColors(disabledContainerColor = ButtonDefaults.buttonColors().containerColor, disabledContentColor = ButtonDefaults.buttonColors().contentColor)
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.inversePrimary, )
         ) {
-            Text(text = text, style = MaterialTheme.typography.displaySmall)
+            Text(text = text, style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
         }
     }
 
@@ -241,20 +246,37 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
 
 @Composable
 fun TextWithSwitch(modifier:Modifier = Modifier, text:String, checkedState:Boolean, onCheckChange:() -> Unit) {
-    Row(modifier = modifier.padding(horizontal = 5.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(
-            text = text,
-            modifier = Modifier.weight(5f),
-            style = MaterialTheme.typography.displayMedium
-        )
-        val onCheckChangedAdapter:(Boolean) -> Unit = {
-            onCheckChange()
+    Card(modifier = modifier, colors = CardDefaults.cardColors(
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        containerColor = MaterialTheme.colorScheme.secondaryContainer
+        )) {
+        Row(
+            modifier = Modifier.padding(horizontal = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = text,
+                modifier = Modifier.weight(5f),
+                style = MaterialTheme.typography.displayMedium,
+                color = MaterialTheme.colorScheme.onSecondaryContainer
+            )
+            val onCheckChangedAdapter: (Boolean) -> Unit = {
+                onCheckChange()
+            }
+            Switch(
+                checked = checkedState,
+                onCheckedChange = onCheckChangedAdapter,
+                modifier = Modifier.weight(1f),
+                colors = SwitchDefaults.colors( checkedThumbColor = MaterialTheme.colorScheme.primary,
+                    uncheckedThumbColor = MaterialTheme.colorScheme.onSurface,
+                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    uncheckedTrackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                    disabledCheckedThumbColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                    disabledUncheckedThumbColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+                    disabledCheckedTrackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
+                    disabledUncheckedTrackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
+            )
         }
-        Switch(
-            checked = checkedState,
-            onCheckedChange = onCheckChangedAdapter,
-            modifier = Modifier.weight(1f)
-        )
     }
 }
 @OptIn(ExperimentalMaterial3Api::class)
@@ -264,7 +286,15 @@ fun TimerInput(modifier: Modifier = Modifier,
                totalQuestions:Int,
                testScreenViewModel: TestScreenViewModel) {
     val time by remember { mutableStateOf(testScreenUiState.Totaltime) }
-    var inputValue by remember { mutableStateOf("${(time/3600).toString().padStart(2, '0')}:${((time%3600)/60).toString().padStart(2, '0')}:${((time%3660)%60).toString().padStart(2, '0')}") }
+    var inputValue by remember {
+        mutableStateOf(
+            "${
+                (time / 3600).toString().padStart(2, '0')
+            }:${((time % 3600) / 60).toString().padStart(2, '0')}:${
+                ((time % 3660) % 60).toString().padStart(2, '0')
+            }"
+        )
+    }
     var absoluteTime by remember { mutableStateOf(0) }
     var limitError by remember { mutableStateOf(false) }
     fun sanitizeInput(input: String): String {
@@ -277,62 +307,91 @@ fun TimerInput(modifier: Modifier = Modifier,
         absoluteTime = hours.toInt() * 3600 + minutes.toInt() * 60 + seconds.toInt()
         return "$hours:$minutes:$seconds"
     }
+
     val interactionSource = remember { MutableInteractionSource() }
     var minutesText = if ((testScreenUiState.Totaltime / 60) / totalQuestions == 1) {
-            "minute"
+        "minute"
     } else {
-            "minutes"
-        }
-
-    Row(modifier = modifier.padding(vertical = 0.0f.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(text = "Total time", modifier = Modifier, style = MaterialTheme.typography.displayMedium)
-        Spacer(modifier = Modifier.weight(1f))
-        BasicTextField(value = inputValue,
-            onValueChange = remember { { newValue ->
-                // Ensure the format is always MM:SS
-                val sanitizedInput = sanitizeInput(newValue)
-                inputValue = sanitizedInput
-            } },
-            modifier = modifier
-                .requiredWidth(120.dp)
-                .align(Alignment.CenterVertically),
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done
-            ),
-            keyboardActions = KeyboardActions(onDone = remember { {
-                if (absoluteTime > 0) {
-                    limitError = false
-                } else {
-                    limitError = true
-                }
-                testScreenViewModel.assignTimer(absoluteTime)
-            } }),
-            singleLine = true,
-            interactionSource = interactionSource,
-            textStyle = (TextStyle(textAlign = TextAlign.Center, fontSize = 20.sp, lineHeight = 15.sp) + MaterialTheme.typography.displayMedium)
-        ) { innerTextField ->
-            TextFieldDefaults.DecorationBox(
-                value = inputValue,
-                innerTextField = innerTextField,
-                supportingText = {
-                    Text(text = "${(testScreenUiState.Totaltime / 60) / totalQuestions} ${minutesText} per question", style = MaterialTheme.typography.labelMedium + TextStyle(textAlign = TextAlign.Center), modifier = Modifier
-                    .padding(0.dp)
-                    .fillMaxWidth()) },
-                enabled = true,
-                singleLine = true,
-                isError = limitError,
-                visualTransformation = VisualTransformation.None,
-                interactionSource = interactionSource,
-                shape = RoundedCornerShape(15.dp),
-                colors = TextFieldDefaults.colors(
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    errorIndicatorColor = Color.Transparent,
-                    errorContainerColor = MaterialTheme.colorScheme.errorContainer,
-                ),
-                contentPadding = PaddingValues(5.dp)
+        "minutes"
+    }
+    Card(modifier = modifier, colors = CardColors(MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSurfaceVariant, MaterialTheme.colorScheme.surfaceVariant,MaterialTheme.colorScheme.onSurfaceVariant)) {
+        Row(
+            modifier = Modifier.padding(horizontal = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Duration",
+                modifier = Modifier,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                style = MaterialTheme.typography.displayMedium
             )
+            Spacer(modifier = Modifier.weight(1f))
+            BasicTextField(
+                value = inputValue,
+                onValueChange = remember {
+                    { newValue ->
+                        // Ensure the format is always MM:SS
+                        val sanitizedInput = sanitizeInput(newValue)
+                        inputValue = sanitizedInput
+                    }
+                },
+                modifier = modifier
+                    .padding(vertical = 3.dp)
+                    .requiredWidth(120.dp)
+                    .align(Alignment.CenterVertically),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(onDone = remember {
+                    {
+                        if (absoluteTime > 0) {
+                            limitError = false
+                        } else {
+                            limitError = true
+                        }
+                        testScreenViewModel.assignTimer(absoluteTime)
+                    }
+                }),
+                singleLine = true,
+                interactionSource = interactionSource,
+                textStyle = (TextStyle(
+                    textAlign = TextAlign.Center,
+                    fontSize = 20.sp,
+                    lineHeight = 15.sp,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                ) + MaterialTheme.typography.displayMedium)
+            ) { innerTextField ->
+                TextFieldDefaults.DecorationBox(
+                    value = inputValue,
+                    innerTextField = innerTextField,
+                    supportingText = {
+                        Text(
+                            text = "${(testScreenUiState.Totaltime / 60) / totalQuestions} ${minutesText} per question" ,
+                            style = MaterialTheme.typography.labelMedium + TextStyle(textAlign = TextAlign.Center),
+                            modifier = Modifier
+                                .padding(0.dp)
+                                .fillMaxWidth(),
+                        )
+                    },
+                    enabled = true,
+                    singleLine = true,
+                    isError = limitError,
+                    visualTransformation = VisualTransformation.None,
+                    interactionSource = interactionSource,
+                    shape = RoundedCornerShape(15.dp),
+                    colors = TextFieldDefaults.colors(
+                        unfocusedIndicatorColor = Color.Transparent,
+                        focusedIndicatorColor = Color.Transparent,
+                        errorIndicatorColor = Color.Transparent,
+                        errorContainerColor = MaterialTheme.colorScheme.errorContainer,
+                        focusedContainerColor = MaterialTheme.colorScheme.inversePrimary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.inversePrimary,
+                        unfocusedTextColor = Color.White
+                    ),
+                    contentPadding = PaddingValues(5.dp)
+                )
+            }
         }
     }
 }
@@ -345,7 +404,7 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                       type: subjects,
                       testScreenViewModel: TestScreenViewModel,
                       questionLimit:Int = 0) {
-    val subject = when(type) {
+    val subject = when (type) {
         subjects.Physics -> testScreenUiState.Physics
         subjects.Mathematics -> testScreenUiState.Mathematics
         subjects.Chemistry -> testScreenUiState.Chemistry
@@ -358,14 +417,14 @@ fun TextWithTextField(modifier:Modifier = Modifier,
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     var limitError by remember { mutableStateOf(false) }
-    val onValChangeAdapter:(String) -> Unit = remember {
+    val onValChangeAdapter: (String) -> Unit = remember {
         {
             if (it.length <= questionLimit) {
                 inputValue = it
             }
         }
     }
-    val onDoneAdapter:KeyboardActionScope.() -> Unit = remember {
+    val onDoneAdapter: KeyboardActionScope.() -> Unit = remember {
         {
             if (inputValue.toInt() > questionLimit) {
                 limitError = true
@@ -378,29 +437,46 @@ fun TextWithTextField(modifier:Modifier = Modifier,
         }
     }
     val interactionSource = remember { MutableInteractionSource() }
-    Row(modifier = modifier.padding(vertical = 0.0f.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(text = text, modifier = Modifier, style = MaterialTheme.typography.displayMedium)
+    Card(modifier = modifier, colors = CardColors(MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSurfaceVariant, MaterialTheme.colorScheme.surfaceVariant,MaterialTheme.colorScheme.onSurfaceVariant)) {
+        Row(
+            modifier = Modifier.padding(horizontal = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = text, modifier = Modifier, style = MaterialTheme.typography.displayMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
             Spacer(modifier = Modifier.weight(1f))
-            BasicTextField(value = inputValue,
+            BasicTextField(
+                value = inputValue,
                 onValueChange = onValChangeAdapter,
                 modifier = modifier
+                    .padding(vertical = 3.dp)
                     .requiredWidth(80.dp)
                     .align(Alignment.CenterVertically),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done
-                    ),
+                ),
                 keyboardActions = KeyboardActions(onDone = onDoneAdapter),
                 singleLine = true,
                 interactionSource = interactionSource,
-                textStyle = (TextStyle(textAlign = TextAlign.Center, fontSize = 20.sp, lineHeight = 15.sp) + MaterialTheme.typography.displayMedium)
-                ) { innerTextField ->
+                textStyle = (TextStyle(
+                    textAlign = TextAlign.Center,
+                    fontSize = 20.sp,
+                    lineHeight = 15.sp,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                ) + MaterialTheme.typography.displayMedium)
+            ) { innerTextField ->
                 TextFieldDefaults.DecorationBox(
                     value = inputValue,
                     innerTextField = innerTextField,
-                    supportingText = { Text(text = "Limit: ${questionLimit}", style = MaterialTheme.typography.labelMedium, modifier = Modifier
-                        .padding(0.dp)
-                        .fillMaxWidth()) },
+                    supportingText = {
+                        Text(
+                            text = "Limit: ${questionLimit}",
+                            style = MaterialTheme.typography.labelMedium,
+                            modifier = Modifier
+                                .padding(0.dp)
+                                .fillMaxWidth()
+                        )
+                    },
                     enabled = true,
                     singleLine = true,
                     visualTransformation = VisualTransformation.None,
@@ -412,11 +488,13 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                         focusedIndicatorColor = Color.Transparent,
                         errorIndicatorColor = Color.Transparent,
                         errorContainerColor = MaterialTheme.colorScheme.errorContainer,
+                        focusedContainerColor = MaterialTheme.colorScheme.inversePrimary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.inversePrimary,
                     ),
                     contentPadding = PaddingValues(5.dp)
                 )
             }
-    }
+        }
 //    modifier = modifier
 //        .weight(1f)
 //        .requiredWidth(75.dp)
@@ -439,11 +517,20 @@ fun TextWithTextField(modifier:Modifier = Modifier,
 //    shape = RoundedCornerShape(15.dp),
 //    textStyle = TextStyle(textAlign = TextAlign.Center, fontSize = 20.sp, lineHeight = 15.sp) + MaterialTheme.typography.displayMedium,
 
+    }
 }
 @Preview
 @Composable
-fun PreviewApp() {
+fun PreviewLightApp() {
     PreperationAppTheme {
+        TestConfigurationScreen()
+    }
+}
+
+@Preview
+@Composable
+fun PreviewDarkApp() {
+    PreperationAppTheme(darkTheme = true) {
         TestConfigurationScreen()
     }
 }
