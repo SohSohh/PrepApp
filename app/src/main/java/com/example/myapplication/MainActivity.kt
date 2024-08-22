@@ -14,6 +14,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.example.compose.PreperationAppTheme
+import com.example.myapplication.TestScreen.TestConfigurationScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,7 @@ class MainActivity : ComponentActivity() {
 
             PreperationAppTheme {
                 if (isInternetAvailable.value) {
-                    MainApp()
+                    TestConfigurationScreen()
                 } else {
                     InternetError()
                 }

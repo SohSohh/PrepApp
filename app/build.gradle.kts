@@ -58,8 +58,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
-
+    //Retrofit
+    implementation(libs.retrofit)
     implementation(libs.rebugger)
+    implementation(libs.converter.gson)
     //Material3
     implementation(libs.material3)
     implementation(libs.androidx.material3.adaptive.navigation.suite)

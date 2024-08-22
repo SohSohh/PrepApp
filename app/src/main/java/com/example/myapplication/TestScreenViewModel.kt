@@ -1,6 +1,9 @@
 package com.example.myapplication
 
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.dataAndNetwork.Api
 import com.example.myapplication.dataAndNetwork.allQuestionsSet
 import com.example.myapplication.dataAndNetwork.question
 import com.example.myapplication.dataAndNetwork.subjects
@@ -10,6 +13,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.properties.Delegates
 
 
@@ -18,6 +24,7 @@ data class TestScreenUiState(
     val repeatPreviouslyAttemptedQuestions:Boolean = false,
     var questions:List<question> = mutableListOf(),
     var answers:List<String> = mutableListOf(),
+    var limitList:List<Int> = mutableListOf(-1,-1,-1,-1,-1,-1,-1),
     var selection:String = "",
     var currentQuestion:Int = 0,
     var currentSubjectIndex:Int = 0, // CHECK LINE 59 AND 133, IT'S THE INDEX IN THE ALLSUBJECTS LIST IT ENABLE NAVIGATION BETWEEN SUBJECTS
@@ -209,7 +216,32 @@ class TestScreenViewModel():ViewModel() {
             )
         }
     }
+    suspend fun getLimits() {
+        var limitList = emptyList<Int>()
+        coroutineScope {
+            launch {
+                Api.getLimits().enqueue(object: Callback<List<Int>> {
+                    override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
+                        if (response.isSuccessful) {
+                            limitList = response.body() ?: mutableListOf(-5,-5,-5,-5,-5,-5)
+                        } else {
+                            limitList = mutableListOf(-5,-5,-5,-5,-5,-5)
+                        }
+                    }
 
+                    override fun onFailure(call: Call<List<Int>>, t: Throwable) {
+                        limitList = mutableListOf(-1, -1, -1, -1, -1, -1, -1)
+                    }
+                })
+
+            }
+        }
+        _uiState.update { currentState ->
+            currentState.copy(
+                limitList = limitList
+            )
+        }
+    }
     fun previousQuestion() {
         _uiState.update { currentState ->
             lateinit var newAnswer:List<String>

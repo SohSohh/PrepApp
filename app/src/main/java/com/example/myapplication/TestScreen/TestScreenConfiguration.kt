@@ -49,6 +49,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TimeInput
 import androidx.compose.material3.TimePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -74,11 +75,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreenUiState
 import com.example.myapplication.TestScreenViewModel
+import com.example.myapplication.dataAndNetwork.Api
 import com.example.myapplication.dataAndNetwork.allQuestionsSet
 import com.example.myapplication.dataAndNetwork.englishQ
 import com.example.myapplication.dataAndNetwork.mathsQ
 import com.example.myapplication.dataAndNetwork.physicsQ
 import com.example.myapplication.dataAndNetwork.subjects
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -176,16 +182,14 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
         TextWithTextField(text = "Total Physics questions",
             testScreenUiState = testScreenUiState,
             type = subjects.Physics,
-            testScreenViewModel = testScreenViewModel,
-            questionLimit = physicsQ.size)
+            testScreenViewModel = testScreenViewModel,)
         //-------------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //-----------
         TextWithTextField(text = "Total Mathematics questions",
             testScreenUiState = testScreenUiState,
             type = subjects.Mathematics,
-            testScreenViewModel = testScreenViewModel,
-            questionLimit = mathsQ.size)
+            testScreenViewModel = testScreenViewModel,)
         //-------------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //-----------
@@ -199,8 +203,7 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
         TextWithTextField(text = "Total English questions",
             testScreenUiState = testScreenUiState,
             type = subjects.English,
-            testScreenViewModel = testScreenViewModel,
-            questionLimit = englishQ.size)
+            testScreenViewModel = testScreenViewModel,)
         //-------------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //-----------
@@ -396,37 +399,59 @@ fun TimerInput(modifier: Modifier = Modifier,
     }
 }
 
+@SuppressLint("CoroutineCreationDuringComposition", "MutableCollectionMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextWithTextField(modifier:Modifier = Modifier,
                       text:String,
                       testScreenUiState: TestScreenUiState,
                       type: subjects,
-                      testScreenViewModel: TestScreenViewModel,
-                      questionLimit:Int = 0) {
-    val subject = when (type) {
-        subjects.Physics -> testScreenUiState.Physics
-        subjects.Mathematics -> testScreenUiState.Mathematics
-        subjects.Chemistry -> testScreenUiState.Chemistry
-        subjects.Biology -> testScreenUiState.Biology
-        subjects.English -> testScreenUiState.English
-        subjects.Intelligence -> testScreenUiState.Intelligence
-        subjects.Computers -> testScreenUiState.Computers
+                      testScreenViewModel: TestScreenViewModel) {
+    rememberCoroutineScope().launch {
+        testScreenViewModel.getLimits()
     }
-    var inputValue by remember { mutableStateOf(subject.toString()) }
+    var list by remember { mutableStateOf(mutableListOf(0,0,0,0,0,0,0)) }
+    LaunchedEffect(Unit) {
+        launch {
+            Api.getLimits().enqueue(object: Callback<List<Int>> {
+                override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
+                    if (response.isSuccessful) {
+                        list = response.body()?.toMutableList() ?: mutableListOf(-5,-5,-5,-5,-5,-5)
+                    } else {
+                        list = mutableListOf(-5,-5,-5,-5,-5,-5)
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Int>>, t: Throwable) {
+                    list = mutableListOf(-1, -1, -1, -1, -1, -1, -1)
+                }
+            })
+
+        }
+    }
+    val subjectSize by remember {when (type) {
+        subjects.Physics -> mutableStateOf(list[6])
+        subjects.Mathematics -> mutableStateOf(list[5])
+        subjects.Chemistry -> mutableStateOf(list[1])
+        subjects.Biology -> mutableStateOf(list[0])
+        subjects.English -> mutableStateOf(list[3])
+        subjects.Intelligence -> mutableStateOf(list[4])
+        subjects.Computers -> mutableStateOf(list[2])
+    } }
+    var inputValue by remember { mutableStateOf(subjectSize.toString()) }
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     var limitError by remember { mutableStateOf(false) }
     val onValChangeAdapter: (String) -> Unit = remember {
         {
-            if (it.length <= questionLimit) {
+            if (it.length <= 3) {
                 inputValue = it
             }
         }
     }
     val onDoneAdapter: KeyboardActionScope.() -> Unit = remember {
         {
-            if (inputValue.toInt() > questionLimit) {
+            if (inputValue.toInt() > subjectSize) {
                 limitError = true
             } else {
                 limitError = false
@@ -470,7 +495,7 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                     innerTextField = innerTextField,
                     supportingText = {
                         Text(
-                            text = "Limit: ${questionLimit}",
+                            text = "Limit: ${subjectSize}",
                             style = MaterialTheme.typography.labelMedium,
                             modifier = Modifier
                                 .padding(0.dp)
