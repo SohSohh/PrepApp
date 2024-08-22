@@ -48,7 +48,7 @@ fun FontTest() {
 
 // Use LaunchedEffect to start the coroutine when the composable is first launched
     LaunchedEffect(Unit) {
-        Api.getQuestions(1,1,1,1,1,1,1).enqueue(object : Callback<List<question>> {
+        Api.getQuestions(0,0,0,0,0,0,1).enqueue(object : Callback<List<question>> {
             override fun onResponse(call: Call<List<question>>, response: Response<List<question>>) {
                 if (response.isSuccessful) {
                     questionList = response.body() ?: emptyList()
@@ -64,24 +64,9 @@ fun FontTest() {
         })
     }
 
-    var limitList by remember { mutableStateOf(emptyList<Int>()) }
-    LaunchedEffect(Unit) {
-        launch {
-            Api.getLimits().enqueue(object: Callback<List<Int>> {
-                override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
-                    if (response.isSuccessful) {
-                        limitList = response.body() ?: mutableListOf(-5,-5,-5,-5,-5,-5)
-                    } else {
-                        limitList = mutableListOf(-5,-5,-5,-5,-5,-5)
-                    }
-                }
-
-                override fun onFailure(call: Call<List<Int>>, t: Throwable) {
-                    limitList = mutableListOf(-1, -1, -1, -1, -1, -1, -1)
-                }
-            })
-
-        }
+    val limitList = uiState.limitList
+    LaunchedEffect(key1 = Unit) {
+        testScreenViewModel.getLimits()
     }
 
     Column(modifier = Modifier
@@ -96,8 +81,10 @@ fun FontTest() {
         Text(text = "This is a sample choice", style = MaterialTheme.typography.bodySmall)
         Spacer(modifier = Modifier.height(20.dp))
         Text(text = "This is a configuration line", style = MaterialTheme.typography.displayMedium)
-        Text(text = limitList.toString(), style = MaterialTheme.typography.displayMedium)
-        Spacer(modifier = Modifier.weight(1f))
+        Text(text = requestText, style = MaterialTheme.typography.displayMedium)
+        Text(text = "---------------")
+//        Text(text = physicsQ[0].toString(), style = MaterialTheme.typography.displayMedium)
+//        Spacer(modifier = Modifier.weight(1f))
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp), horizontalArrangement = Arrangement.SpaceEvenly) {

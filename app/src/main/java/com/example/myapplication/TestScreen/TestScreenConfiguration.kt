@@ -51,6 +51,7 @@ import androidx.compose.material3.TimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -58,6 +59,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
@@ -77,9 +79,6 @@ import com.example.myapplication.TestScreenUiState
 import com.example.myapplication.TestScreenViewModel
 import com.example.myapplication.dataAndNetwork.Api
 import com.example.myapplication.dataAndNetwork.allQuestionsSet
-import com.example.myapplication.dataAndNetwork.englishQ
-import com.example.myapplication.dataAndNetwork.mathsQ
-import com.example.myapplication.dataAndNetwork.physicsQ
 import com.example.myapplication.dataAndNetwork.subjects
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -310,7 +309,8 @@ fun TimerInput(modifier: Modifier = Modifier,
         absoluteTime = hours.toInt() * 3600 + minutes.toInt() * 60 + seconds.toInt()
         return "$hours:$minutes:$seconds"
     }
-
+    val currentKeybaord = LocalSoftwareKeyboardController.current
+    val currentFocus = LocalFocusManager.current
     val interactionSource = remember { MutableInteractionSource() }
     var minutesText = if ((testScreenUiState.Totaltime / 60) / totalQuestions == 1) {
         "minute"
@@ -354,6 +354,8 @@ fun TimerInput(modifier: Modifier = Modifier,
                             limitError = true
                         }
                         testScreenViewModel.assignTimer(absoluteTime)
+                        currentFocus.clearFocus()
+                        currentKeybaord?.hide()
                     }
                 }),
                 singleLine = true,
@@ -429,15 +431,20 @@ fun TextWithTextField(modifier:Modifier = Modifier,
 
         }
     }
-    val subjectSize by remember {when (type) {
-        subjects.Physics -> mutableStateOf(list[6])
-        subjects.Mathematics -> mutableStateOf(list[5])
-        subjects.Chemistry -> mutableStateOf(list[1])
-        subjects.Biology -> mutableStateOf(list[0])
-        subjects.English -> mutableStateOf(list[3])
-        subjects.Intelligence -> mutableStateOf(list[4])
-        subjects.Computers -> mutableStateOf(list[2])
-    } }
+    val subjectSize by remember(list) {
+        derivedStateOf {
+            when (type) {
+                subjects.Physics -> list[6]
+                subjects.Mathematics -> list[5]
+                subjects.Chemistry -> list[1]
+                subjects.Biology -> list[0]
+                subjects.English -> list[3]
+                subjects.Intelligence -> list[4]
+                subjects.Computers -> list[2]
+            }
+        }
+    }
+
     var inputValue by remember { mutableStateOf(subjectSize.toString()) }
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
@@ -451,7 +458,10 @@ fun TextWithTextField(modifier:Modifier = Modifier,
     }
     val onDoneAdapter: KeyboardActionScope.() -> Unit = remember {
         {
-            if (inputValue.toInt() > subjectSize) {
+            if (inputValue.toIntOrNull() == null) {
+                inputValue = "0"
+            }
+            if (inputValue.toIntOrNull()!! > subjectSize && inputValue.toIntOrNull()!! > 0) {
                 limitError = true
             } else {
                 limitError = false

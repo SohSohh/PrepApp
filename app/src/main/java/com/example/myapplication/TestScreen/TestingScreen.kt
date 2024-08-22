@@ -42,7 +42,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreenUiState
 import com.example.myapplication.TestScreenViewModel
-import com.example.myapplication.dataAndNetwork.physicsQ
 import com.example.myapplication.dataAndNetwork.question
 import com.example.myapplication.dataAndNetwork.subjects
 import kotlinx.coroutines.delay
@@ -62,8 +61,8 @@ fun TestingScreen(
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
     //TEST DUMMY VALUES
-    testScreenUiState.questions = physicsQ
-    testScreenUiState.currentQuestion = 1
+//    testScreenUiState.questions = physicsQ
+//    testScreenUiState.currentQuestion = 1
     //-----------------------
     BackHandler {
         navController.popBackStack()

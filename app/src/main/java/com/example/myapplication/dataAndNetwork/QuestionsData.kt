@@ -1,5 +1,18 @@
 package com.example.myapplication.dataAndNetwork
 
+import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.sqlite.db.SupportSQLiteOpenHelper
+import com.example.myapplication.TestScreenViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+
 enum class subjects() {
     Physics, Mathematics, Chemistry, Biology, English, Intelligence, Computers
 }
@@ -21,26 +34,54 @@ data class question(
     }
 }
 
-var physicsQ:List<question> = mutableListOf(
-    question("Physics test q1", listOf("It shouldn't work, also I forgot to test the multiline feature oops", "Okay, I feel like this might be an issue I overlooked", "C", "D"), "Okay, I feel like this might be an issue I overlooked", subjects.Physics),
-    question("Physics test q2", listOf("E", "F", "G", "H"), "H", subjects.Physics),
-    question("Physics test q3", listOf("P", "Q", "R", "S"), "Q", subjects.Physics)
-)
+var allQuestionsSet: List<List<question>> = emptyList()
 
-var dummyTestingQuestions:List<question> = mutableListOf(
-    question("dummy (PHY) test q1", listOf("A", "B", "C", "D"), "B", subjects.Physics),
-    question("dummy (MATH) test q2", listOf("E", "F", "G", "H"), "H", subjects.Mathematics),
-    question("dummy (ENG) q3", listOf("P", "Q", "R", "S"), "Q", subjects.English)
-)
-var mathsQ:List<question> = mutableListOf(
-    question("Mathematics test q1 oh wow im testing the maximum line width that's weird", listOf("1", "2", "3", "4"), "2", subjects.Mathematics),
-    question("mathematics test q2", listOf("5", "4", "2", "3"), "4", subjects.Mathematics)
-)
-var englishQ:List<question> = mutableListOf(
-    question("(ENG) q1", listOf("P", "Q", "R", "S"), "Q", subjects.English),
-    question("(ENG) q2", listOf("T", "U", "V", "W"), "W", subjects.English),
-    question("() q3", listOf("L", "Z", "Y", "X"), "L", subjects.English)
-)
-var allQuestionsSet:List<List<question>> = mutableListOf( // MAKE SURE IT FOLLOWS THE SAME ORDER AS IN LINE 129 OF VIEWMODEL
-    physicsQ, mathsQ, englishQ
-)
+suspend fun fetchAndStoreQuestions() {
+    withContext(Dispatchers.IO) {
+        try {
+            // Fetch questions from API
+            val physicsQ = Api.getQuestions(phy = -1).awaitResponse()
+            val mathsQ = Api.getQuestions(math = -1).awaitResponse()
+            val englishQ = Api.getQuestions(eng = -1).awaitResponse()
+            val biologyQ = Api.getQuestions(bio = -1).awaitResponse()
+            val intelligenceQ = Api.getQuestions(intel = -1).awaitResponse()
+            val chemistryQ = Api.getQuestions(chem = -1).awaitResponse()
+            val computerQ = Api.getQuestions(comp = -1).awaitResponse()
+            allQuestionsSet = mutableListOf(physicsQ,
+                mathsQ,
+                englishQ,
+                biologyQ,
+                intelligenceQ,
+                chemistryQ,
+                computerQ)
+        } catch (e: Exception) {
+            // Handle exceptions
+            println("Error fetching data: ${e.message}")
+        }
+    }
+}
+suspend fun <T> Call<T>.awaitResponse(): T {
+    return suspendCancellableCoroutine { continuation ->
+        enqueue(object : Callback<T> {
+            override fun onResponse(call: Call<T>, response: Response<T>) {
+                if (response.isSuccessful) {
+                    continuation.resume(response.body()!!)
+                } else {
+                    continuation.resumeWithException(Exception("API call failed with error code: ${response.code()}"))
+                }
+            }
+
+            override fun onFailure(call: Call<T>, t: Throwable) {
+                continuation.resumeWithException(t)
+            }
+        })
+
+        continuation.invokeOnCancellation {
+            try {
+                cancel()
+            } catch (e: Exception) {
+                // Ignore cancellation exceptions
+            }
+        }
+    }
+}

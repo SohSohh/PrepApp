@@ -8,7 +8,7 @@ import retrofit2.http.Path
 
 public interface questionApi {
     @GET("test/{bio}/{chem}/{comp}/{eng}/{intel}/{math}/{phy}/")
-    fun getQuestions(@Path("bio")bio:Int, @Path("chem")chem:Int,@Path("comp")comp:Int, @Path("eng")eng:Int, @Path("intel")intel:Int, @Path("math")math:Int, @Path("phy")phy:Int):Call<List<question>>
+    fun getQuestions(@Path("bio")bio:Int = 0, @Path("chem")chem:Int = 0,@Path("comp")comp:Int = 0, @Path("eng")eng:Int = 0, @Path("intel")intel:Int = 0, @Path("math")math:Int = 0, @Path("phy")phy:Int = 0):Call<List<question>>
 
     @GET("test/limits/")
     fun getLimits():Call<List<Int>>
