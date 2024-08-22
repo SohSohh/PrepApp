@@ -1,0 +1,155 @@
+[
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "This question was integrated from the fixture",
+			"choices":["Alpha", "Beta", "Gamma", "Delta"],
+			"answer":"Beta",
+			"subject":"Mathematics"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "second maths",
+			"choices":["Alpha", "Beta", "Gamma", "Delta"],
+			"answer":"Beta",
+			"subject":"Mathematics"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "thirds maths",
+			"choices":["Alpha", "Beta", "Gamma", "Delta"],
+			"answer":"Beta",
+			"subject":"Mathematics"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "This question was integrated from the fixture",
+			"choices":["Alpha2", "Beta2", "Gamma2", "Delta2"],
+			"answer":"Beta2",
+			"subject":"Physics"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "second physics",
+			"choices":["Alpha2", "Beta2", "Gamma2", "Delta2"],
+			"answer":"Beta2",
+			"subject":"Physics"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "third physics",
+			"choices":["Alpha2", "Beta2", "Gamma2", "Delta2"],
+			"answer":"Beta2",
+			"subject":"Physics"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "first english",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"English"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "second english",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"English"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "third english",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"English"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Biology"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing2",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Biology"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Computers"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing2",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Computers"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Intelligence"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing2",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Intelligence"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Chemistry"
+		}
+	},
+	{
+		"model":"question.Questions",
+		"fields": {
+			"question": "testing2",
+			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
+			"answer":"Beta3",
+			"subject":"Chemistry"
+		}
+	}
+]
