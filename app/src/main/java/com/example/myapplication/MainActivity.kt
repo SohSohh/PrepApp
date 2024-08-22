@@ -10,11 +10,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreen.TestConfigurationScreen
+import com.example.myapplication.dataAndNetwork.fetchAndStoreQuestions
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +49,11 @@ class MainActivity : ComponentActivity() {
             }
 
             PreperationAppTheme {
+                LaunchedEffect(key1 = Unit) {
+                    fetchAndStoreQuestions()
+                }
                 if (isInternetAvailable.value) {
-                    TestConfigurationScreen()
+                    MainApp()
                 } else {
                     InternetError()
                 }

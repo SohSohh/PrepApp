@@ -15,12 +15,16 @@ def get_questions(request,biology_n:int, chemistry_n:int, computers_n:int, engli
     data = []
     for i, subject_quantity in enumerate(questions_per_subject):
         filtered_list = [question for question in allQuestions if question["subject"] == subjects[i]]
-        for _ in range(subject_quantity):
-            if filtered_list:  # Ensure there's at least one question in the filtered list
-                addedQuestion = random.choice(filtered_list)
-                while addedQuestion in data:
-                    addedQuestion = random.choice(filtered_list)
-                data.append(addedQuestion)
+        if subject_quantity >= 0:
+            for _ in range(subject_quantity):
+                    if filtered_list:  # Ensure there's at least one question in the filtered list
+                        addedQuestion = random.choice(filtered_list)
+                        while addedQuestion in data:
+                            addedQuestion = random.choice(filtered_list)
+                        data.append(addedQuestion)
+        else:
+            data = data + filtered_list
+
 
     return JsonResponse(data, safe=False, json_dumps_params={"indent": 4})
 

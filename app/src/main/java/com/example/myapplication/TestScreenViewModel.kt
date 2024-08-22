@@ -3,19 +3,24 @@ package com.example.myapplication
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.myapplication.dataAndNetwork.Api
 import com.example.myapplication.dataAndNetwork.allQuestionsSet
 import com.example.myapplication.dataAndNetwork.question
 import com.example.myapplication.dataAndNetwork.subjects
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 import kotlin.properties.Delegates
 
 
@@ -57,7 +62,6 @@ data class TestScreenUiState(
 class TestScreenViewModel():ViewModel() {
     private val _uiState = MutableStateFlow(TestScreenUiState())
     val uiState: StateFlow<TestScreenUiState> = _uiState.asStateFlow()
-
 
 
     val toggleShowCorrectAndIncorrect = {
@@ -216,32 +220,6 @@ class TestScreenViewModel():ViewModel() {
             )
         }
     }
-    suspend fun getLimits() {
-        var limitList = emptyList<Int>()
-        coroutineScope {
-            launch {
-                Api.getLimits().enqueue(object: Callback<List<Int>> {
-                    override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
-                        if (response.isSuccessful) {
-                            limitList = response.body() ?: mutableListOf(-5,-5,-5,-5,-5,-5)
-                        } else {
-                            limitList = mutableListOf(-5,-5,-5,-5,-5,-5)
-                        }
-                    }
-
-                    override fun onFailure(call: Call<List<Int>>, t: Throwable) {
-                        limitList = mutableListOf(-1, -1, -1, -1, -1, -1, -1)
-                    }
-                })
-
-            }
-        }
-        _uiState.update { currentState ->
-            currentState.copy(
-                limitList = limitList
-            )
-        }
-    }
     fun previousQuestion() {
         _uiState.update { currentState ->
             lateinit var newAnswer:List<String>
@@ -305,7 +283,7 @@ class TestScreenViewModel():ViewModel() {
 
     fun initializeQuestions() {
         _uiState.update { currentState ->
-            val questionList = mutableListOf<question>()
+            var questionList = mutableListOf<question>()
             val allSubjectQuantity = listOf(
                 currentState.Physics,
                 currentState.Mathematics,
@@ -419,5 +397,50 @@ class TestScreenViewModel():ViewModel() {
                 )
             }
         }
+    // THIS FUNCTION IS TO HANDLE ANY API CALLS FROM RETROFIT!!
+    @OptIn(ExperimentalCoroutinesApi::class)
+    suspend fun <T> Call<T>.awaitResponse(): T {
+        return suspendCancellableCoroutine { continuation ->
+            enqueue(object : Callback<T> {
+                override fun onResponse(call: Call<T>, response: Response<T>) {
+                    if (response.isSuccessful) {
+                        continuation.resume(response.body()!!)
+                    } else {
+                        continuation.resumeWithException(Exception("API call failed with error code: ${response.code()}"))
+                    }
+                }
+
+                override fun onFailure(call: Call<T>, t: Throwable) {
+                    continuation.resumeWithException(t)
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    cancel()
+                } catch (e: Exception) {
+                    // Ignore cancellation exceptions
+                }
+            }
+        }
+    }
+    //Get limits for each subjects
+    fun getLimits() {
+        var limitList = emptyList<Int>()
+        viewModelScope.launch {
+            try {
+                val response = Api.getLimits().awaitResponse()
+                    limitList = response
+            } catch (e: Exception) {
+                //Ignore
+            }
+            _uiState.update {
+                current ->
+                current.copy(
+                    limitList = limitList
+                )
+            }
+        }
+    }
     }
 

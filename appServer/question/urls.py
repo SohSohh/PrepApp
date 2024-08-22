@@ -1,11 +1,14 @@
-from django.urls import path
-from . import views
+from django.urls import path, register_converter
+from . import views, converters
 
+register_converter(converters.NegativeIntConverter, 'negint')
 urlpatterns = [
     path(
-        "<int:biology_n>/<int:chemistry_n>/<int:computers_n>/<int:english_n>/<int:intelligence_n>/<int:mathematics_n>/<int:physics_n>/",
+        "<negint:biology_n>/<negint:chemistry_n>/<negint:computers_n>/<negint:english_n>/<negint:intelligence_n>/<negint:mathematics_n>/<negint:physics_n>/",
         views.get_questions,
         name="question_access"
     ),
     path("limits/", views.get_limits_for_questions, name="qusetion_limits")
 ]
+
+
