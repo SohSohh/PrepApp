@@ -8,12 +8,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
-
-
 class SearchViewModel: ViewModel() {
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
-
     private val _visibleQuestions = MutableStateFlow(allQuestionsSet.flatten())
     val visibleQuestions = searchText.combine(_visibleQuestions.asStateFlow()) {text, questions ->
         if (text.isBlank()) {
@@ -30,5 +27,10 @@ class SearchViewModel: ViewModel() {
     )
     fun onQueryEntered(text:String) {
         _searchText.value = text
+    }
+    fun updateVisibleQuestion() {
+        if (_visibleQuestions.value != allQuestionsSet.flatten()) {
+            _visibleQuestions.value = allQuestionsSet.flatten()
+        }
     }
 }

@@ -280,6 +280,15 @@ class TestScreenViewModel():ViewModel() {
             )
         }
     }
+    suspend fun initializeLimits() {
+        val limits = Api.getLimits().awaitResponse()
+        _uiState.update{
+            currentState->
+            currentState.copy(
+                limitList = limits
+            )
+        }
+    }
 
     fun initializeQuestions() {
         _uiState.update { currentState ->

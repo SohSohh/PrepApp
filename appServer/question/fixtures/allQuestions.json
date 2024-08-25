@@ -1,103 +1,105 @@
 [
-{
-"model": "question.Questions",
-"fields": {
-"question": "Which of the following is the associative law for the sets",
-"choices": ["A u (B u C) : (A u B) n C", "A u (B u C) : A n (B u C)", "A u (B u C) = (A u 0) u C", "None of these"],
-"answer": "A u (B u C) = (A u B) u C",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "If A and B, B and Care overlapping sets while A and Care disjoint sets. Which of the following can represent the sets A, Band C:",
-"choices": ["A = Set of Natural Numbers, B = Set of Even Integers, C = Set of Odd Integers", "A = Set of squares of natural number, B = Set of Even Natural Numbers, C = Set of Rational Numbers", "A= Set of Rational Numbers, B = Set of Real Numbers, C = Set of Irrational Numbers", "None of these"],
-"answer": "A= Set of Rational Numbers, B = Set of Real Numbers, C = Set of Irrational Numbers",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "If An B =Au B, what you can say about sets A and B?",
-"choices": ["A and B are disjoint sets", "A and Bare overlapping sets", "A Is subset of B", "A and Bare equal sets"],
-"answer": "A and Bare equal sets",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "If A Is subset of B then Bis super set of A, this condition holds true for which option?",
-"choices": ["A= B", "A ⊈ B", "B ⊇ A", "None of these"],
-"answer": "B ⊇ A",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "Which one of the following properties of sets is said to be the commutative property?",
-"choices": ["A U B = B U A", "A= B", "A U ( B U C) =(A U B ) U C", "A' =U -A"],
-"answer": "A U B = B U A",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "{A}= {a, b, c}. Number of subsets of set A will be?",
-"choices": ["4", "6", "8", "12"],
-"answer": "8",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "If A= {1, 2, 3}, B = {0, 4, 5}, find the number of subsets of AU B.",
-"choices": ["64", "8", "6", "32"],
-"answer": "64",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "A statement which Is always false is termed as",
-"choices": ["Contingency", "Tautology", "Absurdity", "Negation"],
-"answer": "Absurdity",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "A n B =An C, will always be true If:",
-"choices": ["B = C", "B c C", "C c B", "All of these"],
-"answer": "B = C",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "If A and Bare non-empty sets, then which of the following must be Incorrect:",
-"choices": ["A n 8 = A", "AU B = 0", "Ac B", "B c A"],
-"answer": "AU B = 0",
-"subject": "Mathematics"
-}
-},
-{
-"model": "question.Questions",
-"fields": {
-"question": "If x = {1, 2, 3, 4} and y = {a, b, c, d} and f(x, y) = {(1, a), (2, b), (3, c), (4, d)}. The relation bet,veen x and y i.s:",
-"choices": ["Onto", "Into", "(1 - 1) and Into", "(1 - 1) and Onto"],
-"answer": "(1 - 1) and Onto",
-"subject": "Mathematics"
-}
-},
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "Which of the following is the associative law for sets?",
+            "choices": ["A ∪ (B ∪ C) = (A ∪ B) ∪ C", "A ∪ (B ∪ C) = A ∩ (B ∪ C)", "A ∪ (B ∪ C) = (A ∪ ∅) ∪ C", "None of these"],
+            "answer": "A ∪ (B ∪ C) = (A ∪ B) ∪ C",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "If A and B, B and C are overlapping sets while A and C are disjoint sets, which of the following can represent the sets A, B, and C?",
+            "choices": ["A = Set of Natural Numbers, B = Set of Even Integers, C = Set of Odd Integers", "A = Set of squares of natural numbers, B = Set of Even Natural Numbers, C = Set of Rational Numbers", "A = Set of Rational Numbers, B = Set of Real Numbers, C = Set of Irrational Numbers", "None of these"],
+            "answer": "A = Set of Rational Numbers, B = Set of Real Numbers, C = Set of Irrational Numbers",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "If A ∩ B = A ∪ B, what can you say about sets A and B?",
+            "choices": ["A and B are disjoint sets", "A and B are overlapping sets", "A is a subset of B", "A and B are equal sets"],
+            "answer": "A and B are equal sets",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "If A is a subset of B, then B is a superset of A. This condition holds true for which option?",
+            "choices": ["A = B", "A ⊈ B", "B ⊇ A", "None of these"],
+            "answer": "B ⊇ A",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "Which one of the following properties of sets is said to be the commutative property?",
+            "choices": ["A ∪ B = B ∪ A", "A = B", "A ∪ (B ∪ C) = (A ∪ B) ∪ C", "A' = U - A"],
+            "answer": "A ∪ B = B ∪ A",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "If A = {a, b, c}, how many subsets does set A have?",
+            "choices": ["4", "6", "8", "12"],
+            "answer": "8",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "If A = {1, 2, 3}, B = {0, 4, 5}, find the number of subsets of A ∪ B.",
+            "choices": ["64", "8", "6", "32"],
+            "answer": "64",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "A statement that is always false is termed as:",
+            "choices": ["Contingency", "Tautology", "Absurdity", "Negation"],
+            "answer": "Absurdity",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "A ∩ B = A ∩ C will always be true if:",
+            "choices": ["B = C", "B ⊆ C", "C ⊆ B", "All of these"],
+            "answer": "B = C",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "If A and B are non-empty sets, then which of the following must be incorrect?",
+            "choices": ["A ∩ B = A", "A ∪ B = ∅", "A ⊆ B", "B ⊆ A"],
+            "answer": "A ∪ B = ∅",
+            "subject": "Mathematics"
+        }
+    },
+    {
+        "model": "question.Questions",
+        "fields": {
+            "question": "If x = {1, 2, 3, 4} and y = {a, b, c, d}, and f(x, y) = {(1, a), (2, b), (3, c), (4, d)}, the relation between x and y is:",
+            "choices": ["Onto", "Into", "(1 - 1) and Into", "(1 - 1) and Onto"],
+            "answer": "(1 - 1) and Onto",
+            "subject": "Mathematics"
+        }
+    }
+],
+
 {
 "model": "question.Questions",
 "fields": {
@@ -1764,7 +1766,7 @@
 "model": "question.Questions",
 "fields": {
 "question": "Unit of angular momentum",
-"choices": ["J", "Js", "Js*", "Js*"],
+"choices": ["J", "Js", "ms", "None*"],
 "answer": "Js*",
 "subject": "Physics"
 }

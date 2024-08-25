@@ -27,6 +27,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -45,6 +46,7 @@ import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreen.EndOfTestScreen
 import com.example.myapplication.TestScreen.TestConfigurationScreen
 import com.example.myapplication.TestScreen.TestingScreen
+import com.example.myapplication.dataAndNetwork.fetchAndStoreQuestions
 import com.example.myapplication.mcqPool.McqPoolScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -55,13 +57,12 @@ import kotlinx.coroutines.launch
 @SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainApp(modifier: Modifier = Modifier,
-            navController:NavHostController = rememberNavController()) {
+fun MainApp(modifier: Modifier = Modifier) {
     val testScreenViewModel = remember {TestScreenViewModel()}
+    val navController = rememberNavController()
     val uiState by testScreenViewModel.uiState.collectAsState()
     val showBar = uiState.showBars
     val currentS = uiState.currentScreen
-
         Scaffold(
             modifier = modifier,
             topBar = {

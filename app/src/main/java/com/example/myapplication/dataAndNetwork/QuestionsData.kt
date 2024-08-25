@@ -1,10 +1,12 @@
 package com.example.myapplication.dataAndNetwork
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import com.example.myapplication.TestScreenViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import retrofit2.Call
@@ -34,7 +36,7 @@ data class question(
     }
 }
 
-var allQuestionsSet: List<List<question>> = emptyList()
+var allQuestionsSet:List<List<question>> = emptyList()
 
 suspend fun fetchAndStoreQuestions() {
     withContext(Dispatchers.IO) {
@@ -54,6 +56,7 @@ suspend fun fetchAndStoreQuestions() {
                 computerQ,
                 chemistryQ,
                 biologyQ)
+
         } catch (e: Exception) {
             // Handle exceptions
             println("Error fetching data: ${e.message}")

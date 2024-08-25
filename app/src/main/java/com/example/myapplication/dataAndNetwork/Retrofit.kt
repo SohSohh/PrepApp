@@ -14,6 +14,6 @@ public interface questionApi {
     fun getLimits():Call<List<Int>>
 }
 
-val retrofit = Retrofit.Builder().baseUrl("http://10.0.2.2:8000/").addConverterFactory(GsonConverterFactory.create()).build()
+val retrofit = Retrofit.Builder().baseUrl("https://soh.pythonanywhere.com/").addConverterFactory(GsonConverterFactory.create()).build()
 
 val Api = retrofit.create(questionApi::class.java)
