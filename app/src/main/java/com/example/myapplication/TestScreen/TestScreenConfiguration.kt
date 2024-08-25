@@ -305,7 +305,7 @@ fun TimerInput(modifier: Modifier = Modifier,
     val currentKeybaord = LocalSoftwareKeyboardController.current
     val currentFocus = LocalFocusManager.current
     val interactionSource = remember { MutableInteractionSource() }
-    var minutesText = if ((testScreenUiState.Totaltime / 60) / totalQuestions == 1) {
+    var minutesText = if ((testScreenUiState.Totaltime / 60) / totalQuestions <= 1) {
         "minute"
     } else {
         "minutes"

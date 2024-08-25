@@ -87,7 +87,7 @@ fun McqPoolScreen(
         )
         LazyColumn() {
             items(count = visibleQuestions.size,
-                key =  { visibleQuestions[it].question },
+                key =  { it },
                 itemContent = { index ->
                     QuestionCard(
                         modifier = Modifier

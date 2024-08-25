@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -59,8 +60,7 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
     }
     Column(modifier = modifier
         .fillMaxSize()
-        .background(color = MaterialTheme.colorScheme.background)
-        .verticalScroll(rememberScrollState())) {
+        .background(color = MaterialTheme.colorScheme.background)) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                 AnimatedVisibility(
                     visible = displayValue >= 1,
@@ -92,11 +92,19 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
             AnimatedVisibility(visible = displayValue >= 3,
                 enter = fadeIn() + slideInVertically(initialOffsetY = { -it / 4 })
             ) {
-                Column(modifier = modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    NavigationButton(text = "Return",
+                Column(
+                    modifier = modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    NavigationButton(
+                        text = "Return",
                         modifier = Modifier.padding(top = 2.5f.dp),
-                        onClick = onBackButtonOrGesture)
-                    testScreenUiState.incorrectQuestions.forEach() {
+                        onClick = onBackButtonOrGesture
+                    )
+                    LazyColumn() {
+                        items(count = testScreenUiState.incorrectQuestions.size,
+                            key = { it },
+                            itemContent = {
                         QuestionCard(
                             modifier = Modifier
                                 .padding(vertical = 20.dp, horizontal = 10.dp),
@@ -107,12 +115,12 @@ fun EndOfTestScreen(modifier:Modifier = Modifier,
                             resultAnswerIndex = it,
                             optionalAnswer = "..."
                         )
+                            })
                     }
                 }
+            }
         }
     }
-
-}
 
 @Preview
 @Composable
