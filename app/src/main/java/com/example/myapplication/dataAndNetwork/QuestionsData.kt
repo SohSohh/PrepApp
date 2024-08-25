@@ -50,10 +50,10 @@ suspend fun fetchAndStoreQuestions() {
             allQuestionsSet = mutableListOf(physicsQ,
                 mathsQ,
                 englishQ,
-                biologyQ,
                 intelligenceQ,
+                computerQ,
                 chemistryQ,
-                computerQ)
+                biologyQ)
         } catch (e: Exception) {
             // Handle exceptions
             println("Error fetching data: ${e.message}")

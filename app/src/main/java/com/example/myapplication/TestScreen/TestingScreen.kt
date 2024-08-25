@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -42,6 +43,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreenUiState
 import com.example.myapplication.TestScreenViewModel
+import com.example.myapplication.dataAndNetwork.allQuestionsSet
 import com.example.myapplication.dataAndNetwork.question
 import com.example.myapplication.dataAndNetwork.subjects
 import kotlinx.coroutines.delay
@@ -56,12 +58,13 @@ fun TestingScreen(
     testScreenViewModel: TestScreenViewModel = viewModel(),
     onEndOfTest: () -> Unit = {},
     navController: NavController = rememberNavController(),
-    onBackButtonOrGesture: () -> Unit = {},
 ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
     //TEST DUMMY VALUES
-//    testScreenUiState.questions = physicsQ
+//    testScreenUiState.questions = mutableListOf(question("Hello", mutableListOf(
+//        "E", "d", "gf","de"), "E", subjects.Biology),question("Hello", mutableListOf(
+//        "E", "d", "gf","de"), "E", subjects.Biology))
 //    testScreenUiState.currentQuestion = 1
     //-----------------------
     BackHandler {
@@ -82,7 +85,8 @@ fun TestingScreen(
         ) {
             TestTimer(testScreenUiState = testScreenUiState,
                 onEndOfTest = onEndOfTest,
-                modifier = Modifier.padding(vertical = 20.dp))
+                modifier = Modifier.padding(vertical = 20.dp),
+                testScreenViewModel = testScreenViewModel)
 
             QuestionCard(
                 modifier = Modifier
@@ -104,9 +108,9 @@ fun TestingScreen(
 //        Text(text = "[TESTING] answers = ${testScreenUiState.answers}")
 //        Text(text = "[TESTING] questions.size = ${testScreenUiState.questions.size}")
 //        Text(text = "[TESTING] selection = ${testScreenUiState.selection}")
-//        Text(text = "[TESTING] AllowSkipping = ${testScreenUiState.AllowSkipping}")
-//        Text(text = "[TESTING] Backtracking = ${testScreenUiState.Backtracking}")
-//        Text(text = "[TESTING] ShowCorrectAndIncorrect = ${testScreenUiState.ShowCorrectAndIncorrect}")
+//      Text(text = "[TESTING] AllowSkipping = ${testScreenUiState.AllowSkipping}")
+//      Text(text = "[TESTING] Backtracking = ${testScreenUiState.Backtracking}")
+//     Text(text = "[TESTING] ShowCorrectAndIncorrect = ${testScreenUiState.ShowCorrectAndIncorrect}")
 //        Text(text = "[TESTING] CurrentSubjectIndex = ${testScreenUiState.currentSubjectIndex}")
 //        Text(text = "[TESTING] allSubjectsQuestionsIndices = ${testScreenUiState.allSubjectsQuestionsIndices}")
 //        Text(text = "[TESTING] questions = ${testScreenUiState.questions}")
@@ -114,7 +118,6 @@ fun TestingScreen(
         //----
 
 //        Spacer(modifier = Modifier.weight(0.25f))
-
         Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
             //----PREVIOUS BUTTON
                     NavigationButton(
@@ -138,7 +141,6 @@ fun TestingScreen(
             //-----------------
             //---SUBJECT NAVIGATION BUTTON
                 SubjectNavigationButton(
-                    currentSubject = testScreenUiState.questions[testScreenUiState.currentQuestion].subject,
                     onForwardButton = {
                         scope.launch {
                             testScreenViewModel.moveToNextSubject()
@@ -229,13 +231,21 @@ fun QuestionCard(modifier:Modifier = Modifier,
                     optionalAnswer = optionalAnswer
                 )
             }
+            if (!resultForm) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                Text(
+                    text = testScreenUiState.currentQuestion.toString(),
+                    style = MaterialTheme.typography.displayMedium,
+                )
+            }
+            }
         }
     }
 }
 
 @Composable
-fun TestTimer(testScreenUiState: TestScreenUiState, onEndOfTest: () -> Unit, modifier: Modifier = Modifier) {
-    var timeValue by remember { mutableStateOf(testScreenUiState.Totaltime) }
+fun TestTimer(testScreenUiState: TestScreenUiState, onEndOfTest: () -> Unit, modifier: Modifier = Modifier, testScreenViewModel: TestScreenViewModel) {
+    var timeValue by remember { mutableIntStateOf(testScreenUiState.Totaltime) }
     var hours = timeValue / 3600
     var minutes = timeValue % 3600 / 60
     var seconds = (timeValue % 3600)%60
@@ -256,12 +266,12 @@ fun TestTimer(testScreenUiState: TestScreenUiState, onEndOfTest: () -> Unit, mod
     }
     if (timeValue == 0) {
         onEndOfTest()
+        testScreenViewModel.outOfTime()
     }
 }
 
 @Composable
 fun SubjectNavigationButton(modifier:Modifier = Modifier,
-                            currentSubject: subjects,
                             onPrevButton:() -> Unit = {},
                             onForwardButton:() -> Unit = {},
                             conditionForPrevVisible:Boolean = true,
@@ -311,7 +321,6 @@ fun Options(modifier: Modifier = Modifier,
                     (resultForm && (choice == (if (resultAnswerIndex != null) { testScreenUiState.questions[resultAnswerIndex].answer } else { optionalAnswer }))) -> correctColor
 
             (testScreenUiState.selection != "" && testScreenUiState.ShowCorrectAndIncorrect) || resultForm -> incorrectColor
-
             else -> normalColor
         }
         val color by animateColorAsState(targetValue = targetColor)

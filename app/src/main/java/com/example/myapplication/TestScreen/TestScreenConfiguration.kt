@@ -217,13 +217,6 @@ fun ConfigurationsList(modifier:Modifier = Modifier,
             testScreenUiState = testScreenUiState,
             type = subjects.Computers,
             testScreenViewModel = testScreenViewModel)
-        //-------------
-        HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
-        //-----------
-        TextWithTextField(text = "Total Intelligence questions",
-            testScreenUiState = testScreenUiState,
-            type = subjects.Intelligence,
-            testScreenViewModel = testScreenViewModel)
         //--------
         HorizontalDivider(modifier = Modifier.padding(vertical = 2.5f.dp))
         //------------
@@ -428,7 +421,6 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                     list = mutableListOf(-1, -1, -1, -1, -1, -1, -1)
                 }
             })
-
         }
     }
     val subjectSize by remember(list) {
@@ -444,8 +436,17 @@ fun TextWithTextField(modifier:Modifier = Modifier,
             }
         }
     }
+    val subject = when (type) {
+        subjects.Physics -> testScreenUiState.Physics
+        subjects.Mathematics -> testScreenUiState.Mathematics
+        subjects.Chemistry -> testScreenUiState.Chemistry
+        subjects.Biology -> testScreenUiState.Biology
+        subjects.English -> testScreenUiState.English
+        subjects.Intelligence -> testScreenUiState.Intelligence
+        subjects.Computers -> testScreenUiState.Computers
+    }
+    var inputValue by remember { mutableStateOf(subject.toString()) }
 
-    var inputValue by remember { mutableStateOf(subjectSize.toString()) }
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     var limitError by remember { mutableStateOf(false) }

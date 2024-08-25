@@ -35,7 +35,7 @@ data class TestScreenUiState(
     var currentSubjectIndex:Int = 0, // CHECK LINE 59 AND 133, IT'S THE INDEX IN THE ALLSUBJECTS LIST IT ENABLE NAVIGATION BETWEEN SUBJECTS
     var incorrectQuestions: List<Int> = mutableListOf(),
     var activeSubjectsList:List<Int> = mutableListOf(),
-    var Totaltime:Int = 5, //3 hours
+    var Totaltime:Int = 10, //3 hours
     //--------CONFIGURATION
     var Backtracking:Boolean = true,
     var AllowSkipping:Boolean = true,
@@ -43,8 +43,8 @@ data class TestScreenUiState(
     //-----------SUBJECTS
     //----REMEMBER To UPDATE RESET FUNCTION WHEN ADDING NEW PROPERTIES
     var Physics:Int = 3,
-    var Mathematics:Int = 2,
-    var English:Int = 3,
+    var Mathematics:Int = 3,
+    var English:Int = 2,
     var Intelligence:Int = 0,
     var Computers:Int = 0,
     var Chemistry:Int = 0,
@@ -296,7 +296,7 @@ class TestScreenViewModel():ViewModel() {
             val addedQuestions = mutableSetOf<question>()
             var k = 0
             // BELOW, WE INITIALIZE AN ACTIVE LIST TO REMOVE EVERY INSTANCE OF 0 FROM allSubjectQuantity SINCE THAT WOULD CAUSE REPETITION IN allSubjectQuestionsIndices
-            val activeList:MutableList<Int> = mutableListOf()
+            val activeList = allSubjectQuantity.filter { it != 0 }
             for (questionsSet in allQuestionsSet) {
                 val numberOfQuestions = allSubjectQuantity[k]
                 repeat(numberOfQuestions) {
@@ -310,21 +310,13 @@ class TestScreenViewModel():ViewModel() {
                         addedQuestions.add(newQuestion)
                     }
                 }
-                activeList.add(allSubjectQuantity[k])
                 k += 1
             }
-
             // THIS VAL BELOW IS A LIST OF THE INDICES AT WHICH EACH SUBJECT BEGINS
             val allSubjectsQuestionIndices:MutableList<Int> = mutableListOf(0)
-            for (i in 0 until (activeList.size - 1)) {
-                val sum = if (i == 0) {
-                    activeList[i]
-                } else {
-                    activeList.subList(0, i + 1).sum()
-                }
-                allSubjectsQuestionIndices.add(sum)
+            for (i in (0 until activeList.size - 1)) {
+                allSubjectsQuestionIndices.add(activeList.subList(0, i + 1).sum())
             }
-
             currentState.copy(
                 questions = questionList,
                 allSubjectsQuestionsIndices = allSubjectsQuestionIndices,
@@ -361,6 +353,21 @@ class TestScreenViewModel():ViewModel() {
                     activeSubjectsList = mutableListOf()
                     //--------CONFIGURATION
                     //-----------SUBJECTS
+                )
+            }
+        }
+        fun outOfTime() {
+            _uiState.update{currentState ->
+                val size = currentState.questions.size
+                val incorrectQuestions = currentState.incorrectQuestions.toMutableList()
+                val answers = currentState.answers.toMutableList()
+                for (i in (answers.size) until size) {
+                    answers.add(element = "")
+                    incorrectQuestions.add(element = i)
+                }
+                currentState.copy(
+                    answers = answers,
+                    incorrectQuestions = incorrectQuestions
                 )
             }
         }
