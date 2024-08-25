@@ -70,7 +70,7 @@ fun MainApp(modifier: Modifier = Modifier) {
                     Surface(shadowElevation = 15.dp) {
                         CenterAlignedTopAppBar(title = {
                             Text(
-                                text = "PROTOTYPE",
+                                text = "PREP",
                                 style = MaterialTheme.typography.titleLarge,
                             )
                         },
