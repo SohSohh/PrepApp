@@ -402,27 +402,39 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                       testScreenUiState: TestScreenUiState,
                       type: subjects,
                       testScreenViewModel: TestScreenViewModel) {
-    rememberCoroutineScope().launch {
+    val list = remember { testScreenUiState.limitList }
+    if (list == mutableListOf(-1,-1,-1,-1,-1,-1,-1)) {
         testScreenViewModel.getLimits()
     }
-    var list by remember { mutableStateOf(mutableListOf(0,0,0,0,0,0,0)) }
-    LaunchedEffect(Unit) {
-        launch {
-            Api.getLimits().enqueue(object: Callback<List<Int>> {
-                override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
-                    if (response.isSuccessful) {
-                        list = response.body()?.toMutableList() ?: mutableListOf(-5,-5,-5,-5,-5,-5)
-                    } else {
-                        list = mutableListOf(-5,-5,-5,-5,-5,-5)
-                    }
-                }
+//    var bounce by remember { mutableStateOf(false) }
+//    if (!bounce) {
+//        LaunchedEffect(Unit) {
+//            launch {
+//                Api.getLimits().enqueue(object : Callback<List<Int>> {
+//                    override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
+//                        if (response.isSuccessful) {
+//                            list = response.body()?.toMutableList() ?: mutableListOf(
+//                                -5,
+//                                -5,
+//                                -5,
+//                                -5,
+//                                -5,
+//                                -5
+//                            )
+//                        } else {
+//                            list = mutableListOf(-5, -5, -5, -5, -5, -5)
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<List<Int>>, t: Throwable) {
+//                        list = mutableListOf(-1, -1, -1, -1, -1, -1, -1)
+//                    }
+//                })
+//            }
+//        }
+//        bounce = true
+//    }
 
-                override fun onFailure(call: Call<List<Int>>, t: Throwable) {
-                    list = mutableListOf(-1, -1, -1, -1, -1, -1, -1)
-                }
-            })
-        }
-    }
     val subjectSize by remember(list) {
         derivedStateOf {
             when (type) {
@@ -485,7 +497,7 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                 onValueChange = onValChangeAdapter,
                 modifier = modifier
                     .padding(vertical = 3.dp)
-                    .requiredWidth(80.dp)
+                    .requiredWidth(100.dp)
                     .align(Alignment.CenterVertically),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,

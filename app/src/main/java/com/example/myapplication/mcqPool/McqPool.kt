@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -35,6 +36,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.PreperationAppTheme
 import com.example.myapplication.TestScreen.QuestionCard
 import com.example.myapplication.TestScreenViewModel
+import com.example.myapplication.dataAndNetwork.question
 
 @Composable
 fun McqPoolScreen(
@@ -45,11 +47,12 @@ fun McqPoolScreen(
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
     val searchText by searchViewModel.searchText.collectAsState()
     val visibleQuestions by searchViewModel.visibleQuestions.collectAsState()
-
+    if (visibleQuestions == emptyList<List<question>>()) {
+        searchViewModel.updateVisibleQuestion()
+    }
     val currentKeyboard = LocalSoftwareKeyboardController.current
     val currentFocus = LocalFocusManager.current
     Column(modifier = modifier
-        .verticalScroll(rememberScrollState())
         .fillMaxSize()
         .background(color = MaterialTheme.colorScheme.background)) {
         TextField(value = searchText,
@@ -82,19 +85,23 @@ fun McqPoolScreen(
             ),
             leadingIcon = { Icon(imageVector = Icons.Filled.Search, contentDescription = null) }
         )
-        visibleQuestions.forEach() { question ->
-                QuestionCard(
-                    modifier = Modifier
-                        .padding(horizontal = 10.dp, vertical = 5.dp),
-                    question = question,
-                    testScreenViewModel = testScreenViewModel,
-                    resultForm = true,
-                    resultAnswerIndex = null,
-                    testScreenUiState = testScreenUiState,
-                    optionalAnswer = question.answer,
-                    resizable = true
-                )
-            }
+        LazyColumn() {
+            items(count = visibleQuestions.size,
+                key =  { visibleQuestions[it].question },
+                itemContent = { index ->
+                    QuestionCard(
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp, vertical = 5.dp),
+                        question = visibleQuestions[index],
+                        testScreenViewModel = testScreenViewModel,
+                        resultForm = true,
+                        resultAnswerIndex = null,
+                        testScreenUiState = testScreenUiState,
+                        optionalAnswer = visibleQuestions[index].answer,
+                        resizable = true
+                    )
+                })
+        }
         }
     }
 

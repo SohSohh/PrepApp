@@ -49,10 +49,10 @@ class MainActivity : ComponentActivity() {
             }
 
             PreperationAppTheme {
-                LaunchedEffect(key1 = Unit) {
-                    fetchAndStoreQuestions()
-                }
                 if (isInternetAvailable.value) {
+                    LaunchedEffect(key1 = Unit) {
+                        fetchAndStoreQuestions()
+                    }
                     MainApp()
                 } else {
                     InternetError()
