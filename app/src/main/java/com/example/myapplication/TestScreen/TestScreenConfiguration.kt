@@ -110,7 +110,7 @@ fun TestConfigurationScreen(
         Spacer(modifier = Modifier.weight(1f))
         Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
             NavigationButton(text = "Start",
-                onClick = onStartButtonClicked,
+                onClick = remember { onStartButtonClicked },
                 modifier = Modifier.padding(15.dp),
                 enabledCondition = (totalQuestions <= allQuestionsSet.flatten().size && testScreenUiState.Totaltime != 0))
         }  // THE PREVIEW MIGHT BE SHOWING THE NAV BUTTON SQUISHED BUT THE MAIN APP ACCOMMODATES SCROLL SPACE
@@ -402,8 +402,7 @@ fun TextWithTextField(modifier:Modifier = Modifier,
                       testScreenUiState: TestScreenUiState,
                       type: subjects,
                       testScreenViewModel: TestScreenViewModel) {
-    val list = remember { testScreenUiState.limitList }
-    if (list == mutableListOf(-1,-1,-1,-1,-1,-1,-1)) {
+    LaunchedEffect(Unit) {
         testScreenViewModel.getLimits()
     }
 //    var bounce by remember { mutableStateOf(false) }
@@ -435,16 +434,16 @@ fun TextWithTextField(modifier:Modifier = Modifier,
 //        bounce = true
 //    }
 
-    val subjectSize by remember(list) {
+    val subjectSize by remember(testScreenUiState.limitList) {
         derivedStateOf {
             when (type) {
-                subjects.Physics -> list[6]
-                subjects.Mathematics -> list[5]
-                subjects.Chemistry -> list[1]
-                subjects.Biology -> list[0]
-                subjects.English -> list[3]
-                subjects.Intelligence -> list[4]
-                subjects.Computers -> list[2]
+                subjects.Physics -> testScreenUiState.limitList[6]
+                subjects.Mathematics -> testScreenUiState.limitList[5]
+                subjects.Chemistry -> testScreenUiState.limitList[1]
+                subjects.Biology -> testScreenUiState.limitList[0]
+                subjects.English -> testScreenUiState.limitList[3]
+                subjects.Intelligence -> testScreenUiState.limitList[4]
+                subjects.Computers -> testScreenUiState.limitList[2]
             }
         }
     }
