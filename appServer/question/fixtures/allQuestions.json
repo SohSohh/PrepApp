@@ -1,155 +1,6685 @@
 [
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "This question was integrated from the fixture",
-			"choices":["Alpha", "Beta", "Gamma", "Delta"],
-			"answer":"Beta",
-			"subject":"Mathematics"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "second maths",
-			"choices":["Alpha", "Beta", "Gamma", "Delta"],
-			"answer":"Beta",
-			"subject":"Mathematics"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "thirds maths",
-			"choices":["Alpha", "Beta", "Gamma", "Delta"],
-			"answer":"Beta",
-			"subject":"Mathematics"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "This question was integrated from the fixture",
-			"choices":["Alpha2", "Beta2", "Gamma2", "Delta2"],
-			"answer":"Beta2",
-			"subject":"Physics"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "second physics",
-			"choices":["Alpha2", "Beta2", "Gamma2", "Delta2"],
-			"answer":"Beta2",
-			"subject":"Physics"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "third physics",
-			"choices":["Alpha2", "Beta2", "Gamma2", "Delta2"],
-			"answer":"Beta2",
-			"subject":"Physics"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "first english",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"English"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "second english",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"English"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "third english",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"English"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Biology"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing2",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Biology"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Computers"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing2",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Computers"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Intelligence"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing2",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Intelligence"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Chemistry"
-		}
-	},
-	{
-		"model":"question.Questions",
-		"fields": {
-			"question": "testing2",
-			"choices":["Alpha3", "Beta3", "Gamma3", "Delta3"],
-			"answer":"Beta3",
-			"subject":"Chemistry"
-		}
-	}
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the associative law for the sets",
+"choices": ["A u (B u C) : (A u B) n C", "A u (B u C) : A n (B u C)", "A u (B u C) = (A u 0) u C", "None of these"],
+"answer": "A u (B u C) = (A u B) u C",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A and B, B and Care overlapping sets while A and Care disjoint sets. Which of the following can represent the sets A, Band C:",
+"choices": ["A = Set of Natural Numbers, B = Set of Even Integers, C = Set of Odd Integers", "A = Set of squares of natural number, B = Set of Even Natural Numbers, C = Set of Rational Numbers", "A= Set of Rational Numbers, B = Set of Real Numbers, C = Set of Irrational Numbers", "None of these"],
+"answer": "A= Set of Rational Numbers, B = Set of Real Numbers, C = Set of Irrational Numbers",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If An B =Au B, what you can say about sets A and B?",
+"choices": ["A and B are disjoint sets", "A and Bare overlapping sets", "A Is subset of B", "A and Bare equal sets"],
+"answer": "A and Bare equal sets",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A Is subset of B then Bis super set of A, this condition holds true for which option?",
+"choices": ["A= B", "A ⊈ B", "B ⊇ A", "None of these"],
+"answer": "B ⊇ A",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one of the following properties of sets is said to be the commutative property?",
+"choices": ["A U B = B U A", "A= B", "A U ( B U C) =(A U B ) U C", "A' =U -A"],
+"answer": "A U B = B U A",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "{A}= {a, b, c}. Number of subsets of set A will be?",
+"choices": ["4", "6", "8", "12"],
+"answer": "8",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A= {1, 2, 3}, B = {0, 4, 5}, find the number of subsets of AU B.",
+"choices": ["64", "8", "6", "32"],
+"answer": "64",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A statement which Is always false is termed as",
+"choices": ["Contingency", "Tautology", "Absurdity", "Negation"],
+"answer": "Absurdity",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A n B =An C, will always be true If:",
+"choices": ["B = C", "B c C", "C c B", "All of these"],
+"answer": "B = C",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A and Bare non-empty sets, then which of the following must be Incorrect:",
+"choices": ["A n 8 = A", "AU B = 0", "Ac B", "B c A"],
+"answer": "AU B = 0",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If x = {1, 2, 3, 4} and y = {a, b, c, d} and f(x, y) = {(1, a), (2, b), (3, c), (4, d)}. The relation bet,veen x and y i.s:",
+"choices": ["Onto", "Into", "(1 - 1) and Into", "(1 - 1) and Onto"],
+"answer": "(1 - 1) and Onto",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following shows that {A} is a subset of the other set?",
+"choices": ["A= [0, A, B]", "A= [0, B]", "A= {A, B}", "None of these"],
+"answer": "{A} ⊆ {Other Set}",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is equal to universal set?",
+"choices": ["A u A", "A n u", "A u u", "None of these"],
+"answer": "A u u",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A = {1, 3, 9, 2}, B = {2, 8, 5 }, then A n B =·?",
+"choices": ["{2 }", "2", "{1, 5}", "None of these"],
+"answer": "{2}",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "For an AP, if a,2 = 19 and a,1= 29 , what will be the value of common difference?",
+"choices": ["1", "2", "3", "4"],
+"answer": "2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "1, 1/3, 1/5, 1/7... I~ Serles:",
+"choices": ["Geometric", "Arithmetic", "Harmonic", "None of these"],
+"answer": "Harmonic",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Calculate exact value of the repeating decimal 0.4545 ...",
+"choices": ["5/11", "50/11", "0.5/11", "None of these"],
+"answer": "5/11",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "2, 2, 2, 2, 2, 2 Is an arithmetic sequence with a common difference",
+"choices": ["0", "2", "4", "Not an arithmetic sequence"],
+"answer": "0",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sum of the series 0.2 + 0.02 + 0.002 ... up to Infinite terms is:",
+"choices": ["1/3", "1/6", "2/9", "3/12"],
+"answer": "1/3",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If Sn = n for an A.P. then an=?",
+"choices": ["n^3 -a1", "n^3 + a1", "2n^2 - a1", "n^2 -a1"],
+"answer": "n^2 -a1",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "1 + 2 + 3 + 4 + ... +100",
+"choices": ["5050", "5000", "2550", "4500"],
+"answer": "5050",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "2 + 4 + 6 + ... + 100",
+"choices": ["2250", "2550", "1275", "1775"],
+"answer": "2550",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A.M of 1/4 and 3/8 is:",
+"choices": ["10/8", "5/16", "6/16", "5/8"],
+"answer": "5/16",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If tn = (1/2)^n and t1 = 1, the series represented by tn is:",
+"choices": ["AP", "GP", "HP", "None of these"],
+"answer": "GP",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "2 + 4 + 8 + 16 + ... +till n/2 terms=?",
+"choices": ["2n", "2n-2", "2n+2", "None of these"],
+"answer": "2n-2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The series 1 + 1/3 + 1/5 + 1/7... is:",
+"choices": ["Convergent", "Divergent", "Neither convergent nor divergent", "Both convergent and divergent"],
+"answer": "Convergent",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the sum of the following series? 8 + 4 + 2 + ... + 1/32",
+"choices": ["495/32", "625/32", "511/32", "None of these"],
+"answer": "495/32",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the difference between the arithmetic mean and the geometric mean of 5 and 7?",
+"choices": ["0.8", "0.08", "0.008", "0.0008"],
+"answer": "0.8",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the nth term of the sequence: 1, 3, 5, 7... ?",
+"choices": ["2n+1", "2n+3", "2n-1", "It Is Impossible to find the nth term for such a sequence"],
+"answer": "2n-1",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the sum of the first 50 natural numbers?",
+"choices": ["500", "1275", "1200", "8900"],
+"answer": "1275",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What are three AMs between -18 and 4?",
+"choices": ["12.5, 7 and 1.5", "AM can't be found between a negative and a positive number", "-12.5, -7 and -1.5", "1, 2 and 3"],
+"answer": "12.5, 7 and 1.5",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sum the series upto n terms. : 1+3+5+ ... ",
+"choices": ["n^2", "ln(e)", "2^n", "All of these"],
+"answer": "n^2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What Is the G.M of 32 and 6?",
+"choices": ["48", "45.12", "-48", "-45.12"],
+"answer": "48",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "I(-e)^-2n =",
+"choices": ["1/2", "2", "4", "1"],
+"answer": "(e^2 -1)^-1",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The 11th Term of the Series will be:",
+"choices": ["11/2", "14/2", "22/2", "17/2"],
+"answer": "22/2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Calculate Sa given: t1 =8 and r =-1/2",
+"choices": ["-25/2", "85/16", "55/8", "-95/32"],
+"answer": "55/8",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "I(-1/2)^n = 1",
+"choices": ["2", "4", "-2", "16"],
+"answer": "4",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following series converges?",
+"choices": ["S = - 1-1 - 1- ...", "S = 1 + 1/2 + 1/4 + ...", "S = 1 + 1 + 1 + 1 + ...", "S = 2 + 4 + 8 + ..."],
+"answer": "S = 1 + 1/2 + 1/4 + ...",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the sum of following series: 12 + 32 + 5s + ... + n^2",
+"choices": ["n(n + 1)(2n + 1)/6", "n(4n^2 -1)/3", "n(6n^2 + 3n - 1)/6", "None of these"],
+"answer": "n(n + 1)(2n + 1)/6",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The H.M between 1/2 and 1/8 is:",
+"choices": ["16/5", "1/5", "5", "5/16"],
+"answer": "5/16",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "5, -15, 45, ... . What will be the sign of the 84563214th term?",
+"choices": ["Positive", "Negative", "Either positive or negative", "Cannot be determined"],
+"answer": "Negative",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the 10th term of the sequence: 1/8, 1/3, 1/7,...",
+"choices": ["37", "1/37", "-37", "-1/37"],
+"answer": "-1/37",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Two dies are thrown simultaneously. What is the probability that the sum of numbers shown at the top is 5?",
+"choices": ["1/3", "4/5", "1/7", "1/9"],
+"answer": "1/9",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How many diagonals can be formed in a 7-sided polygon figure?",
+"choices": ["14", "21", "19", "23"],
+"answer": "21",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The probability of picking rotten apples in a box is 1/100. If there are 6 boxes containing 1200 apples, then how many rotten apples would be obtained?",
+"choices": ["2", "24", "6", "12"],
+"answer": "12",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If P4 X C3= 96, then n=?",
+"choices": ["1", "3", "4", "6"],
+"answer": "4",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If a die Is rolled twice, what is the probability that the numbers shown on top add up to 8?",
+"choices": ["2/36", "2/4", "4/36", "5/36"],
+"answer": "5/36",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Total number of 5 digits formed fron1 1, 2, 3, 4, S such that 1 and 5 never come next to each other is:",
+"choices": ["24", "48", "72", "120"],
+"answer": "72",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Probability of picking a diamond card In a deck of 52 cards Is:",
+"choices": ["1/13", "1/4", "13/26", "12/53"],
+"answer": "1/4",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In how many ways can letters of the word COCOCOLA be arranged when all letters are to be used?",
+"choices": ["280", "40320", "1120", "6720"],
+"answer": "1120",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What ls the probability of picking a queen or a face card from a set of 52 cards?",
+"choices": ["14/3", "3/13", "4/13", "1/4"],
+"answer": "3/13",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "(n-1) !_",
+"choices": ["n + l", "n/2", "n-1", "1"],
+"answer": "1",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Probability of any event cannot have the value of:",
+"choices": ["1/2", "1/8", "1/2", "None of these"],
+"answer": "1/2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "tan^-1 x + tan^-1 (1/x) =",
+"choices": ["π", "π/2", "π/4", "Undefined"],
+"answer": "π",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Value of sin 30° Is",
+"choices": ["0.5", "1", "0.707", "0"],
+"answer": "0.5",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "(sin 2x + cos 2x) (sin 2x - cos 2x)",
+"choices": ["cot 2x", "sin 2x", "-cos 2x", "-tan 2x"],
+"answer": "-cos 2x",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If cos^-1 (-1/2) = x, what will be the value of sin (x/2)?",
+"choices": ["0.866", "0.5", "0.707", "0"],
+"answer": "0.866",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the expansion of 1/tanx",
+"choices": ["tan(45 + x)", "tan(x + 1)", "tan(45 -x)", "None of these"],
+"answer": "tan(45 - x)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "cos^-1 (-1/2)",
+"choices": ["120 degrees", "180 degrees", "90 degrees", "270 degrees"],
+"answer": "120 degrees",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The period of Cotangent functio n is",
+"choices": ["π", "2π", "π/2", "None of these"],
+"answer": "π",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If tangent for an angle Is square root 3. Find the tangent for double of that angle.",
+"choices": ["- square root 3", "square root 3", "1/square root 3", "-1/square root 3"],
+"answer": "-1/square root 3",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is equal tosin^-1 (3/4)",
+"choices": ["cos^-1 (3/4)", "sec^-1 (3/4)", "csc^-1 (3/4)", "All of these"],
+"answer": "All of these",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sin2a equals:",
+"choices": ["sin a cos a", "2cos a", "2sin a cos a", "tan 2a - sec 2a"],
+"answer": "2sin a cos a",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "(1 + tan^2 x) (1 - sin^2 x) =",
+"choices": ["0", "1", "Undefined", "Cannot be simplified any further"],
+"answer": "1",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If sin t - cos t = 0, the possible value oft can be:",
+"choices": ["π/2", "π", "0", "π/4"],
+"answer": "π/4",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If two angles of triangle are 40• and so• then third angle is?",
+"choices": ["60", "70", "80", "100"],
+"answer": "80",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "f(x) - f(-x) is:",
+"choices": ["Even", "Odd", "Both a and b", "Neither a nor b"],
+"answer": "Odd",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Cot2x + 1=",
+"choices": ["tan2x", "sec 2x", "cosec2x", "-tan2x"],
+"answer": "sec 2x",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate the expression: Cos(180) + 4sln(270) + 3cos(270) + scc(l80) + 4coscc(270):",
+"choices": ["0", "-10", "15", "Undefined"],
+"answer": "-10",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The angle subtended at the cen ter of a clrcle by illl .ire whose lens th Is cqu.il to t he radius of the circle Is equal to:",
+"choices": ["1 degree", "1 radian", "1 minute", "1 second"],
+"answer": "1 radian",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Two sides of a triangle have measures of 7 and 9. If the angle betv,een them is 12 degrees, then the measure of the third side is:",
+"choices": ["14.05", "13.89", "15.56", "None of these"],
+"answer": "13.89",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "(1+tan^2x)/(1-tan^2x)",
+"choices": ["sin(2x)", "cos(2x)", "cos 2x + sin 2x", "None of these"],
+"answer": "cos 2x + sin 2x",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A circle touching all 3 vertices of a tria ngle is termed as:",
+"choices": ["lncircle", "Inscribed", "Circumcircle", "None of these"],
+"answer": "Circumcircle",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If cosine of an angle is 0.88, what is the measure of that angle?",
+"choices": ["88", "55", "28", "3"],
+"answer": "28",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Period of tan(x) Is",
+"choices": ["2π", "π", "π/2", "4π"],
+"answer": "π",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the values of x in radians that satisfy the equation sln(x) = cos(x) in (0, 360)",
+"choices": ["3π/4 ,5π/4", "π/4 ,5π/4", "π/4 ,3π/4", "π/4 ,7π/4"],
+"answer": "π/4 ,3π/4",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "tan(-x) =",
+"choices": ["cot x", "-cot x", "-tan x", "tan x"],
+"answer": "-tan x",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If sec^-1 (2) = x, find the value of x",
+"choices": ["60, 120", "π/3, 4π/3", "π/3, 5π/3", "60, 240"],
+"answer": "π/3, 2π/3",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the value of sin(210)",
+"choices": ["0.5", "-0.5", "0.866", "-0.866"],
+"answer": "-0.5",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "sec(θ)/(1 + sec(θ)) = -2 sec (θ) tan^2 (θ)",
+"choices": ["-2 sec (θ) tan^2 (θ)", "-2 cot(θ) csc^2 (θ)", "-2 cot(θ) csc(θ)", "-2 cos(θ)sin(θ)"],
+"answer": "-2 cot(θ) csc^2 (θ)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the period of sin(4θ)?",
+"choices": ["π", "4π", "2π", "π/2"],
+"answer": "π/2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "sin^-1(x) + cos^-1(x) =?",
+"choices": ["π", "4π", "2π", "π/2"],
+"answer": "π",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If a line Intersects two sides of a triangle In such a way that It divides two sides proportionally, then the line will be _ _ to the 3rd side.",
+"choices": ["Intersect", "Perpendicular", "Parallel", "None of these"],
+"answer": "Parallel",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "sin(4x) = (sin(4x) - cos(4x))/(sin(4x) + cos(4x))",
+"choices": ["4 sin^3(x) cos(x) - 4 sin(x) cos^3(x)", "4 sin(2x) cos^2(2x)", "sin(8x)/cos(8x)", "None of these"],
+"answer": "4 sin(2x) cos^2(2x)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "sin(4x) - cos(4x) /(sin(4x) + cos(4x)) =",
+"choices": ["4 sin(x) cos^3(x)", "-cos(8x)", "sin(8x)/cos(8x)", "None of these"],
+"answer": "-cos(8x)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "sin(P) + sin(Q) =",
+"choices": ["2 sin((P + Q)/2) cos((P - Q)/2)", "2 sin((P - Q)/2) cos((P + Q)/2)", "2 cos((P + Q)/2)", "None of these"],
+"answer": "2 sin((P + Q)/2) cos((P - Q)/2)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the period of: f(x) = tan(x) + sin(x)",
+"choices": ["8π", "2π", "4π", "π"],
+"answer": "4π",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the solution of tan(x) = cot(x) for interval (0, 360]",
+"choices": ["0, 45, 225, 315", "45,225,315", "45, 135,225,315", "None of these"],
+"answer": "45, 135,225,315",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is Incorrect?",
+"choices": ["cos^2 (x) = 1-sin^2 (x)", "1 - tan^2 (x) = sec^2 (x)", "cot^2 (x) = csc^2 (x) -1", "None of these"],
+"answer": "cot^2 (x) = csc^2 (x) -1",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If hypotenuse of a Right-Angled Triangle measures 34 units, then circumradius of circumcircle formed will be?",
+"choices": ["17", "68", "34", "None of these"],
+"answer": "17",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If Area of a triangle measures 400 square units, sides a and b measure 20 and 80 units respectively, find the value of angle y.",
+"choices": ["15", "30", "45", "60"],
+"answer": "30",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Circle cannot be inscribed In:",
+"choices": ["Square", "Parallelogram", "Triangle", "Rectangle"],
+"answer": "Rectangle",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Range of y = sec^-1 (x) is:",
+"choices": ["[0, π], y ≠ π/2", "y ≥ -1, or y ≤ 1", "[-π/2, π/2] ,y ≠ 0", "y ≤ -1 or y ≥ 1"],
+"answer": "[0, π], y ≠ π/2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A ladder is l~ying against a wall ma king an angle of 60 degrees . If height of the wall is 30m, find the length of the ladder?",
+"choices": ["30", "20√3", "30√2", "60√2"],
+"answer": "60",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following Is not periodic?",
+"choices": ["sin^2 (x)", "4sin(x)", "cos(√2)", "cos(2x)"],
+"answer": "cos(√2)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A and B are two matrices, then adjolnt(AB) Is equal to:",
+"choices": ["adjolnt(A) adjolnt(B)", "adjolnt(B) adjoint(A)", "adjolnt(BA)", "None of these"],
+"answer": "adjolnt(A) adjolnt(B)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A Is singular, then a =",
+"choices": ["0", "-5", "3", "7"],
+"answer": "0",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following set of matrices can be multiplied?",
+"choices": ["[1 1][1 1]", "[0 0][0 0]", "[1 0][0]", "All of these"],
+"answer": "All of these",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the minor of 7 : 2",
+"choices": ["8", "9", "5", "6"],
+"answer": "5",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the determinant of A = 7 3 6",
+"choices": ["28", "156", "720", "None of these"],
+"answer": "156",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the values of x if -1 3 4 = -30",
+"choices": ["-2, 3", "3, -4", "-44", "None of these"],
+"answer": "-2, 3",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Determinant of 2 x 2 matrix 1 2 is:",
+"choices": ["4", "-4", "1", "None of these"],
+"answer": "-2",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Inverse of A= 1 3 is:",
+"choices": ["[1/4 -1/2][3/4 1/2]", "[1/4 1/2][3/4 -1/2]", "[1.5 -0.5][3 -1]", "None of these"],
+"answer": "[1/4 -1/2][3/4 1/2]",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Null matrix of order 1 x 2 is :",
+"choices": ["[0 0]", "[0]", "[0 0 0]", "Both a and b"],
+"answer": "[0 0]",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Orders of some matrices are given below. Which one of them cannot be multiplied?",
+"choices": ["m x n, n x p where m, n and p are all positive Integers", "a x b, bx c where a, b and care all positive Integers", "1 X 2, 2 X 6", "3 x 5, 4 x 1"],
+"answer": "3 x 5, 4 x 1",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the cofactor of 1 in the matrix A= 4 3 2 1 0 5 :",
+"choices": ["1", "-1", "4", "-4"],
+"answer": "4",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A= 4 3 2 1 0 5, find |A^-1|:",
+"choices": ["60", "0", "120", "None of these"],
+"answer": "None of these",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What Is the Determinant of Null matrix?",
+"choices": ["1", "0", "∞", "None of these"],
+"answer": "0",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If A Is symmetric, then A - A^T =",
+"choices": ["2A", "A", "0", "None of these"],
+"answer": "0",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "find the product BA for following matrices: A=[2 1] B=[3 2 1]",
+"choices": ["[-7 -2 -1][12 5 3]", "[-5 -2 -1][5 2 1]", "[12 3 2][5 1 0]", "None of these"],
+"answer": "[-7 -2 -1][12 5 3]",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = g(x) and g(x) is inverse of f(x), what will be the value of g'(1)?",
+"choices": ["0", "1", "e", "l"],
+"answer": "1",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = x?/x, find the value of f-1(1).",
+"choices": ["0", "%", "V2", "9"],
+"answer": "%",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = (x + 1)* and g(x) = x - 1, find f(g(4)).",
+"choices": ["16", "2x°", "None of these", "(2x + 3)"],
+"answer": "16",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (V%- V%).",
+"choices": ["0", "V6", "2n", "1"],
+"answer": "0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (1 - 2/n)^n.",
+"choices": ["e-?", "e?", "e", "e-"],
+"answer": "e-?",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "A function is said to be even when:",
+"choices": ["f(x) = f(x)", "f(-x) = f(x)", "f(-x) = - f(x)", "(-x) f(-x)"],
+"answer": "f(x) = f(x)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (ln(x)).",
+"choices": ["0", "1/x", "x log 3", "ln(x)"],
+"answer": "0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = 2x + 3, g(x) = x°, find g o f.",
+"choices": ["2x° + 3", "(2x + 3)", "x?", "None of these"],
+"answer": "(2x + 3)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Domain of the function: x²-1/x-2.",
+"choices": ["(-∞, -2) U (-1, ∞)", "(-2, -1)", "x=-1", "x=0"],
+"answer": "(-∞, -2) U (-1, ∞)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find f(x) of f(x) = x.",
+"choices": ["x³", "x²", "3x²", "None of these"],
+"answer": "x³",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If Domain of a function f(x) = x² is {1, -1, 0, 2, -2}, find its range.",
+"choices": ["(1, 0, 4)", "(1, 1, 0, -4, 4)", "(1, 0, -4)", "(1, 1, 0, 4, 4)"],
+"answer": "(1, 0, 4)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Determine if the following function is even or odd: f(x) = -x/(1-x²).",
+"choices": ["Even", "Odd", "Either even or odd", "None of these"],
+"answer": "Odd",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If x is a real number, which of the following function is odd?",
+"choices": ["= sin(x)", "= cos(x)", "|x|", "All of these"],
+"answer": "= sin(x)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = 2, find the value of f(x+2).",
+"choices": ["a", "2", "c", "0"],
+"answer": "2",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Vertical asymptotes of the graph f(x) = -1/(x+4x-13) occur at:",
+"choices": ["0", "x = -2", "y = 2", "Does not exist"],
+"answer": "x = -2",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) is continuous, find the values of a and b.",
+"choices": ["a=2, b=4", "a=0, b=1", "a=-1, b=5", "a=1, b=3"],
+"answer": "a=1, b=3",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = x²+1, g(x) =5x+1, find f(g(x)).",
+"choices": ["25x²+10x+2", "5x²+6", "5x³+x²+5x+1", "None of these"],
+"answer": "25x²+10x+2",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (sin(6x))/x.",
+"choices": ["0", "6", "1/6", "Does not exist"],
+"answer": "6",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (1-cosx)/x.",
+"choices": ["-8", "8", "-1", "0"],
+"answer": "0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Vertical asymptotes of the graph f(x) = -1/(x+4x-13) occur at:",
+"choices": ["0", "x = -2", "y = 2", "Does not exist"],
+"answer": "x = -2",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = ax²+2x+1 x<2 and f(x) = 2x+b x>2, find the values of a and b.",
+"choices": ["a=2, b=4", "a=0, b=1", "a=-1, b=5", "a=1, b=3"],
+"answer": "a=1, b=3",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (sin(6x))/x.",
+"choices": ["0", "6", "1/6", "Does not exist"],
+"answer": "6",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (1-cosx)/x.",
+"choices": ["-8", "8", "-1", "0"],
+"answer": "0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (sin(6x))/x.",
+"choices": ["0", "6", "1/6", "Does not exist"],
+"answer": "6",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Evaluate: lim (1-cosx)/x.",
+"choices": ["-8", "8", "-1", "0"],
+"answer": "0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If f(x) = ax²+2x+1 x<2 and f(x) = 2x+b x>2, find the values of a and b.",
+"choices": ["a=2, b=4", "a=0, b=1", "a=-1, b=5", "a=1, b=3"],
+"answer": "a=1, b=3",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The two lines: 7x+ 2y + 3 =0 and 6y + 21x + 9 = 0 are:",
+"choices": ["Intersecting", "Perpendicular", "Parallel", "Coinciding"],
+"answer": "Coinciding",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the point slope form of the equation",
+"choices": ["Ax+By=C", "y - y1=m(x-x)", "y=mx+b", "None of these"],
+"answer": "y - y1=m(x-x)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "A line with point (1, 1) is perpendicular to a line having slope -3/4. What is the equation of the line?",
+"choices": ["3x-4y-1=0", "4x-3y-1=0", "dy-3x-1=0", "4y+3x+1=0"],
+"answer": "4x-3y-1=0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Shortest distance of the point (1, 2) from the line 3x- 4y + 10 = 0 is:",
+"choices": ["5", "4", "2", "8"],
+"answer": "5",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the correct formula for Rotation of axis?",
+"choices": ["(xsin θ + ycos θ,-xsin θ + y cos θ)", "(xcos θ + ysin θ,-xsin θ + y cos θ)", "(xsin θ + ysin θ,-xcos θ + y cos θ)", "(xcos θ + ycos θ,-xsin θ + y sin θ)"],
+"answer": "(xcos θ + ysin θ,-xsin θ + y cos θ)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Points P(2, 2), Q (-2, 2) and R(k, 4) represent the vertices of a Right-Angled Triangle with right angle at P, Find the value of k",
+"choices": ["2", "-2", "4", "-4"],
+"answer": "4",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following equations represent a horizontal line?",
+"choices": ["x=c", "y=c", "x=-y", "x=y"],
+"answer": "y=c",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "ax² + 2hxy + by² + 2gx + 2fy + c = 0 represents a pair of straight lines if:",
+"choices": ["ab=0", "a+b=0", "h²-ab=0", "None of these"],
+"answer": "h²-ab=0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If two lines are anti-parallel then,",
+"choices": ["Their slopes are equal", "Slopes are opposite", "Product of slopes is -1", "Both a and b"],
+"answer": "Product of slopes is -1",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "The slope of a line parallel to x-axis is",
+"choices": ["1", "-1", "0", "Undefined"],
+"answer": "0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "The points (4, -2), (-2, 4), (4, 4) are vertices of a triangle. Find the centroid of the triangle",
+"choices": ["(3, 3)", "(2, 2)", "(2, 3)", "(3, 2)"],
+"answer": "(3, 3)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the distance AB between the two points: A (3, 1) and B (-2, -4).",
+"choices": ["√50", "√26", "√34", "√10"],
+"answer": "√34",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If slope of two lines is equal, the lines would be:",
+"choices": ["Intersecting", "Perpendicular", "Skewed", "Parallel"],
+"answer": "Parallel",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "What is the slope of the line having an equationy =0",
+"choices": ["0", "1", "-1", "Undefined"],
+"answer": "Undefined",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Product of slopes of 2 perpendicular lines is always:",
+"choices": ["1", "0", "-1", "Undefined"],
+"answer": "-1",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If l1 is x=y+3=0 and l2 is x+y+9=0, find the angle between two lines.",
+"choices": ["30", "60", "0", "None of these"],
+"answer": "None of these",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Calculate the slope of the line formed by joining the points (1/2, 5) and (6,7).",
+"choices": ["2", "1/2", "-2", "1/6"],
+"answer": "1/2",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "A line perpendicular to y-axis has distance whose is 4. Which of the following will represent the equation of the line?",
+"choices": ["x=4", "y=4", "x+y=4", "x-y=4"],
+"answer": "x=4",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the equation of the line passing through the point (5, 7) and parallel to the line x=6.",
+"choices": ["y=3", "x=5", "x=7", "y=7"],
+"answer": "x=5",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If a is the inclination of a line with positive x axis, what will be the slope of the line?",
+"choices": ["tan(a)", "sin(a)", "cos(a)", "Both a and b"],
+"answer": "tan(a)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If the slope of line AB is m1 and the slope of line CD is m2, then the lines would be:",
+"choices": ["1-m1m2=0", "1+m1m2=0", "m1m2=1", "None of these"],
+"answer": "1+m1m2=0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "The points (1, 2), (4, 6), (8, 5) and (a, b) represent the sides of a parallelogram. Find the value of a and b.",
+"choices": ["(2, 3)", "(3, 5)", "(5, 1)", "(1, 5)"],
+"answer": "(3, 5)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the distance between the points (2, -2) and (2, 3).",
+"choices": ["1", "5", "-1", "2"],
+"answer": "5",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following points lies on the line 3x-4y =11",
+"choices": ["(2, -1)", "(3, 5)", "(5, 1)", "None of these"],
+"answer": "(5, 1)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Every homogenous second-degree equation ax² + 2hxy + by² + 2gx + 2fy + c = 0 represents a distinct pair of lines through the origin if:",
+"choices": ["a+b=0", "h²<ab", "h²>ab", "h²=ab"],
+"answer": "h²=ab",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can represent the slope of a line whose points lie on the negative x-axis and negative y-axis?",
+"choices": ["x/y", "-√(x/y)", "x/y", "x/y"],
+"answer": "-√(x/y)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the focus of the parabola y² = 4x.",
+"choices": ["(1, 0)", "(0, 1)", "(4, 0)", "(0, 4)"],
+"answer": "(0, 1)",
+"subject": "Mathematics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following conic has an eccentricity equal to 1:",
+"choices": ["Parabola", "Hyperbola", "Ellipse", "Circle"],
+"answer": "Parabola",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Eccentricity of earth is",
+"choices": ["Less than 1", "Equal to 1", "Greater than 1", "Equal to 0"],
+"answer": "Less than 1",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the focus of conic: x² = 4ay.",
+"choices": ["(-2, 0)", "(a, 0)", "(0, -a)", "(0, a)"],
+"answer": "(0, a)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the equation of tangent to the circle x² + y² = 22 at the point (3, 4).",
+"choices": ["5x -12y = 26", "5x - 12y = -26", "3x + 4y - 9 = 0", "None of these"],
+"answer": "5x - 12y = 26",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following conic has an eccentricity between 0 and 1?",
+"choices": ["Parabola", "Hyperbola", "Ellipse", "Circle"],
+"answer": "Ellipse",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Write the equation of tangent to the circle x² + y² = 4 at the points on the circle whose ordinate is -2.",
+"choices": ["3x - 7y = 0", "4x + 3y - 8 = 0", "√3x + √3y - 1 - √2 = 0", "2x + √3y - 8 = 0"],
+"answer": "3x - 7y = 0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "What are the vertices of the conic: 9x² + 16y² =144",
+"choices": ["(0,14)", "(±4,0)", "(±3,0)", "(0,±3)"],
+"answer": "(±3,0)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If A ≠ B, and are of opposite signs, then the conic represented by the equation 2x² + 2y - 4x - 6y - 15 = 0 is:",
+"choices": ["Parabola", "Ellipse", "Hyperbola", "Circle"],
+"answer": "Hyperbola",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "The equation 2x² + 4y + 4x - 6y - 15 = 0, represents a:",
+"choices": ["Circle", "Parabola", "Ellipse", "Hyperbola"],
+"answer": "Ellipse",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If a tangent is drawn on the circle, the point where the circle touches the tangent is called:",
+"choices": ["Chord", "Secant", "Center", "Point of contact"],
+"answer": "Point of contact",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "The equation ax² + 2hxy + by² represents:",
+"choices": ["Circle", "Parabola", "Ellipse", "Hyperbola"],
+"answer": "If h² = ab, then Ellipse",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the distance between the directrices of the following ellipse: 4x² + 7y² = 28",
+"choices": ["14√3", "14/√3", "5√3", "5/√3"],
+"answer": "14/√3",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the eccentricity of the following conic: 4x² + 7y² = 28",
+"choices": ["3/5", "√(13/7)", "√3/2", "3/2"],
+"answer": "√(13/7)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "e= √(a²-b²)/a defines which of the following conic: a Parabola?",
+"choices": ["Circle", "Ellipse", "Parabola", "Hyperbola"],
+"answer": "Hyperbola",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following elements belong to a Parabola?",
+"choices": ["2 foci, 2 directrices", "1 focus, 2 directrices", "1 focus, 1 directrix", "2 foci, 1 directrix"],
+"answer": "1 focus, 1 directrix",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find the center of the circle represented by following equation: 3x² + 3y + 6x = 3y - 2 = 0",
+"choices": ["(1,1/2)", "(-1,1/2)", "(1/2,1)", "(-1/2,-1)"],
+"answer": "(1/2,1)",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which transformation would remove the terms of first degree from the equation: x² + 2y² + 2x - 4y = 0",
+"choices": ["X+1/2,Y-1", "X-1,Y+1", "X-1/2,Y+1", "X+1,Y=-1"],
+"answer": "X-1/2,Y+1",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find a unit vector in the direction of vector v = 3i - 4j",
+"choices": ["[i - j]/√5", "[3i - 4j]/√25", "[-4i + 3j]/√25", "None of these"],
+"answer": "[3i - 4j]/√25",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Compute the value of: (i + j)(j - i) (k - k).",
+"choices": ["1", "-1", "0", "None of these"],
+"answer": "0",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If the volume of parallelepiped formed by vectors u = 2i - 3j + 6k, v = i + 2j + k, w = ai + 3j + k is 4, which of the following can be a possible value of a?",
+"choices": ["-7", "-7/2", "0", "None of these"],
+"answer": "-7",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Compute the value of: i + (j x k).",
+"choices": ["1", "-1", "0", "None of these"],
+"answer": "1",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Compute the value of: i x (j x k) = 1?",
+"choices": ["1", "-1", "0", "None of these"],
+"answer": "1",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "What will be the volume of parallelepiped represented by the vectors u = 9i - 5j, v = 6i - 7j + k, w = i - k?",
+"choices": ["28", "33", "56", "38"],
+"answer": "28",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Find a unit vector in the direction of vector v = - i + 2j - 4k.",
+"choices": ["[- i/2 + j - 2k]/√5", "[- i + 2j - 4k]/√9", "[- i/√5 + 2j/√5 - 4k/√5]", "None of these"],
+"answer": "[- i/√5 + 2j/√5 - 4k/√5]",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "If a = 2i - j + k and b = -i + j, find the angle between the vectors a and b.",
+"choices": ["2π/3", "3π/4", "5π", "π/2"],
+"answer": "2π/3",
+"subject": "Mathematics"
+}
+}, {
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following set can be the direction angles of a vector?",
+"choices": ["60, 45, 90", "45, 45, 45", "60, 30, 30", "60, 60, 45"],
+"answer": "60, 30, 30",
+"subject": "Mathematics"
+}
+},
+
+{
+"model": "question.Questions",
+"fields": {
+"question": "Volume of sphere having radius 17 cm is:",
+"choices": ["20579.53 cm3", "0.03 cm3", "0.08 cm3", "0.01 cm"],
+"answer": "20579.53 cm3",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Ratio of Nano to Atto is:",
+"choices": ["10°", "100 atto", "1000 atto", "10000 atto"],
+"answer": "10°",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "1 femto is equal to",
+"choices": ["10°", "10°", "10°", "10°"],
+"answer": "10°",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Dimensions of power?",
+"choices": ["M'L?T?", "M°L°T°", "ML?T?", "ML?T?"],
+"answer": "M'L?T?",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one of the following is correct",
+"choices": ["1eV=1.6x 10°°)ev", "IMev=10° ev", "c=1V=1.6x 10°°ev", "All of the above"],
+"answer": "All of the above",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Dimensions of torsional couple is similar to the dimension of",
+"choices": ["Power", "Current", "Galvanometer constant", "None of these"],
+"answer": "None of these",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Dimensions of work?",
+"choices": ["MLT?", "ML?T?", "ML?T?", "ML?T?"],
+"answer": "ML?T?",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The SI unit of mass is?",
+"choices": ["Miligram", "Gram", "Kilogram", "Ton"],
+"answer": "Kilogram",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "SI unit of velocity is:",
+"choices": ["ms", "s/m", "m/s", "s/m?"],
+"answer": "m/s",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "SI unit of acceleration Is:",
+"choices": ["ms 1", "ms*", "ms?", "ms:"],
+"answer": "ms?",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Zeros are always considered significant when they are",
+"choices": ["In between non-zero digits", "On left of non-zero digits", "On right of non-zero digits", "None of these"],
+"answer": "In between non-zero digits",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What Is absolute uncertainty in length of 10m measured by scale of",
+"choices": ["0.1", "10", "0.01", "1.5"],
+"answer": "0.1",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Precision of 0.1m?",
+"choices": ["0.01 cm", "0.03 cm3", "0.08 cm3", "0.01 cm"],
+"answer": "0.01 cm",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Unit of light year is:",
+"choices": ["Seconds", "Meter", "Meter/Second", "Time"],
+"answer": "Meter",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Parsec is the unit of?",
+"choices": ["Frequency", "Mass", "Distance", "Time"],
+"answer": "Distance",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Unit of angular momentum",
+"choices": ["J", "Js", "Js*", "Js*"],
+"answer": "Js*",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When speed is doubled the centripetal force will be?",
+"choices": ["Same", "Doubled", "Tripled", "Quadrupled"],
+"answer": "Quadrupled",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "On doubling the mass, the linear momentum and angular momentum of the body will be:",
+"choices": ["Remain same", "Increased", "Decreased", "Doubled"],
+"answer": "Doubled",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Unit of Angular Momentum?",
+"choices": ["Kg m*s?", "Js", "Js", "Both a and b"],
+"answer": "Both a and b",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A bicycle wheel of radius 0.70 m Is turning at an angular speed of 6.3 rad/s as it rolls ona horizontal surface without slipping. What is the linear speed of the wheel?",
+"choices": ["1.4 m/s", "0.11 m/s", "28 m/s", "4.4 m/s", "9.1 m/s"],
+"answer": "4.4 m/s",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Angular velocity Is measured In",
+"choices": ["rad/min", "m/s", "m (g—a)", "None of the above"],
+"answer": "rad/min",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Apparent weight of a body In an elevator accelerating downwards is given by:",
+"choices": ["m (g+a)", "ma", "m(g-a)", "Zero"],
+"answer": "m(g-a)",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What will be the velocity of a body revolving In a circle of radius 2m with an angular velocity of 1 rev/sec?",
+"choices": ["1/2 m/s", "1 m/s", "2 m/s", "None of these"],
+"answer": "4 m/s",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "1 degree lsequal to____ radians",
+"choices": ["180", "3.14", "0.01745", "45"],
+"answer": "0.01745",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Centrifugal force Is:",
+"choices": ["Pseudo force", "Action force", "Both aandb", "None of these"],
+"answer": "Pseudo force",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Centrifugal force of a body depends upon?",
+"choices": ["Weight", "Mass", "Volume", "None of these"],
+"answer": "Mass",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the work done by a body moving with 1 m/s velocity in circular orbit of radius 10m?",
+"choices": ["10", "100", "5", "Zero"],
+"answer": "Zero",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The period of rotation of geosynchronous satellite is",
+"choices": ["1 day", "1 month", "1 year", "1 year"],
+"answer": "1 day",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A body moving with an angular velocity of 1 rev/sec has a frequency of:",
+"choices": ["0.5 Hz", "2 Hz", "1 Hz", "None of these"],
+"answer": "1 Hz",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Js is the unit of:",
+"choices": ["Linear momentum", "Angular momentum", "Energy", "Joule"],
+"answer": "Angular momentum",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A stone attached to a rope which is whirled in a circle. If the rope breaks during the motion, the stone will move:",
+"choices": ["Radially inwards", "Radially outwards", "Along tangent", "Along circle"],
+"answer": "Along tangent",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Moment of inertia of a sphere is:",
+"choices": ["—mL?", "mr?", "mr?", "2mr?"],
+"answer": "2mr?",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Mass of a person is 50 kg. The apparent weight of the person in elevator is double his real weight. Find the acceleration of the elevator. Consider g = 10 m/s?",
+"choices": ["15 m/s* upward", "15 m/s* downward", "10 m/s* upward", "10 m/s* downward"],
+"answer": "10 m/s* upward",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In rotation motion the torque Is:",
+"choices": ["Rate of change of angular momentum", "Rate of change of linear momentum", "Rate of change of inertia", "Rate of change of centripetal force"],
+"answer": "Rate of change of angular momentum",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If a particle is moving in a uniform circular path, and its mass is reduced to half of its original mass, the force acting upon it will be?",
+"choices": ["Half", "Doubled", "Remain Same", "None of these"],
+"answer": "Half",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If the actual weight of a person standing in an elevator is 75N, and the apparent weight in the accelerated elevator is 105N, find the acceleration and direction of elevator motion. (Use g = 10m/s*)",
+"choices": ["4 m/s* downwards", "4 m/s* upwards", "6 m/s* downwards", "6 m/s* upwards"],
+"answer": "6 m/s* upwards",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Speed and Pressure relation of a fluid is given by:",
+"choices": ["Venturi relation", "Stoke's Law", "Equation of Continuity", "Bernoulli's Equation"],
+"answer": "Bernoulli's Equation",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Blood pressure of a healthy person is",
+"choices": ["140/60", "120/80", "80 / 120", "90 / 60"],
+"answer": "120/80",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In a river flow of water is maximum at",
+"choices": ["Middle", "Top right corner", "Top left corner", "Same flow throughout"],
+"answer": "Middle",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If an object sinks in the water, then",
+"choices": ["Object is denser than water", "Water is denser than object", "Either a or b", "None of these"],
+"answer": "Object is denser than water",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If the radii of two droplets are in the ratio 2:3, what will be the ratio of their Terminal velocities?",
+"choices": ["2:3", "4:6", "4:9", "2:6"],
+"answer": "4:9",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Dimensions of coefficient of viscosity?",
+"choices": ["MLT", "ML?T", "ML?T?", "MLT?"],
+"answer": "ML?T?",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Terminal velocity of a water droplet is dependent on:",
+"choices": ["Mass", "Radius", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If an earthquake occurs. What happens to the entropy of Earth?",
+"choices": ["It Increases", "It Decreases", "It Stays the Same", "First Increases then decreases back to normal"],
+"answer": "It Increases",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If the temperature of cold reservoir is 12C and that of hot reservoir is 27C, the efficiency of Carnot Engine will be?",
+"choices": ["95%", "5%", "55%", "45%"],
+"answer": "5%",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "During isothermal process which of the following remains constant:",
+"choices": ["Temperature", "Pressure", "Volume", "Heat"],
+"answer": "Temperature",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If speed of a fan in a room is increased then the temperature of air in the room will",
+"choices": ["Decrease", "Increase", "Remain Same", "Either a orb"],
+"answer": "Increase",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following act as a heat pump?",
+"choices": ["Refrigerator", "Air conditioner", "Deep Freezers", "All of the above"],
+"answer": "All of the above",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Compression of gas under constant temperature is process:",
+"choices": ["Adiabatic", "Isothermal", "Isochoric", "Isobaric"],
+"answer": "Isothermal",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Entropy on melting of ice",
+"choices": ["Remains same", "Increases", "Decreases", "Decreases slightly"],
+"answer": "Increases",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "As a result of the natural process the entropy",
+"choices": ["Increases", "Remains Same", "Decreases", "Either a or c"],
+"answer": "Increases",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If Cp = 10 & Cv = 7, then the general gas constant equals:",
+"choices": ["17", "3", "14", "21"],
+"answer": "3",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Entropy is the measure of",
+"choices": ["Heat", "Kinetic energy", "Momentum", "Disorder"],
+"answer": "Disorder",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Efficiency of the Carnot's cycle will be 100% if the temperature of cold reservoir is:",
+"choices": ["+273K", "-273K", "100K", "0K"],
+"answer": "0K",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When earthquake occurs. What happens to the entropy of Earth?",
+"choices": ["It Increases", "It Decreases", "It Stays the Same", "First Increases then decreases back to normal"],
+"answer": "It Increases",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If the radii of two droplets are in the ratio 2:3, what will be the ratio of their Terminal velocities?",
+"choices": ["2:3", "4:6", "4:9", "2:6"],
+"answer": "4:9",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Dimensions of coefficient of viscosity?",
+"choices": ["MLT", "ML?T", "ML?T?", "MLT?"],
+"answer": "ML?T?",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Terminal velocity of a water droplet is dependent on:",
+"choices": ["Mass", "Radius", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If an earthquake occurs. What happens to the entropy of Earth?",
+"choices": ["It Increases", "It Decreases", "It Stays the Same", "First Increases then decreases back to normal"],
+"answer": "It Increases",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If the temperature of cold reservoir is 12C and that of hot reservoir is 27C, the efficiency of Carnot Engine will be?",
+"choices": ["95%", "5%", "55%", "45%"],
+"answer": "5%",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "During isothermal process which of the following remains constant:",
+"choices": ["Temperature", "Pressure", "Volume", "Heat"],
+"answer": "Temperature",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If speed of a fan in a room is increased then the temperature of air in the room will",
+"choices": ["Decrease", "Increase", "Remain Same", "Either a or b"],
+"answer": "Increase",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following act as a heat pump?",
+"choices": ["Refrigerator", "Air conditioner", "Deep Freezers", "All of the above"],
+"answer": "All of the above",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Compression of gas under constant temperature is process:",
+"choices": ["Adiabatic", "Isothermal", "Isochoric", "Isobaric"],
+"answer": "Isothermal",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Entropy on melting of ice",
+"choices": ["Remains same", "Increases", "Decreases", "Decreases slightly"],
+"answer": "Increases",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "As a result of the natural process the entropy",
+"choices": ["Increases", "Remains Same", "Decreases", "Either a or c"],
+"answer": "Increases",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If Cp = 10 & Cv = 7, then the general gas constant equals:",
+"choices": ["17", "3", "14", "21"],
+"answer": "3",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Entropy is the measure of",
+"choices": ["Heat", "Kinetic energy", "Momentum", "Disorder"],
+"answer": "Disorder",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Efficiency of the Carnot's cycle will be 100% if the temperature of cold reservoir is:",
+"choices": ["+273K", "-273K", "100K", "0K"],
+"answer": "0K",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Wavelength of X-rays is:",
+"choices": ["10°°", "10°", "10-*", "10-?"],
+"answer": "10°°",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If an electron undergoes transition from 4th to 2nd orbit, then the color of radiations produced will be",
+"choices": ["Violet", "Blue-Green", "Ultraviolet", "Red"],
+"answer": "Blue-Green",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Laser light is",
+"choices": ["Monochromatic", "Intense", "Coherent", "All of these"],
+"answer": "All of these",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which series is emitted when electron jumps from a higher orbit to fifth orbit?",
+"choices": ["Lyman", "Balmer", "Pfund", "Brackett"],
+"answer": "Pfund",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Total energy of an electron in hydrogen atom when it jumps to higher orbit from a lower orbit is",
+"choices": ["Less negative", "More positive", "Less positive", "Remains same"],
+"answer": "Less negative",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In hydrogen spectrum, Lyman and Balmer series belong to which region?",
+"choices": ["Lyman = Visible, Balmer = Ultraviolet", "Lyman = Ultraviolet, Balmer = Visible", "Lyman = Infrared, Balmer = Ultraviolet", "None of these"],
+"answer": "Lyman = Ultraviolet, Balmer = Visible",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Radiations emitted by human body lie in which of the following series?",
+"choices": ["Bracket", "Pfund", "Paschen", "None of these"],
+"answer": "Paschen",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When an electron jumps from outer to 5\" orbit, then the spectral lines fall into ___ region.",
+"choices": ["Lyman", "Balmer", "Pfund", "None of these"],
+"answer": "Pfund",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If an electron jumps from 6\" orbit to 7\" orbit, the increase in radius will be:",
+"choices": ["90%", "25%", "33%", "17%"],
+"answer": "33%",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In hydrogen spectrum if n, = 6, then the spectral lines lie in:",
+"choices": ["Balmer Series", "Paschen Series", "Pfund Series", "Humphreys series"],
+"answer": "Humphreys series",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The ionization energy of hydrogen is:",
+"choices": ["13.6 eV", "13.6J", "14eV", "13.6 meV"],
+"answer": "13.6 eV",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Muon has charge of?",
+"choices": ["-1e", "1e", "0.5e", "None of these"],
+"answer": "-1e",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following consist of two quarks?",
+"choices": ["Leptons", "Baryon", "Meson", "None of these"],
+"answer": "Meson",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can damage eye?",
+"choices": ["X-rays", "Gamma rays", "Laser", "All of these"],
+"answer": "All of these",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following has highest ionizing power and least penetrating power?",
+"choices": ["Alpha", "Beta", "Gamma", "Both a and c"],
+"answer": "Both a and c",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Radiation cause damage in",
+"choices": ["Cell", "Skin", "Hair", "All of above"],
+"answer": "All of above",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following has greater speed in space?",
+"choices": ["Gamma rays", "Light", "Radio waves", "All of these"],
+"answer": "All of these",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following will be absorbed by the paper?",
+"choices": ["Alpha particle", "Beta particle", "Gamma", "X rays"],
+"answer": "Alpha particle",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How many quarks neutron and proton is made up of?",
+"choices": ["1", "2", "3", "4"],
+"answer": "3",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Meson consists of:",
+"choices": ["One quark and one anti-quark", "One quark and two anti-quarks", "Two quarks and one anti-quark", "Two quarks and two anti-quarks"],
+"answer": "One quark and one anti-quark",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Charge on an up-quark is:",
+"choices": ["2/3e", "1/3 e", "-2/3 e", "<1/3e"],
+"answer": "2/3e",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which gas is not used in GM counter?",
+"choices": ["Argon", "Neon", "Hydrogen", "Helium"],
+"answer": "Hydrogen",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How many of the following is not true about radioactivity?",
+"choices": ["It is not altered by any chemical change", "It is not altered by any physical change", "It is a property relating to outside the nucleus", "All of these"],
+"answer": "None of these",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How many neutrons are released during fusion of two deuterons?",
+"choices": ["0", "1", "2", "All of these"],
+"answer": "1",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following have low ionization and high penetrating power?",
+"choices": ["Alpha particles", "Beta particles", "Gamma particles", "None of these"],
+"answer": "Gamma particles",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A nucleus weighs less than Its sum of nucleons, a quantity known as the",
+"choices": ["Mass defect", "Binding energy", "Packing fraction", "None of these"],
+"answer": "Mass defect",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Transmutation occurs when",
+"choices": ["Alpha", "Beta", "Gamma", "Either a or c"],
+"answer": "Either a or c",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In heavy nuclei the number of neutrons is",
+"choices": ["Less", "Greater", "Random", "None of these"],
+"answer": "Greater",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Energy of fast moving neutron is?",
+"choices": ["1KeV", "0.5 KeV", "0.02 KeV", "0.01 Kev"],
+"answer": "1KeV",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Alpha particle has",
+"choices": ["Less ionization and High Penetration", "High ionization and High Penetration", "High ionization and Less Penetration", "Less ionization and Less Penetration"],
+"answer": "High ionization and Less Penetration",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Penetration power of gamma rays as compared to alpha rays is",
+"choices": ["Greater", "Less", "Equal", "Either a orc"],
+"answer": "Greater",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following radiation detector operates under Reverse Bias?",
+"choices": ["GM counter", "Wilson Cloud Chamber", "Solid state detector", "Both a and c"],
+"answer": "Both a and c",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is correct about alpha and x rays?",
+"choices": ["Both produce ionization", "Both are deflected by Magnetic field", "Both are deflected by Electric field", "None of these"],
+"answer": "Both produce ionization",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "There are__ leptons.",
+"choices": ["3", "4", "6", "8"],
+"answer": "3",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Nuclear fission reaction takes place in controlled",
+"choices": ["Moderators", "Control rod", "Heavy water", "All of these"],
+"answer": "All of these",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The half-life of iodine is",
+"choices": ["8 days", "15 days", "8 hours", "15 hour s"],
+"answer": "8 days",
+"subject": "Physics"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can cause least ionization but has high penetrating power?",
+"choices": ["Alpha", "Beta", "Gamma", "None of these"],
+"answer": "Gamma",
+"subject": "Physics"
+}
+},
+
+
+
+
+{
+"model": "question.Questions",
+"fields": {
+"question": "To find the number of molecules in a given compound which of the following Is employed?",
+"choices": ["Chromatography", "Le-Chatelier's principle", "Ke", "None of these"],
+"answer": "None of these",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the percentage by mass of Nitrogen in NH4(NO3)?",
+"choices": ["50%", "35%", "40%", "30%"],
+"answer": "35%",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Mass spectrometer can be used to find:",
+"choices": ["Mass of atom", "Mass of ion", "Charge to mass ratio of atom", "Charge to mass ratio of ion"],
+"answer": "Charge to mass ratio of ion",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "4 gram atoms of carbon has a mass of:",
+"choices": ["12", "24", "48", "56"],
+"answer": "48",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "0.5 mole of SO2 contains gram of oxygen?",
+"choices": ["12", "16", "24", "None of these"],
+"answer": "16",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In combustion analysis method CO2 is absorbed by?",
+"choices": ["Mg(OH)2", "KOH", "Me(ClO4)2", "None of thes2"],
+"answer": "KOH",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "1 amu is?",
+"choices": ["1.66 x 10^-11 kg", "1.602 x 10^-19 kg", "1.66 x 10^-24 kg", "None of t1e3e"],
+"answer": "1.66 x 10^-24 kg",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Mass of a neutron in amu is?",
+"choices": ["1.008386", "1.007376", "0.0005", "None of these"],
+"answer": "1.008386",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Mass spectrometer is used to determine which of the following quantity?",
+"choices": ["Atomic mases", "Atomic number", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Chemical properties of an atom depends upon numbe; of",
+"choices": ["Elect' ans", "Protons", "Neutrons", "Nucleons"],
+"answer": "Protons",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "One mole of Oxygen has number of atoms as compared to one mole of Nitrogen.",
+"choices": ["Equal", "Less", "More", "None of these"],
+"answer": "Equal",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In mass spectrometry, ionization occurs in form.",
+"choices": ["Solid", "Liquid", "Vapor", "No ionization occurs during the process."],
+"answer": "Vapor form",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If you need to produce carbon dioxide from 12 grams of carbon, how many er of Onygen would you need?",
+"choices": ["12", "16", "32", "8"],
+"answer": "32",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Actual yield is always",
+"choices": ["Less than", "More than", "Same as", "None of the above"],
+"answer": "Less than",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following molecule is expressed in empirical formula:",
+"choices": ["CeH12O6", "CsHs", "Na2S2O4", "CH4"],
+"answer": "CH4",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the mass in grams of 12 gram atom of carbon atoms?",
+"choices": ["12.66 x 10^5", "12", "1.992 x 10^3", "2.660 x 10^2"],
+"answer": "1.992 x 10^3",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following represents Empirical Formula of Glucose?",
+"choices": ["CH2O", "CH3O", "CHO", "CHO2"],
+"answer": "CH2O",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the mass of 10° moles of MgSO4?",
+"choices": ["120 grams", "12 grams", "1.2 grams", "0.12 gram"],
+"answer": "0.12 gram",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Water and mercury can be separated by:",
+"choices": ["Evaporation", "Sublimation", "Filtration", "Solvent extraction"],
+"answer": "Evaporation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How will you separate water and kerosene oil?",
+"choices": ["Distillation", "Filtration", "Sublimation", "Crystallization"],
+"answer": "Distillation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "if the distribution co-efficient is small then the solute will:",
+"choices": ["Distribute itself equally", "Flow down the mobile phase", "Remain in mobile phase", "Remain in stationary phase"],
+"answer": "Remain in stationary phase",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The rate of filtration can be considerably increased by using",
+"choices": ["Fluted filter paper", "Suction flask", "Stirrer", "None of these"],
+"answer": "Suction flask",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "is the process of transition of a substance directly from the solid to the gas phase without passing through the intermediate liquid phase.",
+"choices": ["Vaporization", "Evaporation", "Sublimation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the safest way to dry crystals during crystallization?",
+"choices": ["Pressing between folds of paper", "Boiling", "Cooling", "Vacuum desiccator"],
+"answer": "Vacuum desiccator",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If during crystallization more solute could not be dissolved in the solution, the solution is:",
+"choices": ["Saturated solution", "Dilute solution", "Concentrated solution", "None of these"],
+"answer": "Saturated solution",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can be employed instead of filter papers?",
+"choices": ["Gooch Crucible", "Sintered Glass Crucible", "Botha and b", "None of these"],
+"answer": "Botha and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Slow cooling yields crystals of __",
+"choices": ["Medium sized", "Small", "Bigger", "None of these"],
+"answer": "Bigger",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following will be separated by filtration?",
+"choices": ["Salt and water", "Sugar and water", "Alcohol and water", "None of these"],
+"answer": "Salt and water",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The process of changing a solid directly into gas upon heating is known as:",
+"choices": ["Sublimation", "Liquefaction", "Condensation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Filtration process could be very time consuming if it is not aided by a gentle suction which is developed:",
+"choices": ["If the paper covers the funnel up to its circumference", "If the paper has got small sized pores in It.", "If the stem of the funnel is large so that it dips into the filtrate", "If the paper fits tightly all around the upper circumference of the funnel"],
+"answer": "If the paper fits tightly all around the upper circumference of the funnel",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A residue is obtained in which of the following methods?",
+"choices": ["Crystallization", "Filtration", "Condensation", "Decantation"],
+"answer": "Filtration",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases at STP, with equal volume and equal pressure will] have sa me",
+"choices": ["Volume", "Pressure", "Temperature", "Number of molecules"],
+"answer": "Number of molecules",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "of the following is constant during an isothermal process?",
+"choices": ["Volume", "Pressure", "Temperature", "Both band c"],
+"answer": "Pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "when temperature is reduced to half the volume will be",
+"choices": ["Half", "Double", "Quarter", "Same as original"],
+"answer": "Double",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases behave ideal at",
+"choices": ["Low pressure and High temperature", "High temperature and Low pressure", "Low pressure and Low temperature", "High temperature and High pressure"],
+"answer": "Low pressure and High temperature",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Statement of Graham's Law is",
+"choices": ["The rate of diffusion is directly proportional to the square root of its density", "The rate of diffusion is inversely proportional to the square of its density", "The rate of diffusion is inversely proportional to its density.", "The rate of diffusion is inversely proportional to the square root of its density"],
+"answer": "The rate of diffusion is inversely proportional to the square root of its density",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Real gases deviate significantly from ideal gas behavior at",
+"choices": ["Low temperature and high pressure", "High temperature and low pressure", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Liquid crystals are used for:",
+"choices": ["Making LCD", "Optical Imaging", "Making thermometers", "All of these"],
+"answer": "All of these",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Excluded volume is not equal to the actual volume of gas molecules and is represented by:",
+"choices": ["bb", "x", "n", "a"],
+"answer": "b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "All the gasses at 212.44 cm' have",
+"choices": ["Same mass", "Different mass", "Can't' be predicted", "None of these"],
+"answer": "Different mass",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "= Statement of Charles Law:",
+"choices": ["V is directly proportional to P", "V is inversely proportional to P", "V is directly proportional to T", "None of these"],
+"answer": "V is directly proportional to T",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the correct equation:",
+"choices": ["(P + n²a/v²)(v - nb) = nRT", "(P- n²a/v²)(v + nb) = nRT", "PV = NRT", "All of these"],
+"answer": "PV = NRT",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The Vander Waat's constant 'b' of a gas Is four times the",
+"choices": ["Actual volume", "Free volume", "Volume", "Excluded volume"],
+"answer": "Actual volume",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "atmospheric pressure is equal to",
+"choices": ["1 kg/cm²", "1.033 kg/cm²", "1.2 kg/cm²", "1.133 kg/cm²"],
+"answer": "1.033 kg/cm²",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When gases expand, this causes:",
+"choices": ["Cooling", "Heating", "Remain constant", "None of these"],
+"answer": "Cooling",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases can be converted into liquid by:",
+"choices": ["Increasing temperature and decreasing pressure", "Decreasing temperature and increasing pressure", "Same temperature and pressure", "Increasing pressure and temperature"],
+"answer": "Decreasing temperature and increasing pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Water and mercury can be separated by:",
+"choices": ["Evaporation", "Sublimation", "Filtration", "Solvent extraction"],
+"answer": "Evaporation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How will you separate water and kerosene oil?",
+"choices": ["Distillation", "Filtration", "Sublimation", "Crystallization"],
+"answer": "Distillation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "if the distribution co-efficient is small then the solute will:",
+"choices": ["Distribute itself equally", "Flow down the mobile phase", "Remain in mobile phase", "Remain in stationary phase"],
+"answer": "Remain in stationary phase",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The rate of filtration can be considerably increased by using",
+"choices": ["Fluted filter paper", "Suction flask", "Stirrer", "None of these"],
+"answer": "Suction flask",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "is the process of transition of a substance directly from the solid to the gas phase without passing through the intermediate liquid phase.",
+"choices": ["Vaporization", "Evaporation", "Sublimation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the safest way to dry crystals during crystallization?",
+"choices": ["Pressing between folds of paper", "Boiling", "Cooling", "Vacuum desiccator"],
+"answer": "Vacuum desiccator",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If during crystallization more solute could not be dissolved in the solution, the solution is:",
+"choices": ["Saturated solution", "Dilute solution", "Concentrated solution", "None of these"],
+"answer": "Saturated solution",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can be employed instead of filter papers?",
+"choices": ["Gooch Crucible", "Sintered Glass Crucible", "Botha and b", "None of these"],
+"answer": "Botha and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Slow cooling yields crystals of __",
+"choices": ["Medium sized", "Small", "Bigger", "None of these"],
+"answer": "Bigger",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following will be separated by filtration?",
+"choices": ["Salt and water", "Sugar and water", "Alcohol and water", "None of these"],
+"answer": "Salt and water",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The process of changing a solid directly into gas upon heating is known as:",
+"choices": ["Sublimation", "Liquefaction", "Condensation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Filtration process could be very time consuming if it is not aided by a gentle suction which is developed:",
+"choices": ["If the paper covers the funnel up to its circumference", "If the paper has got small sized pores in It.", "If the stem of the funnel is large so that it dips into the filtrate", "If the paper fits tightly all around the upper circumference of the funnel"],
+"answer": "If the paper fits tightly all around the upper circumference of the funnel",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A residue is obtained in which of the following methods?",
+"choices": ["Crystallization", "Filtration", "Condensation", "Decantation"],
+"answer": "Filtration",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases at STP, with equal volume and equal pressure will] have sa me",
+"choices": ["Volume", "Pressure", "Temperature", "Number of molecules"],
+"answer": "Number of molecules",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "of the following is constant during an isothermal process?",
+"choices": ["Volume", "Pressure", "Temperature", "Both band c"],
+"answer": "Pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "when temperature is reduced to half the volume will be",
+"choices": ["Half", "Double", "Quarter", "Same as original"],
+"answer": "Double",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases behave ideal at",
+"choices": ["Low pressure and High temperature", "High temperature and Low pressure", "Low pressure and Low temperature", "High temperature and High pressure"],
+"answer": "Low pressure and High temperature",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Statement of Graham's Law is",
+"choices": ["The rate of diffusion is directly proportional to the square root of its density", "The rate of diffusion is inversely proportional to the square of its density", "The rate of diffusion is inversely proportional to its density.", "The rate of diffusion is inversely proportional to the square root of its density"],
+"answer": "The rate of diffusion is inversely proportional to the square root of its density",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Real gases deviate significantly from ideal gas behavior at",
+"choices": ["Low temperature and high pressure", "High temperature and low pressure", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Liquid crystals are used for:",
+"choices": ["Making LCD", "Optical Imaging", "Making thermometers", "All of these"],
+"answer": "All of these",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Excluded volume is not equal to the actual volume of gas molecules and is represented by:",
+"choices": ["bb", "x", "n", "a"],
+"answer": "b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "All the gasses at 212.44 cm' have",
+"choices": ["Same mass", "Different mass", "Can't' be predicted", "None of these"],
+"answer": "Different mass",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "= Statement of Charles Law:",
+"choices": ["V is directly proportional to P", "V is inversely proportional to P", "V is directly proportional to T", "None of these"],
+"answer": "V is directly proportional to T",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the correct equation:",
+"choices": ["(P + n²a/v²)(v - nb) = nRT", "(P- n²a/v²)(v + nb) = nRT", "PV = NRT", "All of these"],
+"answer": "PV = NRT",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The Vander Waat's constant 'b' of a gas Is four times the",
+"choices": ["Actual volume", "Free volume", "Volume", "Excluded volume"],
+"answer": "Actual volume",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "atmospheric pressure is equal to",
+"choices": ["1 kg/cm²", "1.033 kg/cm²", "1.2 kg/cm²", "1.133 kg/cm²"],
+"answer": "1.033 kg/cm²",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When gases expand, this causes:",
+"choices": ["Cooling", "Heating", "Remain constant", "None of these"],
+"answer": "Cooling",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases can be converted into liquid by:",
+"choices": ["Increasing temperature and decreasing pressure", "Decreasing temperature and increasing pressure", "Same temperature and pressure", "Increasing pressure and temperature"],
+"answer": "Decreasing temperature and increasing pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How will you separate water and kerosene oil?",
+"choices": ["Distillation", "Filtration", "Sublimation", "Crystallization"],
+"answer": "Distillation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "if the distribution co-efficient is small then the solute will:",
+"choices": ["Distribute itself equally", "Flow down the mobile phase", "Remain in mobile phase", "Remain in stationary phase"],
+"answer": "Remain in stationary phase",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The rate of filtration can be considerably increased by using",
+"choices": ["Fluted filter paper", "Suction flask", "Stirrer", "None of these"],
+"answer": "Suction flask",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "is the process of transition of a substance directly from the solid to the gas phase without passing through the intermediate liquid phase.",
+"choices": ["Vaporization", "Evaporation", "Sublimation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the safest way to dry crystals during crystallization?",
+"choices": ["Pressing between folds of paper", "Boiling", "Cooling", "Vacuum desiccator"],
+"answer": "Vacuum desiccator",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If during crystallization more solute could not be dissolved in the solution, the solution is:",
+"choices": ["Saturated solution", "Dilute solution", "Concentrated solution", "None of these"],
+"answer": "Saturated solution",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can be employed instead of filter papers?",
+"choices": ["Gooch Crucible", "Sintered Glass Crucible", "Botha and b", "None of these"],
+"answer": "Botha and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Slow cooling yields crystals of __",
+"choices": ["Medium sized", "Small", "Bigger", "None of these"],
+"answer": "Bigger",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following will be separated by filtration?",
+"choices": ["Salt and water", "Sugar and water", "Alcohol and water", "None of these"],
+"answer": "Salt and water",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The process of changing a solid directly into gas upon heating is known as:",
+"choices": ["Sublimation", "Liquefaction", "Condensation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Filtration process could be very time consuming if it is not aided by a gentle suction which is developed:",
+"choices": ["If the paper covers the funnel up to its circumference", "If the paper has got small sized pores in It.", "If the stem of the funnel is large so that it dips into the filtrate", "If the paper fits tightly all around the upper circumference of the funnel"],
+"answer": "If the paper fits tightly all around the upper circumference of the funnel",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A residue is obtained in which of the following methods?",
+"choices": ["Crystallization", "Filtration", "Condensation", "Decantation"],
+"answer": "Filtration",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases at STP, with equal volume and equal pressure will] have sa me",
+"choices": ["Volume", "Pressure", "Temperature", "Number of molecules"],
+"answer": "Number of molecules",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "of the following is constant during an isothermal process?",
+"choices": ["Volume", "Pressure", "Temperature", "Both band c"],
+"answer": "Pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "when temperature is reduced to half the volume will be",
+"choices": ["Half", "Double", "Quarter", "Same as original"],
+"answer": "Double",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases behave ideal at",
+"choices": ["Low pressure and High temperature", "High temperature and Low pressure", "Low pressure and Low temperature", "High temperature and High pressure"],
+"answer": "Low pressure and High temperature",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Statement of Graham's Law is",
+"choices": ["The rate of diffusion is directly proportional to the square root of its density", "The rate of diffusion is inversely proportional to the square of its density", "The rate of diffusion is inversely proportional to its density.", "The rate of diffusion is inversely proportional to the square root of its density"],
+"answer": "The rate of diffusion is inversely proportional to the square root of its density",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Real gases deviate significantly from ideal gas behavior at",
+"choices": ["Low temperature and high pressure", "High temperature and low pressure", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Liquid crystals are used for:",
+"choices": ["Making LCD", "Optical Imaging", "Making thermometers", "All of these"],
+"answer": "All of these",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Excluded volume is not equal to the actual volume of gas molecules and is represented by:",
+"choices": ["bb", "x", "n", "a"],
+"answer": "b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "All the gasses at 212.44 cm' have",
+"choices": ["Same mass", "Different mass", "Can't' be predicted", "None of these"],
+"answer": "Different mass",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "= Statement of Charles Law:",
+"choices": ["V is directly proportional to P", "V is inversely proportional to P", "V is directly proportional to T", "None of these"],
+"answer": "V is directly proportional to T",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the correct equation:",
+"choices": ["(P + n²a/v²)(v - nb) = nRT", "(P- n²a/v²)(v + nb) = nRT", "PV = NRT", "All of these"],
+"answer": "PV = NRT",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The Vander Waat's constant 'b' of a gas Is four times the",
+"choices": ["Actual volume", "Free volume", "Volume", "Excluded volume"],
+"answer": "Actual volume",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "atmospheric pressure is equal to",
+"choices": ["1 kg/cm²", "1.033 kg/cm²", "1.2 kg/cm²", "1.133 kg/cm²"],
+"answer": "1.033 kg/cm²",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When gases expand, this causes:",
+"choices": ["Cooling", "Heating", "Remain constant", "None of these"],
+"answer": "Cooling",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases can be converted into liquid by:",
+"choices": ["Increasing temperature and decreasing pressure", "Decreasing temperature and increasing pressure", "Same temperature and pressure", "Increasing pressure and temperature"],
+"answer": "Decreasing temperature and increasing pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How will you separate water and kerosene oil?",
+"choices": ["Distillation", "Filtration", "Sublimation", "Crystallization"],
+"answer": "Distillation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "if the distribution co-efficient is small then the solute will:",
+"choices": ["Distribute itself equally", "Flow down the mobile phase", "Remain in mobile phase", "Remain in stationary phase"],
+"answer": "Remain in stationary phase",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The rate of filtration can be considerably increased by using",
+"choices": ["Fluted filter paper", "Suction flask", "Stirrer", "None of these"],
+"answer": "Suction flask",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "is the process of transition of a substance directly from the solid to the gas phase without passing through the intermediate liquid phase.",
+"choices": ["Vaporization", "Evaporation", "Sublimation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the safest way to dry crystals during crystallization?",
+"choices": ["Pressing between folds of paper", "Boiling", "Cooling", "Vacuum desiccator"],
+"answer": "Vacuum desiccator",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If during crystallization more solute could not be dissolved in the solution, the solution is:",
+"choices": ["Saturated solution", "Dilute solution", "Concentrated solution", "None of these"],
+"answer": "Saturated solution",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can be employed instead of filter papers?",
+"choices": ["Gooch Crucible", "Sintered Glass Crucible", "Botha and b", "None of these"],
+"answer": "Botha and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Slow cooling yields crystals of __",
+"choices": ["Medium sized", "Small", "Bigger", "None of these"],
+"answer": "Bigger",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following will be separated by filtration?",
+"choices": ["Salt and water", "Sugar and water", "Alcohol and water", "None of these"],
+"answer": "Salt and water",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The process of changing a solid directly into gas upon heating is known as:",
+"choices": ["Sublimation", "Liquefaction", "Condensation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Filtration process could be very time consuming if it is not aided by a gentle suction which is developed:",
+"choices": ["If the paper covers the funnel up to its circumference", "If the paper has got small sized pores in It.", "If the stem of the funnel is large so that it dips into the filtrate", "If the paper fits tightly all around the upper circumference of the funnel"],
+"answer": "If the paper fits tightly all around the upper circumference of the funnel",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A residue is obtained in which of the following methods?",
+"choices": ["Crystallization", "Filtration", "Condensation", "Decantation"],
+"answer": "Filtration",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases at STP, with equal volume and equal pressure will] have sa me",
+"choices": ["Volume", "Pressure", "Temperature", "Number of molecules"],
+"answer": "Number of molecules",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "of the following is constant during an isothermal process?",
+"choices": ["Volume", "Pressure", "Temperature", "Both band c"],
+"answer": "Pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "when temperature is reduced to half the volume will be",
+"choices": ["Half", "Double", "Quarter", "Same as original"],
+"answer": "Double",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases behave ideal at",
+"choices": ["Low pressure and High temperature", "High temperature and Low pressure", "Low pressure and Low temperature", "High temperature and High pressure"],
+"answer": "Low pressure and High temperature",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Statement of Graham's Law is",
+"choices": ["The rate of diffusion is directly proportional to the square root of its density", "The rate of diffusion is inversely proportional to the square of its density", "The rate of diffusion is inversely proportional to its density.", "The rate of diffusion is inversely proportional to the square root of its density"],
+"answer": "The rate of diffusion is inversely proportional to the square root of its density",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Real gases deviate significantly from ideal gas behavior at",
+"choices": ["Low temperature and high pressure", "High temperature and low pressure", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Liquid crystals are used for:",
+"choices": ["Making LCD", "Optical Imaging", "Making thermometers", "All of these"],
+"answer": "All of these",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Excluded volume is not equal to the actual volume of gas molecules and is represented by:",
+"choices": ["bb", "x", "n", "a"],
+"answer": "b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "All the gasses at 212.44 cm' have",
+"choices": ["Same mass", "Different mass", "Can't' be predicted", "None of these"],
+"answer": "Different mass",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "= Statement of Charles Law:",
+"choices": ["V is directly proportional to P", "V is inversely proportional to P", "V is directly proportional to T", "None of these"],
+"answer": "V is directly proportional to T",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the correct equation:",
+"choices": ["(P + n²a/v²)(v - nb) = nRT", "(P- n²a/v²)(v + nb) = nRT", "PV = NRT", "All of these"],
+"answer": "PV = NRT",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The Vander Waat's constant 'b' of a gas Is four times the",
+"choices": ["Actual volume", "Free volume", "Volume", "Excluded volume"],
+"answer": "Actual volume",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "atmospheric pressure is equal to",
+"choices": ["1 kg/cm²", "1.033 kg/cm²", "1.2 kg/cm²", "1.133 kg/cm²"],
+"answer": "1.033 kg/cm²",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When gases expand, this causes:",
+"choices": ["Cooling", "Heating", "Remain constant", "None of these"],
+"answer": "Cooling",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases can be converted into liquid by:",
+"choices": ["Increasing temperature and decreasing pressure", "Decreasing temperature and increasing pressure", "Same temperature and pressure", "Increasing pressure and temperature"],
+"answer": "Decreasing temperature and increasing pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How will you separate water and kerosene oil?",
+"choices": ["Distillation", "Filtration", "Sublimation", "Crystallization"],
+"answer": "Distillation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "if the distribution co-efficient is small then the solute will:",
+"choices": ["Distribute itself equally", "Flow down the mobile phase", "Remain in mobile phase", "Remain in stationary phase"],
+"answer": "Remain in stationary phase",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The rate of filtration can be considerably increased by using",
+"choices": ["Fluted filter paper", "Suction flask", "Stirrer", "None of these"],
+"answer": "Suction flask",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "is the process of transition of a substance directly from the solid to the gas phase without passing through the intermediate liquid phase.",
+"choices": ["Vaporization", "Evaporation", "Sublimation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the safest way to dry crystals during crystallization?",
+"choices": ["Pressing between folds of paper", "Boiling", "Cooling", "Vacuum desiccator"],
+"answer": "Vacuum desiccator",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If during crystallization more solute could not be dissolved in the solution, the solution is:",
+"choices": ["Saturated solution", "Dilute solution", "Concentrated solution", "None of these"],
+"answer": "Saturated solution",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can be employed instead of filter papers?",
+"choices": ["Gooch Crucible", "Sintered Glass Crucible", "Botha and b", "None of these"],
+"answer": "Botha and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Slow cooling yields crystals of __",
+"choices": ["Medium sized", "Small", "Bigger", "None of these"],
+"answer": "Bigger",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following will be separated by filtration?",
+"choices": ["Salt and water", "Sugar and water", "Alcohol and water", "None of these"],
+"answer": "Salt and water",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The process of changing a solid directly into gas upon heating is known as:",
+"choices": ["Sublimation", "Liquefaction", "Condensation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Filtration process could be very time consuming if it is not aided by a gentle suction which is developed:",
+"choices": ["If the paper covers the funnel up to its circumference", "If the paper has got small sized pores in It.", "If the stem of the funnel is large so that it dips into the filtrate", "If the paper fits tightly all around the upper circumference of the funnel"],
+"answer": "If the paper fits tightly all around the upper circumference of the funnel",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A residue is obtained in which of the following methods?",
+"choices": ["Crystallization", "Filtration", "Condensation", "Decantation"],
+"answer": "Filtration",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases at STP, with equal volume and equal pressure will] have sa me",
+"choices": ["Volume", "Pressure", "Temperature", "Number of molecules"],
+"answer": "Number of molecules",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "of the following is constant during an isothermal process?",
+"choices": ["Volume", "Pressure", "Temperature", "Both band c"],
+"answer": "Pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "when temperature is reduced to half the volume will be",
+"choices": ["Half", "Double", "Quarter", "Same as original"],
+"answer": "Double",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases behave ideal at",
+"choices": ["Low pressure and High temperature", "High temperature and Low pressure", "Low pressure and Low temperature", "High temperature and High pressure"],
+"answer": "Low pressure and High temperature",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Statement of Graham's Law is",
+"choices": ["The rate of diffusion is directly proportional to the square root of its density", "The rate of diffusion is inversely proportional to the square of its density", "The rate of diffusion is inversely proportional to its density.", "The rate of diffusion is inversely proportional to the square root of its density"],
+"answer": "The rate of diffusion is inversely proportional to the square root of its density",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Real gases deviate significantly from ideal gas behavior at",
+"choices": ["Low temperature and high pressure", "High temperature and low pressure", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Liquid crystals are used for:",
+"choices": ["Making LCD", "Optical Imaging", "Making thermometers", "All of these"],
+"answer": "All of these",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Excluded volume is not equal to the actual volume of gas molecules and is represented by:",
+"choices": ["bb", "x", "n", "a"],
+"answer": "b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "All the gasses at 212.44 cm' have",
+"choices": ["Same mass", "Different mass", "Can't' be predicted", "None of these"],
+"answer": "Different mass",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "= Statement of Charles Law:",
+"choices": ["V is directly proportional to P", "V is inversely proportional to P", "V is directly proportional to T", "None of these"],
+"answer": "V is directly proportional to T",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the correct equation:",
+"choices": ["(P + n²a/v²)(v - nb) = nRT", "(P- n²a/v²)(v + nb) = nRT", "PV = NRT", "All of these"],
+"answer": "PV = NRT",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The Vander Waat's constant 'b' of a gas Is four times the",
+"choices": ["Actual volume", "Free volume", "Volume", "Excluded volume"],
+"answer": "Actual volume",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "atmospheric pressure is equal to",
+"choices": ["1 kg/cm²", "1.033 kg/cm²", "1.2 kg/cm²", "1.133 kg/cm²"],
+"answer": "1.033 kg/cm²",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When gases expand, this causes:",
+"choices": ["Cooling", "Heating", "Remain constant", "None of these"],
+"answer": "Cooling",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases can be converted into liquid by:",
+"choices": ["Increasing temperature and decreasing pressure", "Decreasing temperature and increasing pressure", "Same temperature and pressure", "Increasing pressure and temperature"],
+"answer": "Decreasing temperature and increasing pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Water and mercury can be separated by:",
+"choices": ["Evaporation", "Sublimation", "Filtration", "Solvent extraction"],
+"answer": "Evaporation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How will you separate water and kerosene oil?",
+"choices": ["Distillation", "Filtration", "Sublimation", "Crystallization"],
+"answer": "Distillation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "if the distribution co-efficient is small then the solute will:",
+"choices": ["Distribute itself equally", "Flow down the mobile phase", "Remain in mobile phase", "Remain in stationary phase"],
+"answer": "Remain in stationary phase",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The rate of filtration can be considerably increased by using",
+"choices": ["Fluted filter paper", "Suction flask", "Stirrer", "None of these"],
+"answer": "Suction flask",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "is the process of transition of a substance directly from the solid to the gas phase without passing through the intermediate liquid phase.",
+"choices": ["Vaporization", "Evaporation", "Sublimation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the safest way to dry crystals during crystallization?",
+"choices": ["Pressing between folds of paper", "Boiling", "Cooling", "Vacuum desiccator"],
+"answer": "Vacuum desiccator",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If during crystallization more solute could not be dissolved in the solution, the solution is:",
+"choices": ["Saturated solution", "Dilute solution", "Concentrated solution", "None of these"],
+"answer": "Saturated solution",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following can be employed instead of filter papers?",
+"choices": ["Gooch Crucible", "Sintered Glass Crucible", "Botha and b", "None of these"],
+"answer": "Botha and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Slow cooling yields crystals of __",
+"choices": ["Medium sized", "Small", "Bigger", "None of these"],
+"answer": "Bigger",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following will be separated by filtration?",
+"choices": ["Salt and water", "Sugar and water", "Alcohol and water", "None of these"],
+"answer": "Salt and water",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The process of changing a solid directly into gas upon heating is known as:",
+"choices": ["Sublimation", "Liquefaction", "Condensation", "None of these"],
+"answer": "Sublimation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Filtration process could be very time consuming if it is not aided by a gentle suction which is developed:",
+"choices": ["If the paper covers the funnel up to its circumference", "If the paper has got small sized pores in It.", "If the stem of the funnel is large so that it dips into the filtrate", "If the paper fits tightly all around the upper circumference of the funnel"],
+"answer": "If the paper fits tightly all around the upper circumference of the funnel",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "A residue is obtained in which of the following methods?",
+"choices": ["Crystallization", "Filtration", "Condensation", "Decantation"],
+"answer": "Filtration",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases at STP, with equal volume and equal pressure will] have sa me",
+"choices": ["Volume", "Pressure", "Temperature", "Number of molecules"],
+"answer": "Number of molecules",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "of the following is constant during an isothermal process?",
+"choices": ["Volume", "Pressure", "Temperature", "Both band c"],
+"answer": "Pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "when temperature is reduced to half the volume will be",
+"choices": ["Half", "Double", "Quarter", "Same as original"],
+"answer": "Double",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases behave ideal at",
+"choices": ["Low pressure and High temperature", "High temperature and Low pressure", "Low pressure and Low temperature", "High temperature and High pressure"],
+"answer": "Low pressure and High temperature",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Statement of Graham's Law is",
+"choices": ["The rate of diffusion is directly proportional to the square root of its density", "The rate of diffusion is inversely proportional to the square of its density", "The rate of diffusion is inversely proportional to its density.", "The rate of diffusion is inversely proportional to the square root of its density"],
+"answer": "The rate of diffusion is inversely proportional to the square root of its density",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Real gases deviate significantly from ideal gas behavior at",
+"choices": ["Low temperature and high pressure", "High temperature and low pressure", "Both a and b", "None of these"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Liquid crystals are used for:",
+"choices": ["Making LCD", "Optical Imaging", "Making thermometers", "All of these"],
+"answer": "All of these",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Excluded volume is not equal to the actual volume of gas molecules and is represented by:",
+"choices": ["bb", "x", "n", "a"],
+"answer": "b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "All the gasses at 212.44 cm' have",
+"choices": ["Same mass", "Different mass", "Can't' be predicted", "None of these"],
+"answer": "Different mass",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "= Statement of Charles Law:",
+"choices": ["V is directly proportional to P", "V is inversely proportional to P", "V is directly proportional to T", "None of these"],
+"answer": "V is directly proportional to T",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the correct equation:",
+"choices": ["(P + n²a/v²)(v - nb) = nRT", "(P- n²a/v²)(v + nb) = nRT", "PV = NRT", "All of these"],
+"answer": "PV = NRT",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The Vander Waat's constant 'b' of a gas Is four times the",
+"choices": ["Actual volume", "Free volume", "Volume", "Excluded volume"],
+"answer": "Actual volume",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "atmospheric pressure is equal to",
+"choices": ["1 kg/cm²", "1.033 kg/cm²", "1.2 kg/cm²", "1.133 kg/cm²"],
+"answer": "1.033 kg/cm²",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "When gases expand, this causes:",
+"choices": ["Cooling", "Heating", "Remain constant", "None of these"],
+"answer": "Cooling",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Gases can be converted into liquid by:",
+"choices": ["Increasing temperature and decreasing pressure", "Decreasing temperature and increasing pressure", "Same temperature and pressure", "Increasing pressure and temperature"],
+"answer": "Decreasing temperature and increasing pressure",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How will you separate water and kerosene oil?",
+"choices": ["Distillation", "Filtration", "Sublimation", "Crystallization"],
+"answer": "Distillation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one of these is a soluble carbohydrate:",
+"choices": ["Fructose", "Starch", "Cellulose", "Amylase"],
+"answer": "Fructose",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is used as coagulation for latex in rubber industry",
+"choices": ["Acetic acid", "Ammonia", "Ethyl alcohol", "Rayon"],
+"answer": "Acetic acid",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Carboxylic acids can be prepared by action of",
+"choices": ["Sodium hydroxide", "Grignard's reagent", "Alcoholic KOH", "Alkaline KMnO4"],
+"answer": "Grignard's reagent",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "To get the carboxylic acid containing C atoms less than C atoms in parent aldehyde we do hydrolysis of:",
+"choices": ["Cyanohydrins", "Amino Acids", "Esters", "Amides"],
+"answer": "Esters",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If 2-butene is treated with KMnO4 the product formed will be:",
+"choices": ["Butanoic acid.", "Propanoic acid", "Butyric acid.", "Acetic acid"],
+"answer": "Propanoic acid",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "For preparation of carboxylic acid, alkyl nitrile is required. Alkyl nitrile can be prepared by treating KCN with:",
+"choices": ["Alkyl halide", "Alcohol", "Water", "Acetaldehyde"],
+"answer": "Alkyl halide",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is not a use of acetic acid?",
+"choices": ["As a coagulant for latex in rubber industry", "Used in silvering of mirrors", "Manufacture of pickles", "None of these"],
+"answer": "Used in silvering of mirrors",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Vinegar is basically",
+"choices": ["Acetic acid:", "Citrus", "Formic", "Butyric"],
+"answer": "Acetic acid:",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Acetic acid is used in making",
+"choices": ["Rubber shoes", "Leather shoes", "Plastic shoes", "None of these"],
+"answer": "Leather shoes",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one has fruity smell?",
+"choices": ["Alcohol", "Ethers", "Esters", "Carboxylic Acids"],
+"answer": "Esters",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Fe** is a cofactor of:",
+"choices": ["Chrome oxidase", "Carbonic anhydrase", "Glucose 6-phosphatase", "Botha andb"],
+"answer": "Chrome oxidase",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Plastic cannot be recycled by",
+"choices": ["Depolymerization", "Transformation", "Deformation", "None of these"],
+"answer": "Deformation",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Adipic acid and Hexamethylene diamine combine to form?",
+"choices": ["Nylon-6,6", "Epoxy Resin", "Polystyrene", "None of these"],
+"answer": "Nylon-6,6",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Following is the structure of?",
+"choices": ["Glucose", "Lysine", "Steroid", "Androgens"],
+"answer": "Steroid",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Formula of fructose is:",
+"choices": ["CeHy20¢", "(CeHyo¢)n", "CsHi0O5", "CsHyO4"],
+"answer": "CsHy20¢",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Three different polymers are polymerized to form",
+"choices": ["Copolymer", "Terpolymer", "Homopolymer", "None of these"],
+"answer": "Terpolymer",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following Is not a disaccharide?",
+"choices": ["Sucrose", "Lactose", "Raffinose", "Dextrin"],
+"answer": "Dextrin",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "PVC is created from which halogen",
+"choices": ["Fl", "Br", "Cl", "I"],
+"answer": "Cl",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following has less amount of protein",
+"choices": ["Potato", "Milk", "Egg", "Fruit"],
+"answer": "Fruit",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Teflon contains which of the following halide?",
+"choices": ["Chlorine", "Bromine", "Fluorine", "All of these"],
+"answer": "Fluorine",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Percentage of nitrogen in urea is:",
+"choices": ["92%", "68%", "46%", "48%"],
+"answer": "46%",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The zone where moisture is removed and clay is broken down into Al203, SiO2, Fe203 is",
+"choices": ["Heating zone", "Burning zone", "Drying zone", "Decomposition zone"],
+"answer": "Drying zone",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "In Paper industry, sodium sulphite is buffered with",
+"choices": ["Sodium carbonate", "Sodium hydroxide", "Sodium acetate", "Both a and b"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which can be used as a liquid fertilizer?",
+"choices": ["Vica", "Ammonia", "Potassium phosphate", "Diammonium phosphate"],
+"answer": "Ammonia",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Aluminium nitrate is not used for",
+"choices": ["Rice", "Corn", "Cotton", "Wheat"],
+"answer": "Rice",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is a Marco-nutrient",
+"choices": ["Boron", "Copper", "Iron", "Nitrogen"],
+"answer": "Nitrogen",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "How many grams of micronutrients are needed by 1 acre of land?",
+"choices": ["100-1000", "200-500", "6 to 200", "20 to 300"],
+"answer": "6 to 200",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Ammonium nitrate contain nitrogen",
+"choices": ["82%", "46%", "20%", "35%"],
+"answer": "35%",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which in not woody raw material",
+"choices": ["Poplar", "Hard wood", "Fir", "Rag"],
+"answer": "Rag",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is used in cement manufacture?",
+"choices": ["Limestone", "Starch", "Potassium Oxide", "Clay"],
+"answer": "Limestone",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Ozone absorbs",
+"choices": ["UV", "IR", "Radioactive radiations", "All of these"],
+"answer": "UV",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one of these is toxic?",
+"choices": ["Nitrous oxide", "Nitric oxide", "Sulphur dioxide", "Carbon dioxide"],
+"answer": "Nitric oxide",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Function of ozone is?",
+"choices": ["To filter UV radiations", "Act as a reducing agent", "Act as an antibiotic", "None of these"],
+"answer": "To filter UV radiations",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Treatment of water which is very effective in killing of pathogens is:",
+"choices": ["Aeration", "Coagulation", "Landfill", "Chlorine usage"],
+"answer": "Chlorine usage",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "NO3 in atmosphere absorbs moisture to form?",
+"choices": ["HNO2", "HNO3", "NO", "Both a and b"],
+"answer": "Both a and b",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Global scale SO2 is produced by",
+"choices": ["Combustion", "Volcanic eruptions", "Fuel combustion", "All of the above"],
+"answer": "All of the above",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the major reason for SO2 emissions?",
+"choices": ["Agriculture", "Volcaniceruptions", "Air pollution", "Soil pollution"],
+"answer": "Fuel combustion",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following gases has least concentration in air",
+"choices": ["O2", "He", "CO2", "N2"],
+"answer": "He",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following causes suffocation?",
+"choices": ["SO2", "CO2", "Fog", "All of these"],
+"answer": "CO2",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one is correct about Incineration of industrial waste?",
+"choices": ["Ash buried in sea water.", "Secondary temperature maintained at 650 C to 1100 C", "Smoke stacks emit oxides of nitrogen and carbon", "Solids wastes are the significant sources of dioxins"],
+"answer": "Solids wastes are the significant sources of dioxins",
+"subject": "Chemistry"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Defunct : Life",
+"choices": ["Stagnant : Motion", "Swim : Float", "Scissors : Cloth", "Quilt : Blanket"],
+"answer": "Stagnant : Motion",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Knife : Chopper",
+"choices": ["Walking : Fitness", "Surgeon : Scalpel", "Carpenter : Cabinet", "Baker: Oven"],
+"answer": "Surgeon : Scalpel",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Yawn : Boredom",
+"choices": ["Anger : Madness", "Smile : Amusement", "Dream: Sleep", "Impatience: Rebellion"],
+"answer": "Smile : Amusement",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Cells : Cytology",
+"choices": ["Worms : Ornithology", "Diseases : Physiology", "Insects : Entomology", "Tissues : Morphology"],
+"answer": "Insects : Entomology",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Elevated : Exalted",
+"choices": ["Dirty : Filthy", "Orderly : Pattern", "Disorderly : Unfaithful", "Promoted : Excellence"],
+"answer": "Dirty : Filthy",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Birds : Aves",
+"choices": ["Fish : Water", "Cricket : Bat", "Skating : Rink", "Football : Goal"],
+"answer": "Cricket : Bat",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Balance : Weigh",
+"choices": ["Airplane : Height", "Satellite : Revolution", "Radar : Detection", "Television : Picture"],
+"answer": "Airplane : Height",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Shield : Soldier",
+"choices": ["Law : Court", "Helmet: Rider", "Chisel : Wood", "Marble : Sculptor"],
+"answer": "Helmet: Rider",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Fish : Shoal",
+"choices": ["Shark : School", "Chisel : Wood", "Marble : Sculptor", "Vaccination : Body"],
+"answer": "Shark : School",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Canvas : Painter",
+"choices": ["Leather : Shoe", "Injection: Disease", "Pesticide : Plant", "Fox : Cunning"],
+"answer": "Leather : Shoe",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Paper; Ream",
+"choices": ["Eggs : Dozen", "Books ; Pile", "Sonnet : Poem", "Murder: Crime"],
+"answer": "Eggs : Dozen",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "House : Ceiling",
+"choices": ["Hut : Roof", "Bed : Bedsheet", "Grapes : Wine", "Dog : Kennel"],
+"answer": "Hut : Roof",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Fish ; Aquarium",
+"choices": ["Bee : Apiary", "Bird ; Nest", "Cattle : Drove", "Traffic : Road"],
+"answer": "Bee : Apiary",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Practice : Perfection",
+"choices": ["Run; Jump", "Examination : Qualification", "Medicine : Treatment", "Perseverance : Achievement"],
+"answer": "Perseverance : Achievement",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Platform : Train",
+"choices": ["Hotel: Tourist", "Footpath: Traveler", "Quay; Ship", "Paper: Book"],
+"answer": "Quay; Ship",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Explosion : Destruction",
+"choices": ["Talk : Exaggeration", "Sigh : Relief", "Ecstasy : Pleasure", "Necessity : Invention"],
+"answer": "Sigh : Relief",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pen: Nib",
+"choices": ["Book: Knowledge", "Sword : Blade", "Nut : Bolt", "Branch : Tree"],
+"answer": "Sword : Blade",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Weight : Kilogram",
+"choices": ["Seconds : Hours", "Nation : Citizens", "Price : Commodity", "Friendly : Inimical"],
+"answer": "Seconds : Hours",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Necessity : Invention",
+"choices": ["Curiosity : Knowledge", "Girl: Woman", "Engagement : Marriage", "Success : Failure"],
+"answer": "Curiosity : Knowledge",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Implicate : Incriminate",
+"choices": ["Involvement : Malpractice", "Exonerate : Acquit", "Embezzlement : Charge", "Perjury : Fraud"],
+"answer": "Exonerate : Acquit",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Range : Mountain",
+"choices": ["Bouquet : Flower", "Line : Bead", "School: Class", "Chair : Carpenter"],
+"answer": "Line : Bead",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Chair : Carpenter",
+"choices": ["Grass : Gardener", "Medicine : Doctor", "Bridge : Engineer", "Radio : Radiologist"],
+"answer": "Medicine : Doctor",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Revolver : Holster",
+"choices": ["Eye : Eyelid", "Juice : Glass", "Nostril: Nose", "Teeth : Dentist"],
+"answer": "Eye : Eyelid",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Spring : Summer",
+"choices": ["Adolescence : Youth", "Legs: Philanthropist", "Textile : Mill", "Eges : Hen"],
+"answer": "Adolescence : Youth",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Teeth : Dentist",
+"choices": ["Legs: Philanthropist", "Spectacles : Optician", "Educat ion Teacher", "Cricket : Pitch"],
+"answer": "Spectacles : Optician",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Modesty : Arrogance",
+"choices": ["Passion: Emotion", "Practice: Perfection", "Cause: Purpose", "Debility : Strength"],
+"answer": "Practice: Perfection",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Cool : Cold",
+"choices": ["Length : Width", "Gold : Bourne", "Plant : Tree", "Pretty : Beautiful"],
+"answer": "Length : Width",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Wrestler: Arena",
+"choices": ["Mural : Painting", "Traitor : Disloyalty", "Manager : Administration", "Hope: Possimism"],
+"answer": "Mural : Painting",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Arrows : Quiver",
+"choices": ["Fear: Tremble", "Money : Bank", "Sound : Music", "Coin : Mint"],
+"answer": "Money : Bank",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sound : Muffled",
+"choices": ["Moisture: Humid", "Color: Faded", "Despair : Anger", "Odor: Pungent"],
+"answer": "Color: Faded",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Shoes : Cobbler",
+"choices": ["Spectacles : Optician", "Education Teacher", "Cricket : Pitch", "Educat ion Teacher"],
+"answer": "Spectacles : Optician",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Symphony : Music",
+"choices": ["Mural : Painting", "Traitor : Disloyalty", "Manager : Administration", "Educat ion Teacher"],
+"answer": "Mural : Painting",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Modesty : Arrogance",
+"choices": ["Passion: Emotion", "Cause: Purpose", "Practice: Perfection", "Debility : Strength"],
+"answer": "Practice: Perfection",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Cool : Cold",
+"choices": ["Length : Width", "Plant : Tree", "Gold : Bourne", "Pretty : Beautiful"],
+"answer": "Length : Width",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Wrestler: Arena",
+"choices": ["Traitor : Disloyalty", "Mural : Painting", "Manager : Administration", "Hope: Possimism"],
+"answer": "Mural : Painting",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Arrows : Quiver",
+"choices": ["Fear: Tremble", "Coin : Mint", "Money : Bank", "Sound : Music"],
+"answer": "Money : Bank",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sound : Muffled",
+"choices": ["Moisture: Humid", "Despair : Anger", "Color: Faded", "Odor: Pungent"],
+"answer": "Color: Faded",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Shoes : Cobbler",
+"choices": ["Spectacles : Optician", "Education Teacher", "Cricket : Pitch", "Educat ion Teacher"],
+"answer": "Spectacles : Optician",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Symphony : Music",
+"choices": ["Mural : Painting", "Traitor : Disloyalty", "Manager : Administration", "Educat ion Teacher"],
+"answer": "Mural : Painting",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Man must Act to stop pollution.",
+"choices": ["Send Off", "Put Off", "Perform", "Behave"],
+"answer": "Behave",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "He was sent to the prison for his Sin.",
+"choices": ["Vice", "Crime", "Guilt", "Sin"],
+"answer": "Crime",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "The answer was written with blue ink.",
+"choices": ["By", "In", "On", "With"],
+"answer": "In",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Many Historic decisions were taken at the meeting.",
+"choices": ["Hectic", "Historic", "Historical", "Histrionic"],
+"answer": "Historic",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Those who persist in the endeavor at long last triumph Over the odds of life.",
+"choices": ["On", "Upon", "About", "Over"],
+"answer": "Over",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Mutability : Pliancy",
+"choices": ["Lugubrious : Joyful", "For : Enemy", "Lofty : Humble", "Impudent : Retiring"],
+"answer": "Lugubrious : Joyful",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Obscure : Approval",
+"choices": ["Knave : Villain", "Eager : Indifferent", "Approbation : Veto", "Piety : Agony"],
+"answer": "Knave : Villain",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sober : Intemperate",
+"choices": ["Vilify : Persuade", "Cajole : Unambiguous", "Actuate : Activate", "Belligerent : Quiescent"],
+"answer": "Vilify : Persuade",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Viv id : Fade",
+"choices": ["Wurst : Sausage", "Cosmopolitan : Lousy", "Listless : Languid", "Wane : Loss"],
+"answer": "Wurst : Sausage",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Flout : Approve",
+"choices": ["Expedient : Retard", "Fervent : Ardent", "Belligerent : Stoical", "Categorical : Indirect"],
+"answer": "Expedient : Retard",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Manacle : Shackle",
+"choices": ["Categorical : Conditional", "Belligerent : Fight", "Arid : Parched", "Loom : Deep"],
+"answer": "Arid : Parched",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Avarice : Greed",
+"choices": ["Aberration : Delusion", "Laggard : Lounger", "Outrageous : Sensible", "Maul : Adorn"],
+"answer": "Aberration : Delusion",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Oligarchy : Democracy",
+"choices": ["Maim : Castrate", "Conversant : Ignorant", "Infirm : Robust", "Bonanza : Lasting"],
+"answer": "Conversant : Ignorant",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Footling Svo ial : Enormous",
+"choices": ["Foreboding : Premonition", "Obscene : Immoral", "Murky : Intangible", "Chivalry : Valor"],
+"answer": "Foreboding : Premonition",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Timid : Shy",
+"choices": ["Neophyte : Pleasant", "Expiative : Oath", "Adored : Esteemed", "Fiend : Detestable"],
+"answer": "Neophyte : Pleasant",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Behoove : Befit",
+"choices": ["Captious : Finding Faults", "Baffle : Confuse", "Cohere : Loosen", "Apathy : Courage"],
+"answer": "Captious : Finding Faults",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Agnostic : Skeptic",
+"choices": ["Acrostic : Cipher", "Bewilderment : Courage", "Onerous : Impossible", "Beleive : Looks"],
+"answer": "Acrostic : Cipher",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Teratology : Criminal",
+"choices": ["Teetotal : Abstainer", "Drank : Drove", "Discussing : Listening", "Decrepid : Sturdy"],
+"answer": "Teetotal : Abstainer",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pleasure : Pain",
+"choices": ["Poverty : Suffering", "Anguish : Pain", "Giddy : Optimistic", "Avarice : Capitalism"],
+"answer": "Poverty : Suffering",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Keep Up : Destroyed",
+"choices": ["Afford : Attached", "Easy : Maintain", "Few : Fewer", "Another : Possible"],
+"answer": "Afford : Attached",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Hallow : Sobriety",
+"choices": ["Precarious : Normalit y", "Hectic : Historic", "Histrionic : Histrionic", "Calm : Smooth"],
+"answer": "Precarious : Normalit y",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Implicate : Incriminate",
+"choices": ["Involvement : Malpractice", "Exonerate : Acquit", "Embezzlement : Charge", "Perjury : Fraud"],
+"answer": "Exonerate : Acquit",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Range : Mountain",
+"choices": ["Bouquet : Flower", "Line : Bead", "School: Class", "Chair : Carpenter"],
+"answer": "Line : Bead",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Chair : Carpenter",
+"choices": ["Grass : Gardener", "Medicine : Doctor", "Bridge : Engineer", "Radio : Radiologist"],
+"answer": "Medicine : Doctor",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Revolver : Holster",
+"choices": ["Eye : Eyelid", "Juice : Glass", "Nostril: Nose", "Teeth : Dentist"],
+"answer": "Eye : Eyelid",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Spring : Summer",
+"choices": ["Adolescence : Youth", "Legs: Philanthropist", "Textile : Mill", "Eges : Hen"],
+"answer": "Adolescence : Youth",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Teeth : Dentist",
+"choices": ["Legs: Philanthropist", "Spectacles : Optician", "Educat ion Teacher", "Cricket : Pitch"],
+"answer": "Spectacles : Optician",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Modesty : Arrogance",
+"choices": ["Passion: Emotion", "Practice: Perfection", "Cause: Purpose", "Debility : Strength"],
+"answer": "Practice: Perfection",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Cool : Cold",
+"choices": ["Length : Width", "Gold : Bourne", "Plant : Tree", "Pretty : Beautiful"],
+"answer": "Length : Width",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Wrestler: Arena",
+"choices": ["Traitor : Disloyalty", "Mural : Painting", "Manager : Administration", "Hope: Possimism"],
+"answer": "Mural : Painting",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Arrows : Quiver",
+"choices": ["Fear: Tremble", "Coin : Mint", "Money : Bank", "Sound : Music"],
+"answer": "Money : Bank",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sound : Muffled",
+"choices": ["Moisture: Humid", "Despair : Anger", "Color: Faded", "Odor: Pungent"],
+"answer": "Color: Faded",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Shoes : Cobbler",
+"choices": ["Spectacles : Optician", "Education Teacher", "Cricket : Pitch", "Educat ion Teacher"],
+"answer": "Spectacles : Optician",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Symphony : Music",
+"choices": ["Mural : Painting", "Traitor : Disloyalty", "Manager : Administration", "Educat ion Teacher"],
+"answer": "Mural : Painting",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Defunct : Stagnant",
+"choices": ["Quilt : Blanket", "Knife : Chopper", "Smile : Amusement", "Insects : Entomology"],
+"answer": "Quilt : Blanket",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Surgeon : Scalpel",
+"choices": ["Walking : Fitness", "Carpenter : Cabinet", "Baker: Oven", "Yawn : Boredom"],
+"answer": "Carpenter : Cabinet",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Cells : Cytology",
+"choices": ["Diseases : Physiology", "Worms : Ornithology", "Tissues : Morphology", "Elevated : Exalted"],
+"answer": "Tissues : Morphology",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Dirty : Filthy",
+"choices": ["Orderly : Pattern", "Disorderly : Unfaithful", "Promoted : Excellence", "Birds : Aves"],
+"answer": "Orderly : Pattern",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Airplane : Height",
+"choices": ["Satellite : Revolution", "Radar : Detection", "Television : Picture", "Shield : Soldier"],
+"answer": "Radar : Detection",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Helmet: Rider",
+"choices": ["Chisel : Wood", "Marble : Sculptor", "Law : Court", "Fish : Shoal"],
+"answer": "Chisel : Wood",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Vaccination : Body",
+"choices": ["Leather : Shoe", "Pesticide : Plant", "Injection: Disease", "Canvas : Painter"],
+"answer": "Pesticide : Plant",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Eggs : Dozen",
+"choices": ["Books ; Pile", "Sonnet : Poem", "Murder: Crime", "House : Ceiling"],
+"answer": "Books ; Pile",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Bee : Apiary",
+"choices": ["Bird ; Nest", "Cattle : Drove", "Traffic : Road", "Fish ; Aquarium"],
+"answer": "Bird ; Nest",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Examination : Qualification",
+"choices": ["Run; Jump", "Medicine : Treatment", "Perseverance : Achievement", "Platform : Train"],
+"answer": "Medicine : Treatment",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sigh : Relief",
+"choices": ["Talk : Exaggeration", "Ecstasy : Pleasure", "Necessity : Invention", "Pen: Nib"],
+"answer": "Talk : Exaggeration",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Sword : Blade",
+"choices": ["Book: Knowledge", "Nut : Bolt", "Branch : Tree", "Weight : Kilogram"],
+"answer": "Book: Knowledge",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Seconds : Hours",
+"choices": ["Nation : Citizens", "Price : Commodity", "Friendly : Inimical", "Necessity : Invention"],
+"answer": "Nation : Citizens",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Girl: Woman",
+"choices": ["Engagement : Marriage", "Success : Failure", "Curiosity : Knowledge", "Implicate : Incriminate"],
+"answer": "Engagement : Marriage",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Exonerate : Acquit",
+"choices": ["Involvement : Malpractice", "Embezzlement : Charge", "Perjury : Fraud", "Range : Mountain"],
+"answer": "Embezzlement : Charge",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Line : Bead",
+"choices": ["School: Class", "Chair : Carpenter", "Bouquet : Flower", "Revolver : Holster"],
+"answer": "Bouquet : Flower",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Medicine : Doctor",
+"choices": ["Grass : Gardener", "Bridge : Engineer", "Radio : Radiologist", "Spring : Summer"],
+"answer": "Bridge : Engineer",
+"subject": "English"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["X-ray", "July", "September", "Television"],
+"answer": "Television",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["March", "Telephone", "Radio", "October"],
+"answer": "October",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Trunk", "Office", "Law", "Flower"],
+"answer": "Flower",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Rule", "Seminar", "Semicolon", "Regulation"],
+"answer": "Regulation",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Maize", "Bajra", "Wheat", "Metropolis"],
+"answer": "Metropolis",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Semicircle", "Leaf", "Tree", "Cucumber"],
+"answer": "Cucumber",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["House", "Village", "Town", "Spider"],
+"answer": "Spider",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick out the odd one",
+"choices": ["Learn", "Read", "Knowledge", "Write"],
+"answer": "Knowledge",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the odd one out?",
+"choices": ["Cockroach", "Butterfly", "Housefly", "Tomato"],
+"answer": "Tomato",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Apple", "Orange", "Guava", "Pear"],
+"answer": "Pear",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Mongoose", "Tortoise", "Snake", "Crocodile"],
+"answer": "Crocodile",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Natural gas", "Gasoline", "Coal", "Blogas"],
+"answer": "Blogas",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Brinjal", "Potato", "Nail", "Screw"],
+"answer": "Screw",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Sindhi", "Urdu", "Balochi", "Punjabi"],
+"answer": "Punjabi",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Hammer", "Mast", "Quay", "Deck"],
+"answer": "Deck",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["QUXNGHI", "IHGUNXQ", "XGHIQUN", "QHXNIGV"],
+"answer": "QHXNIGV",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Mercury", "Acetone", "Petrol", "Kerosene"],
+"answer": "Kerosene",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Saw", "Axe", "Shovel", "Sword"],
+"answer": "Sword",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Chocolate", "Bread", "Cake", "Biscuits"],
+"answer": "Biscuits",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Cot", "Sheet", "Blanket", "Pillow"],
+"answer": "Pillow",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Green", "Violet", "White", "Yellow"],
+"answer": "Yellow",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one Is odd?",
+"choices": ["Chess", "Running", "Walking", "Jogging"],
+"answer": "Walking",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Magazine", "Dictionary", "Novel", "Thesis"],
+"answer": "Thesis",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Average", "Medium", "Moderate", "Terminal"],
+"answer": "Terminal",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Fragrance", "Stench", "Aroma", "Incense"],
+"answer": "Stench",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Microfilm", "Microscope", "Microbe", "Microchip"],
+"answer": "Microbe",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Data", "Media", "Radio", "Internet"],
+"answer": "Radio",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Tin", "Iron", "Gold", "Silver"],
+"answer": "Silver",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Elated", "Happy", "Delighted", "Worried"],
+"answer": "Worried",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Transistor", "Post", "Tape Recorder", "Telegram"],
+"answer": "Post",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Industrial", "Industrious", "Diligent", "Assiduous"],
+"answer": "Assiduous",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the odd one out",
+"choices": ["Lion : Roar", "Snake : Hiss", "Frog : Bleat", "Bees : Hum"],
+"answer": "Frog : Bleat",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Mustard", "Olive", "Onion", "Corn"],
+"answer": "Corn",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Mountain", "Mound", "Peak", "Valley"],
+"answer": "Mound",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Maize", "Bajra", "Wheat", "Flower"],
+"answer": "Flower",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["House", "Village", "Town", "Butterfly"],
+"answer": "Butterfly",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick out the odd one",
+"choices": ["Learn", "Read", "Knowledge", "Cockroach"],
+"answer": "Cockroach",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which of the following is the odd one out?",
+"choices": ["Apple", "Orange", "Guava", "Tomato"],
+"answer": "Tomato",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Mongoose", "Tortoise", "Snake", "Potato"],
+"answer": "Potato",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Natural gas", "Gasoline", "Coal", "Nail"],
+"answer": "Nail",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Brinjal", "Potato", "Mast", "Screw"],
+"answer": "Mast",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Sindhi", "Urdu", "Balochi", "Saw"],
+"answer": "Saw",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Hammer", "Stern", "Quay", "Deck"],
+"answer": "Stern",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["QUXNGHI", "IHGUNXQ", "XGHIQUN", "Chocolate"],
+"answer": "Chocolate",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Mercury", "Acetone", "Petrol", "Bread"],
+"answer": "Bread",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Saw", "Axe", "Shovel", "Cot"],
+"answer": "Cot",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Chocolate", "Bread", "Cake", "Green"],
+"answer": "Green",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Cot", "Sheet", "Blanket", "Chess"],
+"answer": "Chess",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Green", "Violet", "White", "Magazine"],
+"answer": "Magazine",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Which one Is odd?",
+"choices": ["Chess", "Running", "Walking", "Average"],
+"answer": "Average",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Magazine", "Dictionary", "Novel", "Fragrance"],
+"answer": "Fragrance",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Average", "Medium", "Moderate", "Microfilm"],
+"answer": "Microfilm",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Pick the odd one out",
+"choices": ["Fragrance", "Stench", "Aroma", "Data"],
+"answer": "Data",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Microfilm", "Microscope", "Tin", "Microchip"],
+"answer": "Tin",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Choose the odd one out",
+"choices": ["Data", "Media", "Elated", "Internet"],
+"answer": "Elated",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 2, 4, 8, 16, ?",
+"choices": ["24", "32", "48", "64"],
+"answer": "32",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the missing term in the sequence: 5, 10, ?, 20, 25",
+"choices": ["12", "15", "18", "22"],
+"answer": "15",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 3, 6, 12, 24, ?",
+"choices": ["36", "48", "50", "72"],
+"answer": "48",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the missing number in the sequence: 2, 6, 12, ?, 30",
+"choices": ["16", "18", "20", "24"],
+"answer": "18",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 1, 4, 9, 16, ?",
+"choices": ["25", "36", "49", "64"],
+"answer": "25",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the missing term in the sequence: 5, 10, 15, ?, 25",
+"choices": ["18", "20", "21", "22"],
+"answer": "20",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 1, 3, 7, 15, ?",
+"choices": ["23", "31", "35", "41"],
+"answer": "31",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the missing number in the sequence: 4, 7, 10, ?, 16",
+"choices": ["12", "13", "14", "15"],
+"answer": "13",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 2, 5, 8, 11, ?",
+"choices": ["14", "15", "16", "17"],
+"answer": "14",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the missing term in the sequence: 3, 6, 12, 24, ?",
+"choices": ["36", "48", "50", "60"],
+"answer": "48",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 1, 4, 9, 16, ?",
+"choices": ["25", "36", "49", "64"],
+"answer": "25",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the missing number in the sequence: 5, 10, 15, ?, 25",
+"choices": ["18", "20", "21", "22"],
+"answer": "20",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 1, 3, 7, 15, ?",
+"choices": ["23", "31", "35", "41"],
+"answer": "31",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the missing number in the sequence: 4, 7, 10, ?, 16",
+"choices": ["12", "13", "14", "15"],
+"answer": "13",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "Find the next term in the sequence: 2, 5, 8, 11, ?",
+"choices": ["14", "15", "16", "17"],
+"answer": "14",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If WATER is coded as XBUFS, then how is CHAIR coded?",
+"choices": ["DIBJS", "EHBJS", "DIBIS", "EIBIR"],
+"answer": "DIBJS",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If BOOK is coded as CQQM, then how is PEN coded?",
+"choices": ["RFO", "SFP", "SFQ", "TGQ"],
+"answer": "SFP",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If LIGHT is coded as MJHIU, then how is DARK coded?",
+"choices": ["EBSM", "EBSL", "FDSL", "EBRL"],
+"answer": "EBSM",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If FLOWER is coded as GKNXFS, then how is GARDEN coded?",
+"choices": ["HBSEFO", "HBSEFO", "HBSEFO", "HBSEFO"],
+"answer": "HBSEFO",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If PENCIL is coded as QFODTM, then how is ERASER coded?",
+"choices": ["FSBSFS", "FTBSFS", "FUBSFS", "FWBSFS"],
+"answer": "FSBSFS",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If APPLE is coded as BQQMF, then how is MANGO coded?",
+"choices": ["NBOHP", "OBOIP", "OBOHP", "OBOPI"],
+"answer": "OBOHP",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If SCHOOL is coded as TDIPPM, then how is TEACHER coded?",
+"choices": ["UFBDIFS", "UFBDIFS", "UIFBDIFS", "UIFBDIFS"],
+"answer": "UFBDIFS",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If MOUSE is coded as NPVTF, then how is KEYBOARD coded?",
+"choices": ["LFZCPBSE", "LFZCPBS", "LFZCPBE", "LFZCPBA"],
+"answer": "LFZCPBSE",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If FRIEND is coded as HSJFOE, then how is FAMILY coded?",
+"choices": ["GBNJMZ", "HBNJMZ", "HBNJMZ", "HBNJMZ"],
+"answer": "HBNJMZ",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If SCIENCE is coded as TDJFODF, then how is PHYSICS coded?",
+"choices": ["QIZTJDT", "QIZTJDT", "QIZTJDT", "QIZTJDT"],
+"answer": "QIZTJDT",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If DOCTOR is coded as EPDUPR, then how is HOSPITAL coded?",
+"choices": ["IPTQJUBM", "IPTQJUBM", "IPTQJUBM", "IPTQJUBM"],
+"answer": "IPTQJUBM",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If COMPUTER is coded as DPNQVUFS, then how is SOFTWARE coded?",
+"choices": ["TPGUXBSF", "TPGUXBSF", "TPGUXBSF", "TPGUXBSF"],
+"answer": "TPGUXBSF",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If ENGLISH is coded as FOHMJTI, then how is LANGUAGE coded?",
+"choices": ["MBOHVBHF", "MBOHVBHF", "MBOHVBHF", "MBOHVBHF"],
+"answer": "MBOHVBHF",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If STUDENT is coded as TUVEFOU, then how is TEACHER coded?",
+"choices": ["UFBDIFS", "UFBDIFS", "UFBDIFS", "UFBDIFS"],
+"answer": "UFBDIFS",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If ORANGE is coded as PSBOHF, then how is LEMON coded?",
+"choices": ["MFNPO", "MFNPO", "MFNPO", "MFNPO"],
+"answer": "MFNPO",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If PYTHON is coded as QZUIPO, then how is JAVA coded?",
+"choices": ["KBWB", "KBSB", "LBWB", "LBWB"],
+"answer": "KBWB",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If PHONE is coded as RJPOF, then how is MOBILE coded?",
+"choices": ["NPCJMF", "NPCJMF", "NPCJMF", "NPCJMF"],
+"answer": "NPCJMF",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If APPLE is coded as BQQMF, then how is MANGO coded?",
+"choices": ["NBOHP", "OBOIP", "OBOHP", "OBOPI"],
+"answer": "OBOHP",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If TRAIN is coded as USBJO, then how is PLANE coded?",
+"choices": ["QMBOF", "QMBOF", "QMBOF", "QMBOF"],
+"answer": "QMBOF",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If SCHOOL is coded as TDIPPM, then how is TEACHER coded?",
+"choices": ["UFBDIFS", "UFBDIFS", "UIFBDIFS", "UIFBDIFS"],
+"answer": "UFBDIFS",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If MOUSE is coded as NPVTF, then how is KEYBOARD coded?",
+"choices": ["LFZCPBSE", "LFZCPBS", "LFZCPBE", "LFZCPBA"],
+"answer": "LFZCPBSE",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If FRIEND is coded as HSJFOE, then how is FAMILY coded?",
+"choices": ["GBNJMZ", "HBNJMZ", "HBNJMZ", "HBNJMZ"],
+"answer": "HBNJMZ",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If SCIENCE is coded as TDJFODF, then how is PHYSICS coded?",
+"choices": ["QIZTJDT", "QIZTJDT", "QIZTJDT", "QIZTJDT"],
+"answer": "QIZTJDT",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If DOCTOR is coded as EPDUPR, then how is HOSPITAL coded?",
+"choices": ["IPTQJUBM", "IPTQJUBM", "IPTQJUBM", "IPTQJUBM"],
+"answer": "IPTQJUBM",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If COMPUTER is coded as DPNQVUFS, then how is SOFTWARE coded?",
+"choices": ["TPGUXBSF", "TPGUXBSF", "TPGUXBSF", "TPGUXBSF"],
+"answer": "TPGUXBSF",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If ENGLISH is coded as FOHMJTI, then how is LANGUAGE coded?",
+"choices": ["MBOHVBHF", "MBOHVBHF", "MBOHVBHF", "MBOHVBHF"],
+"answer": "MBOHVBHF",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If STUDENT is coded as TUVEFOU, then how is TEACHER coded?",
+"choices": ["UFBDIFS", "UFBDIFS", "UFBDIFS", "UFBDIFS"],
+"answer": "UFBDIFS",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If ORANGE is coded as PSBOHF, then how is LEMON coded?",
+"choices": ["MFNPO", "MFNPO", "MFNPO", "MFNPO"],
+"answer": "MFNPO",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If FLOWER is coded as GKNXFS, then how is GARDEN coded?",
+"choices": ["HBSEFO", "HBSEFO", "HBSEFO", "HBSEFO"],
+"answer": "HBSEFO",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If PENCIL is coded as QFODTM, then how is ERASER coded?",
+"choices": ["FSBSFS", "FTBSFS", "FUBSFS", "FWBSFS"],
+"answer": "FSBSFS",
+"subject": "Intelligence"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "If LIGHT is coded as MJHIU, then how is DARK coded?",
+"choices": ["EBSM", "EBSL", "FDSL", "EBRL"],
+"answer": "EBSM",
+"subject": "Intelligence"
+}
+},
+
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the nervous system in the body?",
+"choices": ["To transmit signals and coordinate body functions", "To store genetic information", "To provide structure and support to cells", "To produce energy for the body"],
+"answer": "To transmit signals and coordinate body functions",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the circulatory system?",
+"choices": ["To transport oxygen, nutrients, and waste throughout the body", "To provide structure and support to cells", "To produce energy for the body", "To store genetic information"],
+"answer": "To transport oxygen, nutrients, and waste throughout the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the respiratory system?",
+"choices": ["To take in oxygen and remove carbon dioxide from the body", "To provide structure and support to cells", "To store genetic information", "To produce energy for the body"],
+"answer": "To take in oxygen and remove carbon dioxide from the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the digestive system?",
+"choices": ["To break down food and absorb nutrients", "To provide structure and support to cells", "To store genetic information", "To produce energy for the body"],
+"answer": "To break down food and absorb nutrients",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the excretory system?",
+"choices": ["To remove waste and toxins from the body", "To provide structure and support to cells", "To store genetic information", "To produce energy for the body"],
+"answer": "To remove waste and toxins from the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the skeletal system?",
+"choices": ["To provide structure and support to the body", "To transmit signals and coordinate body functions", "To store genetic information", "To produce energy for the body"],
+"answer": "To provide structure and support to the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the muscular system?",
+"choices": ["To facilitate movement and allow the body to function", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To facilitate movement and allow the body to function",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the endocrine system?",
+"choices": ["To regulate hormones and control various bodily functions", "To break down food and absorb nutrients", "To store genetic information", "To produce energy for the body"],
+"answer": "To regulate hormones and control various bodily functions",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the immune system?",
+"choices": ["To protect the body from disease and infection", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To protect the body from disease and infection",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of DNA in the body?",
+"choices": ["To store genetic information and direct the function of cells", "To facilitate movement and allow the body to function", "To transport oxygen, nutrients, and waste throughout the body", "To produce energy for the body"],
+"answer": "To store genetic information and direct the function of cells",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of mitochondria in cells?",
+"choices": ["To produce energy for the cell", "To store genetic information", "To provide structure and support to cells", "To protect the body from disease and infection"],
+"answer": "To produce energy for the cell",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of photosynthesis in plants?",
+"choices": ["To convert light energy into chemical energy in the form of glucose", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To convert light energy into chemical energy in the form of glucose",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of red blood cells in the body?",
+"choices": ["To transport oxygen throughout the body", "To protect the body from disease and infection", "To store genetic information", "To produce energy for the body"],
+"answer": "To transport oxygen throughout the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of white blood cells in the body?",
+"choices": ["To protect the body from disease and infection", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To protect the body from disease and infection",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the liver in the body?",
+"choices": ["To filter the blood and break down toxins", "To facilitate movement and allow the body to function", "To store genetic information", "To produce energy for the body"],
+"answer": "To filter the blood and break down toxins",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the kidneys in the body?",
+"choices": ["To remove waste and excess water from the blood", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To remove waste and excess water from the blood",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the pancreas in the body?",
+"choices": ["To produce hormones that regulate blood sugar levels", "To protect the body from disease and infection", "To store genetic information", "To produce energy for the body"],
+"answer": "To produce hormones that regulate blood sugar levels",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the adrenal glands in the body?",
+"choices": ["To produce hormones that regulate stress response", "To break down food and absorb nutrients", "To store genetic information", "To produce energy for the body"],
+"answer": "To produce hormones that regulate stress response",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the thyroid gland in the body?",
+"choices": ["To produce hormones that regulate metabolism", "To provide structure and support to the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To produce hormones that regulate metabolism",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the pituitary gland in the body?",
+"choices": ["To produce hormones that regulate various bodily functions", "To facilitate movement and allow the body to function", "To store genetic information", "To produce energy for the body"],
+"answer": "To produce hormones that regulate various bodily functions",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the reproductive system?",
+"choices": ["To allow for the production and release of gametes and the development of offspring", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To allow for the production and release of gametes and the development of offspring",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the skin in the body?",
+"choices": ["To protect the body from the external environment", "To facilitate movement and allow the body to function", "To store genetic information", "To produce energy for the body"],
+"answer": "To protect the body from the external environment",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the cardiovascular system?",
+"choices": ["To transport blood, oxygen, and nutrients throughout the body", "To break down food and absorb nutrients", "To store genetic information", "To produce energy for the body"],
+"answer": "To transport blood, oxygen, and nutrients throughout the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the lymphatic system in the body?",
+"choices": ["To help the immune system fight off infection and disease", "To regulate hormones and control various bodily functions", "To store genetic information", "To produce energy for the body"],
+"answer": "To help the immune system fight off infection and disease",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the urinary system?",
+"choices": ["To filter waste and excess water from the blood and remove it from the body", "To facilitate movement and allow the body to function", "To store genetic information", "To produce energy for the body"],
+"answer": "To filter waste and excess water from the blood and remove it from the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the digestive system in the body?",
+"choices": ["To break down food and absorb nutrients", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To break down food and absorb nutrients",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the respiratory system?",
+"choices": ["To facilitate the exchange of oxygen and carbon dioxide", "To provide structure and support to the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To facilitate the exchange of oxygen and carbon dioxide",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the nervous system in the body?",
+"choices": ["To transmit signals and coordinate body functions", "To break down food and absorb nutrients", "To store genetic information", "To produce energy for the body"],
+"answer": "To transmit signals and coordinate body functions",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the cardiovascular system?",
+"choices": ["To transport blood, oxygen, and nutrients throughout the body", "To protect the body from disease and infection", "To store genetic information", "To produce energy for the body"],
+"answer": "To transport blood, oxygen, and nutrients throughout the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the skeletal system in the body?",
+"choices": ["To provide structure and support to the body", "To facilitate movement and allow the body to function", "To store genetic information", "To produce energy for the body"],
+"answer": "To provide structure and support to the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the muscular system?",
+"choices": ["To facilitate movement and allow the body to function", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To facilitate movement and allow the body to function",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of the endocrine system in the body?",
+"choices": ["To regulate hormones and control various bodily functions", "To break down food and absorb nutrients", "To store genetic information", "To produce energy for the body"],
+"answer": "To regulate hormones and control various bodily functions",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the immune system?",
+"choices": ["To protect the body from disease and infection", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To protect the body from disease and infection",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of DNA in the body?",
+"choices": ["To store genetic information and direct the function of cells", "To facilitate movement and allow the body to function", "To transport oxygen, nutrients, and waste throughout the body", "To produce energy for the body"],
+"answer": "To store genetic information and direct the function of cells",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of mitochondria in cells?",
+"choices": ["To produce energy for the cell", "To store genetic information", "To provide structure and support to cells", "To protect the body from disease and infection"],
+"answer": "To produce energy for the cell",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of photosynthesis in plants?",
+"choices": ["To convert light energy into chemical energy in the form of glucose", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To convert light energy into chemical energy in the form of glucose",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of red blood cells in the body?",
+"choices": ["To transport oxygen throughout the body", "To protect the body from disease and infection", "To store genetic information", "To produce energy for the body"],
+"answer": "To transport oxygen throughout the body",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the role of white blood cells in the body?",
+"choices": ["To protect the body from disease and infection", "To transport oxygen, nutrients, and waste throughout the body", "To store genetic information", "To produce energy for the body"],
+"answer": "To protect the body from disease and infection",
+"subject": "Biology"
+}
+},
+{
+"model": "question.Questions",
+"fields": {
+"question": "What is the function of the liver in the body?",
+"choices": ["To filter the blood and break down toxins", "To facilitate movement and allow the body to function", "To store genetic information", "To produce energy for the body"],
+"answer": "To filter the blood and break down toxins",
+"subject": "Biology"
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 ]
