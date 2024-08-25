@@ -1,6 +1,9 @@
 # Prep App
 An app designed to emulate the NUST Entry Test as well as allowing customization of the test in order to help users for preparation.
 
+## Installing:
+You can find the downloadable apk in the Releases tab
+
 ## Dependencies / Frameworks used:
 - Django for backend, hosted on pythonanywhere
 - Retrofit API for network calls
