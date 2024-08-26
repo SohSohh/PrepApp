@@ -84,6 +84,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.stream.IntStream.range
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -94,7 +95,16 @@ fun TestConfigurationScreen(
     onStartButtonClicked: () -> Unit = {}
 ) {
     val testScreenUiState by testScreenViewModel.uiState.collectAsState()
-    val totalQuestions = testScreenUiState.Physics + testScreenUiState.Mathematics + testScreenUiState.Chemistry + testScreenUiState.English + testScreenUiState.Biology + testScreenUiState.Computers + testScreenUiState.Intelligence
+    var errorState = false
+    val questionList = mutableListOf(testScreenUiState.Biology, testScreenUiState.Chemistry, testScreenUiState.Computers, testScreenUiState.English,  testScreenUiState.Intelligence, testScreenUiState.Mathematics, testScreenUiState.Physics)
+    var totalQuestions = questionList.sum()
+    for (i in range(0, questionList.size)) {
+        if (questionList[i] > testScreenUiState.limitList[i]) {
+            errorState = true
+            break
+        }
+        errorState = false
+    }
     Column(modifier = modifier
         .fillMaxSize()
         .background(color = MaterialTheme.colorScheme.background)
@@ -112,7 +122,7 @@ fun TestConfigurationScreen(
             NavigationButton(text = "Start",
                 onClick = remember { onStartButtonClicked },
                 modifier = Modifier.padding(15.dp),
-                enabledCondition = (totalQuestions <= allQuestionsSet.flatten().size && testScreenUiState.Totaltime != 0))
+                enabledCondition = (!errorState && testScreenUiState.Totaltime != 0))
         }  // THE PREVIEW MIGHT BE SHOWING THE NAV BUTTON SQUISHED BUT THE MAIN APP ACCOMMODATES SCROLL SPACE
         // FOR IT SO DON'T WORRY
     }
@@ -468,21 +478,16 @@ fun TextWithTextField(modifier:Modifier = Modifier,
             }
         }
     }
-    val onDoneAdapter: KeyboardActionScope.() -> Unit = remember {
-        {
-            if (inputValue.toIntOrNull() == null) {
-                inputValue = "0"
-            }
-            if (inputValue.toIntOrNull()!! > subjectSize && inputValue.toIntOrNull()!! > 0) {
+    val onDoneAdapter: KeyboardActionScope.() -> Unit =
+        {   limitError = false
+            val inputInt = inputValue.toIntOrNull() ?: 0
+            if (inputInt > subjectSize || inputInt < 0) {
                 limitError = true
-            } else {
-                limitError = false
             }
-            testScreenViewModel.assignQuestionsTo(type, inputValue.toInt())
+            testScreenViewModel.assignQuestionsTo(type, inputInt)
             currentKeyboard?.hide() // Hide the keyboard
             focusManager.clearFocus() // Exit editing mode
         }
-    }
     val interactionSource = remember { MutableInteractionSource() }
     Card(modifier = modifier, colors = CardColors(MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSurfaceVariant, MaterialTheme.colorScheme.surfaceVariant,MaterialTheme.colorScheme.onSurfaceVariant)) {
         Row(
