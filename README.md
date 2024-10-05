@@ -1,5 +1,5 @@
 # Prep App
-An app designed to emulate the NUST Entry Test as well as allowing customization of the test in order to help users for preparation.
+An app designed to emulate university entry tests as well as allowing customization of tests in order to help users for preparation.
 
 Developed in Android Studio using Jetpack Compose
 
